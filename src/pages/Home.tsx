@@ -85,6 +85,11 @@ export default function Home() {
                   <span key={skill} className="skill-pill">{skill}</span>
                 ))}
               </div>
+
+              <Link to="/sobre" className="about-more-link">
+                Conhecer minha história
+                <ArrowUpRight size={18} />
+              </Link>
             </div>
           </div>
         </div>

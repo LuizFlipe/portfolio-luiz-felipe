@@ -12,7 +12,7 @@ export default function MotionEffects() {
 
     const revealTargets = Array.from(
       document.querySelectorAll<HTMLElement>(
-        ".section-label, .section-heading, .sticky-copy, .expertise-row, .project-card, .showcase-device, .volume-card, .experience-row, .contact-panel, .quick-card, .case-section",
+        ".section-label, .section-heading, .sticky-copy, .expertise-row, .project-card, .showcase-device, .volume-card, .experience-row, .contact-panel, .quick-card, .case-section, .about-story, .about-feature, .influence-card",
       ),
     );
 

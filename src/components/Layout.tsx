@@ -5,7 +5,7 @@ import MotionEffects from "./MotionEffects";
 
 const nav = [
   { label: "Projetos", href: "/#projetos" },
-  { label: "Sobre", href: "/#sobre" },
+  { label: "Sobre", href: "/sobre" },
   { label: "Experiência", href: "/#experiencia" },
   { label: "Contato", href: "/#contato" },
 ];
@@ -33,9 +33,15 @@ export default function Layout({ children }: PropsWithChildren) {
 
           <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
             {nav.map((item) => (
-              <a key={item.label} href={item.href} className="nav-link">
-                {item.label}
-              </a>
+              item.href.startsWith("/#") ? (
+                <a key={item.label} href={item.href} className="nav-link">
+                  {item.label}
+                </a>
+              ) : (
+                <Link key={item.label} to={item.href} className="nav-link">
+                  {item.label}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -62,9 +68,15 @@ export default function Layout({ children }: PropsWithChildren) {
           <div className="border-t border-white/10 bg-ink px-5 py-6 md:hidden">
             <nav className="page-shell flex flex-col gap-4">
               {nav.map((item) => (
-                <a key={item.label} href={item.href} className="text-2xl font-semibold">
-                  {item.label}
-                </a>
+                item.href.startsWith("/#") ? (
+                  <a key={item.label} href={item.href} className="text-2xl font-semibold">
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link key={item.label} to={item.href} className="text-2xl font-semibold">
+                    {item.label}
+                  </Link>
+                )
               ))}
               <a
                 href="mailto:luiz.felipesantos11@gmail.com"
