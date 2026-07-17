@@ -1,6 +1,7 @@
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { PropsWithChildren, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import MotionEffects from "./MotionEffects";
 
 const nav = [
   { label: "Projetos", href: "/#projetos" },
@@ -20,6 +21,7 @@ export default function Layout({ children }: PropsWithChildren) {
 
   return (
     <div className="min-h-screen bg-ink text-paper">
+      <MotionEffects />
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/80 backdrop-blur-xl">
         <div className="page-shell flex h-20 items-center justify-between">
           <Link to="/" className="group flex items-center gap-3" aria-label="Página inicial">
