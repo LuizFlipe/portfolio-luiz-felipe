@@ -4,10 +4,10 @@ import { Link, useLocation } from "react-router-dom";
 import MotionEffects from "./MotionEffects";
 
 const nav = [
-  { label: "Projetos", href: "/#projetos" },
-  { label: "Sobre", href: "/sobre" },
-  { label: "Experiência", href: "/#experiencia" },
-  { label: "Contato", href: "/#contato" },
+  { code: "01", label: "Projetos", href: "/#projetos" },
+  { code: "02", label: "Sobre", href: "/sobre" },
+  { code: "03", label: "Experiência", href: "/#experiencia" },
+  { code: "04", label: "Contato", href: "/#contato" },
 ];
 
 export default function Layout({ children }: PropsWithChildren) {
@@ -22,24 +22,35 @@ export default function Layout({ children }: PropsWithChildren) {
   return (
     <div className="min-h-screen bg-ink text-paper">
       <MotionEffects />
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/80 backdrop-blur-xl">
+      <div className="world-grid" aria-hidden="true" />
+      <aside className="identity-rail" aria-hidden="true">
+        <span>LF·01</span>
+        <i />
+        <span>ZL / SP</span>
+        <small>SYSTEM ONLINE</small>
+      </aside>
+
+      <header className="site-header fixed inset-x-0 top-0 z-50">
         <div className="page-shell flex h-20 items-center justify-between">
-          <Link to="/" className="group flex items-center gap-3" aria-label="Página inicial">
-            <span className="grid h-9 w-9 place-items-center rounded-full border border-white/15 bg-white/5 text-sm font-black transition group-hover:border-violet-400/70 group-hover:text-violet-300">
+          <Link to="/" className="brand-lockup group flex items-center gap-3" aria-label="Página inicial">
+            <span className="brand-mark grid h-9 w-9 place-items-center text-sm font-black">
               LF
             </span>
-            <span className="hidden text-sm font-semibold tracking-tight sm:block">Luiz Felipe</span>
+            <span className="hidden sm:block">
+              <strong>Luiz Felipe</strong>
+              <small>Product Designer · Player 01</small>
+            </span>
           </Link>
 
           <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
             {nav.map((item) => (
               item.href.startsWith("/#") ? (
                 <a key={item.label} href={item.href} className="nav-link">
-                  {item.label}
+                  <small>{item.code}</small>{item.label}
                 </a>
               ) : (
                 <Link key={item.label} to={item.href} className="nav-link">
-                  {item.label}
+                  <small>{item.code}</small>{item.label}
                 </Link>
               )
             ))}
@@ -47,9 +58,9 @@ export default function Layout({ children }: PropsWithChildren) {
 
           <a
             href="mailto:luiz.felipesantos11@gmail.com"
-            className="hidden items-center gap-2 rounded-full border border-violet-400/50 bg-violet-500/10 px-4 py-2 text-sm font-semibold text-violet-200 transition hover:bg-violet-500 hover:text-white md:flex"
+            className="hud-contact hidden items-center gap-2 px-4 py-2 text-sm font-semibold md:flex"
           >
-            Falar comigo
+            <span>Iniciar conversa</span>
             <ArrowUpRight size={16} />
           </a>
 
@@ -70,11 +81,11 @@ export default function Layout({ children }: PropsWithChildren) {
               {nav.map((item) => (
                 item.href.startsWith("/#") ? (
                   <a key={item.label} href={item.href} className="text-2xl font-semibold">
-                    {item.label}
+                    <small className="mr-3 text-xs text-violet-300">{item.code}</small>{item.label}
                   </a>
                 ) : (
                   <Link key={item.label} to={item.href} className="text-2xl font-semibold">
-                    {item.label}
+                    <small className="mr-3 text-xs text-violet-300">{item.code}</small>{item.label}
                   </Link>
                 )
               ))}
@@ -92,10 +103,10 @@ export default function Layout({ children }: PropsWithChildren) {
 
       <main>{children}</main>
 
-      <footer className="border-t border-white/10 py-10">
-        <div className="page-shell flex flex-col justify-between gap-5 text-sm text-white/50 sm:flex-row">
-          <span>© 2026 Luiz Felipe.</span>
-          <span>Product Designer • São Paulo</span>
+      <footer className="system-footer border-t border-white/10 py-10">
+        <div className="page-shell flex flex-col justify-between gap-5 sm:flex-row">
+          <span><i /> LF_OS · PORTFOLIO BUILD 2026</span>
+          <span>PRODUCT DESIGNER · ZONA LESTE / SÃO PAULO</span>
         </div>
       </footer>
     </div>

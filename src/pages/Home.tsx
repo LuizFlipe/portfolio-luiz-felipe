@@ -10,11 +10,11 @@ export default function Home() {
     <Layout>
       <section className="hero-section">
         <div className="page-shell relative z-10 pt-36 sm:pt-44">
-          <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5 text-xs uppercase tracking-[0.18em] text-white/45">
-            <span>Product Designer • São Paulo</span>
-            <span className="inline-flex items-center gap-2 text-violet-300">
+          <div className="hero-statusbar mb-8 flex flex-wrap items-center justify-between gap-4 pb-5">
+            <span>PLAYER_01 / PRODUCT DESIGNER / ZL-SP</span>
+            <span className="inline-flex items-center gap-2">
               <span className="h-2 w-2 animate-pulse rounded-full bg-violet-400" />
-              Aberto a projetos selecionados
+              DISPONÍVEL PARA NOVAS MISSÕES
             </span>
           </div>
 
@@ -25,21 +25,38 @@ export default function Home() {
             <span className="text-violet-400">DESIGNER</span>
           </h1>
 
-          <div className="mt-10 grid gap-8 border-t border-white/10 pt-7 md:grid-cols-[1.1fr_.9fr]">
-            <p className="max-w-2xl text-xl leading-relaxed text-white/75 sm:text-2xl">
-              Criando produtos digitais que transformam problemas complexos em experiências simples.
-            </p>
-            <div className="flex flex-col justify-between gap-8 md:items-end">
-              <p className="max-w-md text-sm leading-7 text-white/50 md:text-right">
-                Product Designer Pleno com 5 anos de experiência em produto, pesquisa, estratégia e interface. Atualmente na Dimo, carteira digital da Motorola.
+          <div className="hero-briefing mt-10">
+            <div className="hero-mission">
+              <span className="ui-caption">MISSÃO ATUAL</span>
+              <p>
+                Transformar problemas complexos em produtos claros, humanos e memoráveis.
               </p>
-              <a href="#projetos" className="inline-flex items-center gap-3 text-sm font-semibold text-violet-300">
-                Ver projetos
-                <span className="grid h-9 w-9 place-items-center rounded-full border border-violet-400/40">
+              <div>
+                <p>
+                  Product Designer Pleno com 5 anos de experiência em produto, pesquisa, estratégia e interface. Atualmente na Dimo, carteira digital da Motorola.
+                </p>
+                <a href="#projetos" className="mission-action">
+                  Abrir mission log
                   <ArrowDown size={16} />
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
+
+            <aside className="player-dossier" aria-label="Resumo pessoal e profissional">
+              <div className="dossier-head">
+                <span>FICHA DE PERSONAGEM</span>
+                <b>LVL 05</b>
+              </div>
+              <div className="dossier-avatar"><span>LF</span><i>01</i></div>
+              <dl>
+                <div><dt>CLASSE</dt><dd>Product Designer</dd></div>
+                <div><dt>BASE</dt><dd>Zona Leste · SP</dd></div>
+                <div><dt>TRAÇO</dt><dd>Curioso / Estratégico</dd></div>
+                <div><dt>JOGO</dt><dd>Disco Elysium</dd></div>
+                <div><dt>BUFF</dt><dd>Cultura pop + Esportes</dd></div>
+              </dl>
+              <Link to="/sobre">Ver história completa <ArrowUpRight size={15} /></Link>
+            </aside>
           </div>
         </div>
 
@@ -60,11 +77,11 @@ export default function Home() {
 
       <section id="sobre" className="section-space">
         <div className="page-shell">
-          <div className="section-label">01 / Sobre</div>
+          <div className="section-label">QUEST 01 / ORIGEM & MÉTODO</div>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[.75fr_1.25fr]">
             <div>
-              <p className="sticky-copy">Produto, pesquisa, estratégia e interface.</p>
+              <p className="sticky-copy">BUILD: PRODUTO + PESQUISA + ESTRATÉGIA + INTERFACE.</p>
             </div>
             <div>
               <h2 className="section-heading">
@@ -97,7 +114,7 @@ export default function Home() {
 
       <section className="section-space border-y border-white/10 bg-white/[0.025]">
         <div className="page-shell">
-          <div className="section-label">02 / Onde eu atuo</div>
+          <div className="section-label">SKILL TREE / ONDE EU ATUO</div>
           <div className="mt-10 grid">
             {[
               ["Fintech & serviços financeiros", "Jornadas onde confiança e clareza fazem parte do produto."],
@@ -119,7 +136,7 @@ export default function Home() {
 
       <section id="projetos" className="section-space">
         <div className="page-shell">
-          <div className="section-label">03 / Cases selecionados</div>
+          <div className="section-label">MISSION LOG / CASES SELECIONADOS</div>
           <div className="mt-8 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <h2 className="section-heading max-w-4xl">
               Problemas reais. <span className="text-violet-400">Decisões explicadas.</span>
@@ -134,6 +151,7 @@ export default function Home() {
               <Link key={project.slug} to={`/case/${project.slug}`} className="project-card group">
                 <div className="project-meta">
                   <span>{project.index}</span>
+                  <span>CASE FILE</span>
                   <span>{project.eyebrow}</span>
                   {project.nda && <span>NDA / detalhes adaptados</span>}
                 </div>
@@ -166,11 +184,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-space border-y border-white/10 bg-violet-500 text-white">
+      <section className="system-banner section-space border-y border-white/10 text-white">
         <div className="page-shell">
           <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <div className="text-xs uppercase tracking-[0.2em] text-white/70">Um portfólio, várias linguagens</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-white/70">LOADOUT / UM PORTFÓLIO, VÁRIAS LINGUAGENS</div>
               <h2 className="mt-5 max-w-5xl font-display text-[clamp(3.6rem,10vw,9rem)] leading-[.82] tracking-[-0.07em]">
                 MOBILE.<br />DADOS.<br />PRODUTO.
               </h2>
@@ -188,7 +206,7 @@ export default function Home() {
 
       <section id="experiencia" className="section-space border-t border-white/10">
         <div className="page-shell">
-          <div className="section-label">06 / Experiência</div>
+          <div className="section-label">CAMPAIGN HISTORY / EXPERIÊNCIA</div>
           <div className="mt-12 divide-y divide-white/10 border-y border-white/10">
             {experience.map((item) => (
               <div key={item.company} className="experience-row">
@@ -208,7 +226,7 @@ export default function Home() {
         <div className="page-shell">
           <div className="contact-panel">
             <div className="relative z-10">
-              <span className="section-label border-white/20 text-white/60">07 / Contato</span>
+              <span className="section-label border-white/20 text-white/60">NEW QUEST / CONTATO</span>
               <h2>
                 TEM UM PROBLEMA<br />
                 INTERESSANTE PARA<br />

@@ -72,7 +72,7 @@ export default function About() {
                 <span>23°33′S · 46°32′W</span>
               </div>
               <div className="about-copy">
-                <span className="section-label">01 / Origem</span>
+                <span className="section-label">ORIGIN STORY / ZONA LESTE</span>
                 <h2>Minha origem não é só endereço. É uma forma de observar.</h2>
                 <div className="about-copy-columns">
                   <p>
@@ -96,7 +96,7 @@ export default function About() {
           <div className="page-shell">
             <div className="culture-grid">
               <div className="culture-copy about-feature">
-                <span className="section-label">02 / Games & cultura pop</span>
+                <span className="section-label">REPERTÓRIO / GAMES & CULTURA POP</span>
                 <h2>Imaginação também é ferramenta de trabalho.</h2>
                 <p>
                   Games, cinema, música, quadrinhos e cultura pop sempre ampliaram meu repertório.
@@ -177,7 +177,7 @@ export default function About() {
               </div>
 
               <div className="about-copy about-feature">
-                <span className="section-label">03 / Esportes</span>
+                <span className="section-label">CO-OP MODE / ESPORTES</span>
                 <h2>Competir, colaborar, ajustar e tentar de novo.</h2>
                 <p>
                   Amo esportes porque eles deixam uma coisa muito clara: talento importa, mas
@@ -195,7 +195,7 @@ export default function About() {
 
         <section className="principles-section section-space">
           <div className="page-shell">
-            <div className="section-label">04 / Como isso chega ao meu trabalho</div>
+            <div className="section-label">PLAYER BUILD / COMO ISSO CHEGA AO TRABALHO</div>
             <h2 className="section-heading mt-8 max-w-5xl">
               Vida pessoal e prática profissional <span className="text-violet-400">não vivem separadas.</span>
             </h2>

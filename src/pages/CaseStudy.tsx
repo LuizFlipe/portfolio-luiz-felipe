@@ -57,7 +57,7 @@ export default function CaseStudy() {
 
         <section className="section-space">
           <div className="page-shell">
-            <div className="section-label">Para entender rápido</div>
+            <div className="section-label">CASE HUD / PARA ENTENDER RÁPIDO</div>
             <div className="quick-grid">
               {[
                 ["Problema", project.quick.problem],
@@ -101,7 +101,7 @@ export default function CaseStudy() {
         <section className="border-t border-white/10 py-14">
           <div className="page-shell">
             <Link to={`/case/${nextProject.slug}`} className="next-case group">
-              <span>Próximo case</span>
+              <span>PRÓXIMA MISSÃO</span>
               <div>
                 <h2>{nextProject.title}</h2>
                 <ArrowRight className="transition group-hover:translate-x-2" size={34} />
@@ -113,7 +113,7 @@ export default function CaseStudy() {
         <section className="border-t border-white/10 py-20">
           <div className="page-shell flex flex-col justify-between gap-8 md:flex-row md:items-center">
             <div>
-              <p className="text-sm uppercase tracking-[0.18em] text-white/35">Vamos conversar</p>
+              <p className="text-sm uppercase tracking-[0.18em] text-white/35">NEW QUEST / VAMOS CONVERSAR</p>
               <h2 className="mt-3 text-4xl font-bold tracking-tight sm:text-6xl">Tem um problema interessante?</h2>
             </div>
             <a href="mailto:luiz.felipesantos11@gmail.com" className="contact-button primary">
