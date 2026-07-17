@@ -5,14 +5,14 @@ Portfólio em React + Vite + TypeScript + Tailwind CSS, criado com uma direção
 ## Rodar localmente
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ## Gerar build de produção
 
 ```bash
-npm run build
+pnpm build
 ```
 
 A pasta final será `dist/`.
@@ -22,7 +22,7 @@ A pasta final será `dist/`.
 1. Envie os arquivos deste projeto para a raiz do repositório GitHub.
 2. Importe o repositório na Vercel.
 3. Framework preset: **Vite**.
-4. Build command: `npm run build`.
+4. Build command: `pnpm build`.
 5. Output directory: `dist`.
 
 O arquivo `vercel.json` já inclui o redirecionamento necessário para que

@@ -2,6 +2,7 @@
   "name": "luiz-felipe-portfolio",
   "private": true,
   "version": "1.0.0",
+  "packageManager": "pnpm@10.13.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
