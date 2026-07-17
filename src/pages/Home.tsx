@@ -2,6 +2,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight, Circle } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 import ProjectVisual from "../components/ProjectVisual";
+import { ScreenReel, VolumeGallery } from "../components/WorkShowcase";
 import { brands, cases, experience, skills } from "../data/portfolio";
 
 export default function Home() {
@@ -176,9 +177,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experiencia" className="section-space">
+      <ScreenReel />
+
+      <VolumeGallery />
+
+      <section id="experiencia" className="section-space border-t border-white/10">
         <div className="page-shell">
-          <div className="section-label">04 / Experiência</div>
+          <div className="section-label">06 / Experiência</div>
           <div className="mt-12 divide-y divide-white/10 border-y border-white/10">
             {experience.map((item) => (
               <div key={item.company} className="experience-row">
@@ -198,7 +203,7 @@ export default function Home() {
         <div className="page-shell">
           <div className="contact-panel">
             <div className="relative z-10">
-              <span className="section-label border-white/20 text-white/60">05 / Contato</span>
+              <span className="section-label border-white/20 text-white/60">07 / Contato</span>
               <h2>
                 TEM UM PROBLEMA<br />
                 INTERESSANTE PARA<br />
