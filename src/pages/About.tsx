@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, ArrowUpRight, Gamepad2, MapPin, Trophy } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, MapPin, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 
@@ -72,7 +72,7 @@ export default function About() {
                 <span>23°33′S · 46°32′W</span>
               </div>
               <div className="about-copy">
-                <span className="section-label">ORIGIN STORY / ZONA LESTE</span>
+                <span className="section-label">01 / ZONA LESTE</span>
                 <h2>Minha origem não é só endereço. É uma forma de observar.</h2>
                 <div className="about-copy-columns">
                   <p>
@@ -96,7 +96,7 @@ export default function About() {
           <div className="page-shell">
             <div className="culture-grid">
               <div className="culture-copy about-feature">
-                <span className="section-label">REPERTÓRIO / GAMES & CULTURA POP</span>
+                <span className="section-label">02 / GAMES & CULTURA POP</span>
                 <h2>Imaginação também é ferramenta de trabalho.</h2>
                 <p>
                   Games, cinema, música, quadrinhos e cultura pop sempre ampliaram meu repertório.
@@ -110,23 +110,17 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="game-window about-feature" aria-label="Referência visual inspirada em interfaces narrativas">
-                <div className="game-window-bar">
-                  <span>ARQUIVO DE PENSAMENTOS</span>
-                  <Gamepad2 size={17} />
+              <div className="culture-index about-feature" aria-label="Repertório criativo">
+                <div className="culture-index-head">
+                  <span>REPERTÓRIO EM CAMADAS</span>
+                  <small>LF / 04</small>
                 </div>
-                <div className="game-portrait">LF</div>
-                <div className="game-dialogue">
-                  <span>CRIATIVIDADE</span>
-                  <p>“E se o problema pudesse ser visto por outro ângulo?”</p>
-                  <button type="button" tabIndex={-1}>
-                    <i>01</i>
-                    Observar antes de responder
-                  </button>
-                  <button type="button" tabIndex={-1}>
-                    <i>02</i>
-                    Conectar referências improváveis
-                  </button>
+                <blockquote>“E se o problema pudesse ser visto por outro ângulo?”</blockquote>
+                <div className="culture-index-list">
+                  <div><span>01</span><strong>Narrativa</strong><small>contexto e escolhas</small></div>
+                  <div><span>02</span><strong>Atmosfera</strong><small>emoção e memória</small></div>
+                  <div><span>03</span><strong>Sistemas</strong><small>regras e relações</small></div>
+                  <div><span>04</span><strong>Ritmo</strong><small>hierarquia e fluxo</small></div>
                 </div>
               </div>
             </div>
@@ -177,7 +171,7 @@ export default function About() {
               </div>
 
               <div className="about-copy about-feature">
-                <span className="section-label">CO-OP MODE / ESPORTES</span>
+                <span className="section-label">03 / ESPORTES</span>
                 <h2>Competir, colaborar, ajustar e tentar de novo.</h2>
                 <p>
                   Amo esportes porque eles deixam uma coisa muito clara: talento importa, mas
@@ -195,7 +189,7 @@ export default function About() {
 
         <section className="principles-section section-space">
           <div className="page-shell">
-            <div className="section-label">PLAYER BUILD / COMO ISSO CHEGA AO TRABALHO</div>
+            <div className="section-label">04 / COMO ISSO CHEGA AO MEU TRABALHO</div>
             <h2 className="section-heading mt-8 max-w-5xl">
               Vida pessoal e prática profissional <span className="text-violet-400">não vivem separadas.</span>
             </h2>

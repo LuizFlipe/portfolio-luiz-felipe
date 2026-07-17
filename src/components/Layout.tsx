@@ -27,7 +27,7 @@ export default function Layout({ children }: PropsWithChildren) {
         <span>LF·01</span>
         <i />
         <span>ZL / SP</span>
-        <small>SYSTEM ONLINE</small>
+        <small>PORTFOLIO / 2026</small>
       </aside>
 
       <header className="site-header fixed inset-x-0 top-0 z-50">
@@ -38,7 +38,7 @@ export default function Layout({ children }: PropsWithChildren) {
             </span>
             <span className="hidden sm:block">
               <strong>Luiz Felipe</strong>
-              <small>Product Designer · Player 01</small>
+              <small>Product Designer · São Paulo</small>
             </span>
           </Link>
 

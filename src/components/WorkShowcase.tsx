@@ -22,7 +22,7 @@ export function ScreenReel() {
   return (
     <section className="screen-showcase section-space border-y border-white/10">
       <div className="page-shell">
-        <div className="section-label">LIVE FEED / TELAS EM MOVIMENTO</div>
+        <div className="section-label">INTERFACE REEL / TELAS EM MOVIMENTO</div>
         <div className="mt-8 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <h2 className="section-heading max-w-4xl">
             Um recorte vivo do <span className="text-violet-400">meu trabalho.</span>
@@ -68,7 +68,7 @@ export function VolumeGallery() {
     <section className="volume-gallery section-space">
       <div className="page-shell">
         <div className="volume-intro">
-          <span>INVENTORY / EXPLORAÇÕES E ENTREGAS</span>
+          <span>ARQUIVO VISUAL / EXPLORAÇÕES E ENTREGAS</span>
           <h2>
             Um portfólio, <em>dezenas de projetos.</em>
           </h2>
