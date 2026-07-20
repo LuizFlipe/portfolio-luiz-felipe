@@ -1,4 +1,15 @@
-import { ArrowLeft, ArrowRight, ArrowUpRight, Headphones, MapPin, Trophy } from "lucide-react";
+import { useState } from "react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Headphones,
+  Layers3,
+  MapPin,
+  ScanSearch,
+  Trophy,
+  Waypoints,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 
@@ -54,7 +65,55 @@ const principles = [
   },
 ];
 
+const discoThoughts = [
+  {
+    index: "01",
+    icon: ScanSearch,
+    title: "Escolhas têm consequências",
+    text: "Cada interação influencia o que o usuário entende e decide fazer depois.",
+  },
+  {
+    index: "02",
+    icon: Waypoints,
+    title: "Sistemas também contam histórias",
+    text: "Regras, feedbacks e restrições comunicam tanto quanto palavras e imagens.",
+  },
+  {
+    index: "03",
+    icon: Layers3,
+    title: "Complexidade precisa continuar humana",
+    text: "Mesmo em produtos cheios de regras, a experiência pertence a uma pessoa.",
+  },
+];
+
+const discoChoices = [
+  {
+    id: "observar",
+    action: "Observar",
+    label: "Investigar antes de propor",
+    response:
+      "Passei a começar pelo contexto: observar sinais, tensões e comportamentos antes de desenhar uma resposta.",
+  },
+  {
+    id: "questionar",
+    action: "Questionar",
+    label: "Não aceitar o primeiro problema",
+    response:
+      "O primeiro problema quase sempre é uma hipótese. Questioná-lo abre espaço para entender a necessidade real.",
+  },
+  {
+    id: "conectar",
+    action: "Conectar",
+    label: "Entender como cada decisão afeta o todo",
+    response:
+      "Hoje penso no antes e no depois de cada interação. Uma tela isolada nunca explica toda a experiência.",
+  },
+];
+
 export default function About() {
+  const [activeDiscoChoice, setActiveDiscoChoice] = useState<string | null>(null);
+  const selectedDiscoChoice = discoChoices.find((choice) => choice.id === activeDiscoChoice);
+
   return (
     <Layout>
       <article className="about-page">
@@ -178,27 +237,90 @@ export default function About() {
           </div>
         </section>
 
-        <section className="disco-section section-space">
-          <div className="page-shell">
-            <div className="disco-heading about-feature">
-              <span>Meu jogo favorito</span>
-              <h2>DISCO<br /><em>ELYSIUM</em></h2>
-            </div>
-            <div className="disco-notes">
-              <div className="disco-orb" aria-hidden="true">
-                <span>DE</span>
+        <section className="disco-section section-space" aria-labelledby="disco-title">
+          <div className="page-shell disco-editorial-grid">
+            <figure className="disco-artwork about-feature">
+              <div className="disco-artwork-media">
+                <img
+                  src="/images/about/disco-elysium-game.png"
+                  alt="Arte do jogo Disco Elysium enviada por Luiz Felipe"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
-              <div className="about-feature">
-                <p className="disco-lead">
-                  O que mais me marca em Disco Elysium não é apenas a estética. É a coragem de
-                  construir um mundo complexo, político, humano e cheio de consequências.
-                </p>
+              <div className="disco-artwork-overlay">
+                <span>Referência pessoal / 01</span>
+                <div>
+                  <strong>Disco Elysium</strong>
+                  <small>2019</small>
+                </div>
+              </div>
+            </figure>
+
+            <div className="disco-editorial-content">
+              <header className="disco-copy about-feature">
+                <span className="section-label">FORA DO EXPEDIENTE</span>
+                <h2 id="disco-title">
+                  Disco Elysium me ensinou a projetar escolhas, não apenas telas.
+                </h2>
                 <p>
-                  O jogo mostra que escolhas pequenas mudam a percepção de uma experiência e que
-                  sistemas podem contar histórias. Essa é uma referência que carrego no meu
-                  processo: entender as camadas de um problema sem perder de vista quem está
-                  vivendo aquela jornada.
+                  Um mundo complexo não é construído apenas pela estética. Ele nasce de sistemas,
+                  conflitos e pequenas decisões que mudam a forma como cada pessoa vive a experiência.
                 </p>
+              </header>
+
+              <div className="disco-thoughts" aria-label="Pensamentos que influenciam meu processo">
+                {discoThoughts.map((thought) => {
+                  const ThoughtIcon = thought.icon;
+                  return (
+                    <article className="disco-thought" key={thought.index}>
+                      <div className="disco-thought-meta">
+                        <span>{thought.index}</span>
+                        <ThoughtIcon size={19} strokeWidth={1.5} aria-hidden="true" />
+                      </div>
+                      <div>
+                        <h3>{thought.title}</h3>
+                        <p>{thought.text}</p>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+
+              <div className="disco-dialogue about-feature">
+                <div className="disco-dialogue-heading">
+                  <span>DIÁLOGO INTERNO / PROCESSO</span>
+                  <small>Escolha uma resposta</small>
+                </div>
+                <h3>O que esse jogo mudou no meu processo?</h3>
+
+                <div className="disco-dialogue-options">
+                  {discoChoices.map((choice, index) => (
+                    <button
+                      type="button"
+                      key={choice.id}
+                      className={activeDiscoChoice === choice.id ? "is-selected" : ""}
+                      aria-pressed={activeDiscoChoice === choice.id}
+                      onClick={() => setActiveDiscoChoice(choice.id)}
+                    >
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <strong>[{choice.action}]</strong>
+                      <em>{choice.label}</em>
+                    </button>
+                  ))}
+                </div>
+
+                <div
+                  className={`disco-dialogue-response ${selectedDiscoChoice ? "is-visible" : ""}`}
+                  aria-live="polite"
+                >
+                  <span>{selectedDiscoChoice ? "RESPOSTA REGISTRADA" : "AGUARDANDO ESCOLHA"}</span>
+                  <p key={selectedDiscoChoice?.id ?? "empty"}>
+                    {selectedDiscoChoice
+                      ? selectedDiscoChoice.response
+                      : "Selecione uma linha de investigação para revelar como essa referência aparece no meu trabalho."}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

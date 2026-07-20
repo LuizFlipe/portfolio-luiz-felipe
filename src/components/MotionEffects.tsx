@@ -12,13 +12,18 @@ export default function MotionEffects() {
 
     const revealTargets = Array.from(
       document.querySelectorAll<HTMLElement>(
-        ".section-label, .section-heading, .sticky-copy, .expertise-row, .project-card, .showcase-device, .volume-card, .experience-row, .contact-panel, .quick-card, .case-overview-card, .case-section, .about-story, .about-feature, .influence-card, .spotify-card",
+        ".section-label, .section-heading, .sticky-copy, .expertise-row, .project-card, .showcase-device, .volume-card, .experience-row, .contact-panel, .quick-card, .case-overview-card, .case-section, .about-story, .about-feature, .influence-card, .spotify-card, .disco-thought",
       ),
     );
 
     revealTargets.forEach((element, index) => {
       element.classList.add("motion-reveal");
       element.style.setProperty("--reveal-delay", `${(index % 4) * 70}ms`);
+    });
+
+    document.querySelectorAll<HTMLElement>(".disco-thought").forEach((element, index) => {
+      element.classList.add("motion-reveal");
+      element.style.setProperty("--reveal-delay", `${index * 110}ms`);
     });
 
     const observer = new IntersectionObserver(
