@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, ArrowUpRight, Headphones, MapPin, Play, Trophy } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Headphones, MapPin, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 
@@ -6,25 +6,30 @@ const currentTracks = [
   {
     title: "Us memo preto zica",
     artist: "Emicida, Amaro Freitas, Henrique Albino",
-    code: "UMPZ",
-    tone: "track-violet",
-    href: "https://open.spotify.com/search/Us%20memo%20preto%20zica",
+    id: "6zv9QgibOHQQUG9cGlqGaH",
   },
   {
     title: "Next To You",
     artist: "Bryson Tiller",
-    code: "NTY",
-    tone: "track-blue",
-    href: "https://open.spotify.com/search/Next%20To%20You%20Bryson%20Tiller",
+    id: "4t6kUc6KjUtb3rkgcv212X",
   },
   {
     title: "De Lua",
     artist: "Ryan Fidelis",
-    code: "DL",
-    tone: "track-magenta",
-    href: "https://open.spotify.com/search/De%20Lua%20Ryan%20Fidelis",
+    id: "2pnhhyzxoMArmMcsDUTIi8",
   },
 ];
+
+function SpotifyMark() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.59 14.42a.62.62 0 0 1-.86.2c-2.36-1.44-5.33-1.77-8.83-.97a.62.62 0 1 1-.28-1.22c3.83-.87 7.12-.49 9.77 1.13.29.18.38.56.2.86Zm1.23-2.73a.78.78 0 0 1-1.07.26c-2.7-1.66-6.82-2.14-10.02-1.17a.78.78 0 1 1-.45-1.49c3.66-1.11 8.2-.57 11.28 1.32.37.23.48.71.26 1.08Zm.1-2.85C14.68 8.92 9.34 8.74 6.24 9.68a.94.94 0 0 1-.54-1.8c3.56-1.08 9.46-.87 13.18 1.34a.94.94 0 0 1-.96 1.62Z"
+      />
+    </svg>
+  );
+}
 
 const principles = [
   {
@@ -111,7 +116,10 @@ export default function About() {
                   alt="Vista do bairro Cidade Tiradentes, na Zona Leste de São Paulo"
                 />
                 <MapPin size={24} />
-                <strong>CIDADE<br />TIRADENTES</strong>
+                <strong>
+                  <span>CIDADE</span>
+                  <span>TIRADENTES</span>
+                </strong>
                 <span>23°33′S · 46°32′W</span>
               </figure>
               <div className="about-copy">
@@ -234,33 +242,38 @@ export default function About() {
           <div className="page-shell">
             <div className="music-heading">
               <div>
-                <span className="section-label">EM REPRODUÇÃO</span>
-                <h2>Músicas do momento</h2>
+                <span className="section-label">REPERTÓRIO MUSICAL</span>
+                <h2>No meu fone agora</h2>
+                <p>Três faixas que estão acompanhando meus dias e alimentando meu repertório.</p>
               </div>
-              <Headphones aria-hidden="true" size={28} />
+              <div className="music-service" aria-label="Conteúdo do Spotify">
+                <SpotifyMark />
+                <span>Spotify</span>
+                <Headphones aria-hidden="true" size={20} />
+              </div>
             </div>
 
             <div className="music-grid">
-              {currentTracks.map((track, index) => (
-                <a
-                  href={track.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="music-card"
+              {currentTracks.map((track) => (
+                <article
+                  className="spotify-card"
                   key={track.title}
-                  aria-label={`Ouvir ${track.title}, de ${track.artist}, no Spotify`}
                 >
-                  <div className={`music-cover ${track.tone}`}>
-                    <span>{track.code}</span>
-                    <small>0{index + 1}</small>
+                  <div className="spotify-card-label">
+                    <span><SpotifyMark /> Ouvir no Spotify</span>
+                    <small>{track.artist}</small>
                   </div>
-                  <div className="music-copy">
-                    <strong>{track.title}</strong>
-                    <span>{track.artist}</span>
-                    <small>Spotify</small>
-                  </div>
-                  <i className="music-play"><Play size={18} fill="currentColor" /></i>
-                </a>
+                  <iframe
+                    title={`${track.title}, de ${track.artist}, no Spotify`}
+                    src={`https://open.spotify.com/embed/track/${track.id}?utm_source=generator&theme=0`}
+                    width="100%"
+                    height="152"
+                    frameBorder="0"
+                    allowFullScreen
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                  />
+                </article>
               ))}
             </div>
           </div>

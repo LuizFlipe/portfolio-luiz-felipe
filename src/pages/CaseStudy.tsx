@@ -1,4 +1,13 @@
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Maximize2,
+  X,
+} from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import ProjectVisual from "../components/ProjectVisual";
@@ -8,6 +17,51 @@ export default function CaseStudy() {
   const { slug } = useParams();
   const projectIndex = cases.findIndex((item) => item.slug === slug);
   const project = cases[projectIndex];
+  const [activeSection, setActiveSection] = useState(0);
+  const [activeScreen, setActiveScreen] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!project) return;
+
+    const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-case-section]"));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible) {
+          setActiveSection(Number((visible.target as HTMLElement).dataset.caseSection ?? 0));
+        }
+      },
+      { rootMargin: "-24% 0px -52%", threshold: [0.08, 0.35, 0.7] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [project]);
+
+  useEffect(() => {
+    if (activeScreen === null) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActiveScreen(null);
+      if (!project?.gallery) return;
+      if (event.key === "ArrowRight") {
+        setActiveScreen((current) => current === null ? 0 : (current + 1) % project.gallery!.length);
+      }
+      if (event.key === "ArrowLeft") {
+        setActiveScreen((current) => current === null
+          ? 0
+          : (current - 1 + project.gallery!.length) % project.gallery!.length);
+      }
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [activeScreen, project]);
 
   if (!project) {
     return (
@@ -64,65 +118,122 @@ export default function CaseStudy() {
             <div className="mt-16">
               <ProjectVisual kind={project.visual} />
             </div>
+
+            <a className="case-scroll-cue" href="#visao-geral">
+              Explorar o processo
+              <ArrowDown size={16} />
+            </a>
           </div>
         </header>
 
-        <section className="section-space">
+        <section className="section-space case-overview" id="visao-geral">
           <div className="page-shell">
-            <div className="section-label">RESUMO DO CASE</div>
-            <div className="quick-grid">
+            <div className="case-overview-head">
+              <div>
+                <span className="case-chapter-index">01</span>
+                <h2>Para entender rápido</h2>
+              </div>
+              <p>O essencial para quem quer compreender o problema, minha atuação e a entrega em poucos minutos.</p>
+            </div>
+
+            <div className="case-overview-grid">
               {[
-                ["Problema", project.quick.problem],
+                ["Ponto de dor", project.quick.problem],
                 ["Meu papel", project.quick.role],
                 ["Processo", project.quick.process],
                 ["Resultado", project.quick.result],
               ].map(([title, text], index) => (
-                <div key={title} className="quick-card">
+                <article key={title} className="case-overview-card">
                   <span>0{index + 1}</span>
-                  <h2>{title}</h2>
+                  <h3>{title}</h3>
                   <p>{text}</p>
-                </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
         {project.gallery && (
-          <section className="case-gallery-section pb-28 sm:pb-36">
+          <section className="case-gallery-section section-space">
             <div className="page-shell">
-              <div className="section-label">SISTEMA EM AÇÃO</div>
+              <div className="case-gallery-heading">
+                <div>
+                  <span className="case-chapter-index">02</span>
+                  <h2>O produto em ação</h2>
+                </div>
+                <p>Explore as telas. Clique em qualquer interface para ampliar e navegar pelos detalhes.</p>
+              </div>
               <div className="case-screen-grid">
                 {project.gallery.map((screen, index) => (
-                  <figure className="case-screen-card" key={screen.src}>
+                  <button
+                    type="button"
+                    className="case-screen-card"
+                    key={screen.src}
+                    onClick={() => setActiveScreen(index)}
+                    aria-label={`Ampliar ${screen.caption}`}
+                  >
                     <div className="case-screen-topline">
                       <span>{String(index + 1).padStart(2, "0")}</span>
-                      <small>FLUXO / MOBILE</small>
+                      <small>INTERFACE / MOBILE</small>
+                      <Maximize2 size={14} />
                     </div>
                     <img src={screen.src} alt={screen.alt} loading="lazy" />
-                    <figcaption>{screen.caption}</figcaption>
-                  </figure>
+                    <span className="case-screen-caption">{screen.caption}</span>
+                  </button>
                 ))}
               </div>
             </div>
           </section>
         )}
 
-        <section className="pb-28 sm:pb-36">
-          <div className="page-shell">
+        <section className="case-narrative">
+          <div className="page-shell case-narrative-layout">
+            <aside className="case-chapter-nav" aria-label="Navegação pelos capítulos do case">
+              <span>PROCESSO / {project.index}</span>
+              <nav>
+                {project.sections.map((section, index) => (
+                  <a
+                    key={section.title}
+                    href={`#capitulo-${index + 1}`}
+                    className={activeSection === index ? "is-active" : ""}
+                  >
+                    <i>{String(index + 1).padStart(2, "0")}</i>
+                    <b>{section.title}</b>
+                  </a>
+                ))}
+              </nav>
+            </aside>
+
             <div className="case-content">
               {project.sections.map((section, index) => (
-                <section key={section.title} className="case-section">
-                  <span className="case-number">{String(index + 1).padStart(2, "0")}</span>
-                  <div>
+                <section
+                  key={section.title}
+                  id={`capitulo-${index + 1}`}
+                  className="case-section"
+                  data-case-section={index}
+                >
+                  <div className="case-section-heading">
+                    <span className="case-number">{String(index + 1).padStart(2, "0")}</span>
+                    <small>{index === project.sections.length - 1 ? "FECHAMENTO" : "DECISÃO DE DESIGN"}</small>
+                  </div>
+                  <div className="case-section-body">
                     <h2>{section.title}</h2>
-                    <p>{section.text}</p>
+                    <p className="case-section-lead">{section.text}</p>
                     {section.bullets && (
-                      <ul>
+                      <ul className="case-decision-list">
                         {section.bullets.map((item) => (
-                          <li key={item}>{item}</li>
+                          <li key={item}><Check size={16} />{item}</li>
                         ))}
                       </ul>
                     )}
+                    <div className="case-section-note">
+                      <span>{String(index + 1).padStart(2, "0")} / {String(project.sections.length).padStart(2, "0")}</span>
+                      <p>
+                        {index === project.sections.length - 1
+                          ? "O aprendizado fecha este capítulo e alimenta as próximas decisões de produto."
+                          : "Cada escolha foi conectada ao problema e ao contexto de uso, não apenas à estética."}
+                      </p>
+                    </div>
                   </div>
                 </section>
               ))}
@@ -155,6 +266,41 @@ export default function CaseStudy() {
           </div>
         </section>
       </article>
+
+      {activeScreen !== null && project.gallery && (
+        <div className="case-lightbox" role="dialog" aria-modal="true" aria-label="Visualização ampliada da interface">
+          <button className="case-lightbox-close" type="button" onClick={() => setActiveScreen(null)}>
+            Fechar
+            <X size={18} />
+          </button>
+          <button
+            className="case-lightbox-arrow case-lightbox-prev"
+            type="button"
+            onClick={() => setActiveScreen((activeScreen - 1 + project.gallery!.length) % project.gallery!.length)}
+            aria-label="Tela anterior"
+          >
+            <ArrowLeft />
+          </button>
+          <figure>
+            <img
+              src={project.gallery[activeScreen].src}
+              alt={project.gallery[activeScreen].alt}
+            />
+            <figcaption>
+              <span>{String(activeScreen + 1).padStart(2, "0")} / {String(project.gallery.length).padStart(2, "0")}</span>
+              <strong>{project.gallery[activeScreen].caption}</strong>
+            </figcaption>
+          </figure>
+          <button
+            className="case-lightbox-arrow case-lightbox-next"
+            type="button"
+            onClick={() => setActiveScreen((activeScreen + 1) % project.gallery!.length)}
+            aria-label="Próxima tela"
+          >
+            <ArrowRight />
+          </button>
+        </div>
+      )}
     </Layout>
   );
 }
