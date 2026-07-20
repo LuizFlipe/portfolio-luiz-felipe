@@ -17,15 +17,71 @@ export type PortfolioCase = {
     result: string;
   };
   tags: string[];
-  visual: "dimo" | "consignado" | "caf" | "data" | "dirige";
+  visual: "bravus" | "dimo" | "consignado" | "caf" | "data" | "dirige";
+  externalUrl?: string;
   nda?: boolean;
   sections: CaseSection[];
 };
 
 export const cases: PortfolioCase[] = [
   {
-    slug: "dimo-produto-financeiro",
+    slug: "bravus-agendamento",
     index: "01",
+    title: "Bravus — experiência de agendamento",
+    eyebrow: "Product Design • Serviço • Web",
+    summary:
+      "Case conceitual para uma barbearia em Sorocaba, conectando posicionamento de marca, descoberta de serviços e um fluxo funcional de agendamento.",
+    quick: {
+      problem:
+        "Transformar a presença digital da barbearia em uma experiência que gerasse confiança e levasse o cliente ao agendamento sem complicação.",
+      role:
+        "Product Designer responsável pelo conceito, arquitetura da informação, jornada, interface e protótipo funcional.",
+      process:
+        "Organização da proposta de valor, hierarquia de conteúdo e desenho do fluxo entre serviço, profissional, data, horário e confirmação.",
+      result:
+        "Uma landing page responsiva conectada a um fluxo funcional de agendamento, mantendo uma identidade premium e direta.",
+    },
+    tags: ["Product Design", "UX/UI", "Service Design", "Prototipação"],
+    visual: "bravus",
+    externalUrl: "https://bravus-ux-case-luiz.luiz-felipesantos11.chatgpt.site/",
+    sections: [
+      {
+        title: "Contexto",
+        text:
+          "A Bravus é um case conceitual de experiência digital para uma barbearia em Sorocaba. O projeto parte de uma pergunta simples: como levar para o digital a sensação de atendimento cuidadoso que o cliente espera encontrar no espaço físico?",
+      },
+      {
+        title: "O desafio",
+        text:
+          "A experiência precisava cumprir duas funções sem competir entre si: apresentar serviços, profissionais, avaliações e localização; e conduzir rapidamente quem já estava pronto para reservar um horário.",
+      },
+      {
+        title: "Arquitetura e fluxo",
+        text:
+          "A landing page organiza os principais sinais de confiança e mantém o agendamento sempre acessível. O fluxo foi dividido em decisões curtas e previsíveis.",
+        bullets: [
+          "Escolha do serviço",
+          "Seleção do profissional",
+          "Definição de data e horário",
+          "Revisão e confirmação do agendamento",
+          "Consulta dos horários já reservados",
+        ],
+      },
+      {
+        title: "Direção visual",
+        text:
+          "A interface usa fundo escuro, tipografia editorial e laranja como ponto de ação. A decisão cria uma presença marcante para a marca sem comprometer contraste, leitura ou clareza dos próximos passos.",
+      },
+      {
+        title: "Resultado",
+        text:
+          "O conceito evoluiu para uma experiência responsiva e funcional que conecta descoberta, confiança e conversão dentro do mesmo produto.",
+      },
+    ],
+  },
+  {
+    slug: "dimo-produto-financeiro",
+    index: "02",
     title: "Dimo — produto financeiro mobile",
     eyebrow: "Produto • Fintech • Mobile",
     summary:
@@ -75,7 +131,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "consignado-clt",
-    index: "02",
+    index: "03",
     title: "Consignado CLT — reduzindo fricção na contratação",
     eyebrow: "Crédito • Pesquisa • Conversão",
     summary:
@@ -118,7 +174,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "onboarding-caf",
-    index: "03",
+    index: "04",
     title: "Onboarding & CAF — segurança sem perder clareza",
     eyebrow: "Segurança • Biometria • Jornada crítica",
     summary:
@@ -161,7 +217,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "data-experience-active-bi",
-    index: "04",
+    index: "05",
     title: "Data Experience — interfaces para decisões complexas",
     eyebrow: "Dashboards • Dados • B2B",
     summary:
@@ -203,7 +259,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "dirige-brasil",
-    index: "05",
+    index: "06",
     title: "Dirige Brasil — desenhando um produto do zero",
     eyebrow: "Produto próprio • Marketplace • Mobile",
     summary:

@@ -49,6 +49,18 @@ export default function CaseStudy() {
               ))}
             </div>
 
+            {project.externalUrl && (
+              <a
+                href={project.externalUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="case-live-link"
+              >
+                Abrir experiência completa
+                <ArrowUpRight size={17} />
+              </a>
+            )}
+
             <div className="mt-16">
               <ProjectVisual kind={project.visual} />
             </div>

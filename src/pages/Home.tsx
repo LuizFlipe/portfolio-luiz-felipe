@@ -18,7 +18,7 @@ export default function Home() {
             </span>
           </div>
 
-          <div className="hero-signal">
+          <div className="hero-signal hero-signal-wide">
             <div className="hero-primary">
               <p className="hero-eyebrow">DESIGN DE PRODUTO · PESQUISA · ESTRATÉGIA · INTERFACE</p>
               <h1 className="hero-title">
@@ -44,28 +44,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
-            <aside className="signal-profile" aria-label="Resumo pessoal e profissional">
-              <div className="signal-profile-head">
-                <span>PROFILE / LF—05</span>
-                <i />
-              </div>
-              <div className="signal-monogram">
-                <span>LF</span>
-                <small>23°33′S<br />46°32′W</small>
-              </div>
-              <p>
-                Product Designer Pleno, nascido e criado na Zona Leste. Hoje desenho produtos
-                financeiros mobile na Dimo, carteira digital da Motorola.
-              </p>
-              <dl>
-                <div><dt>FOCO</dt><dd>Fintech · Mobile · Data</dd></div>
-                <div><dt>BASE</dt><dd>Zona Leste · SP</dd></div>
-                <div><dt>REPERTÓRIO</dt><dd>Games · Cultura pop</dd></div>
-                <div><dt>FORA DA TELA</dt><dd>Esportes</dd></div>
-              </dl>
-              <Link to="/sobre">Conhecer minha história <ArrowUpRight size={15} /></Link>
-            </aside>
           </div>
 
           <div className="hero-capabilities" aria-label="Áreas de atuação">

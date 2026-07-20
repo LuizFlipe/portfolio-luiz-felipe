@@ -1,8 +1,31 @@
-type VisualKind = "dimo" | "consignado" | "caf" | "data" | "dirige";
+type VisualKind = "bravus" | "dimo" | "consignado" | "caf" | "data" | "dirige";
 
 export default function ProjectVisual({ kind, compact = false }: { kind: VisualKind; compact?: boolean }) {
   return (
     <div className={`project-visual visual-${kind} ${compact ? "is-compact" : ""}`} aria-hidden="true">
+      {kind === "bravus" && (
+        <>
+          <div className="bravus-browser">
+            <div className="bravus-browser-nav">
+              <strong><i>B</i> BRAVUS</strong>
+              <span>Serviços · Profissionais · Avaliações</span>
+              <b>Agendar horário</b>
+            </div>
+            <div className="bravus-browser-hero">
+              <small>ATENDIMENTO EM SOROCABA — SP</small>
+              <h4>SEU ESTILO<br />COMEÇA COM UM<br /><em>BOM CORTE.</em></h4>
+              <span>Agendar agora →</span>
+            </div>
+          </div>
+          <div className="bravus-schedule">
+            <span>AGENDAMENTO</span>
+            <strong>Escolha seu horário</strong>
+            <div><i>09:00</i><i>10:30</i><i>14:00</i></div>
+          </div>
+          <div className="visual-word">BOOKING</div>
+        </>
+      )}
+
       {kind === "dimo" && (
         <>
           <div className="phone phone-a">
