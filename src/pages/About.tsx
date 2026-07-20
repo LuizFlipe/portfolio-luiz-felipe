@@ -1,6 +1,30 @@
-import { ArrowLeft, ArrowRight, ArrowUpRight, MapPin, Trophy } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Headphones, MapPin, Play, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
+
+const currentTracks = [
+  {
+    title: "Us memo preto zica",
+    artist: "Emicida, Amaro Freitas, Henrique Albino",
+    code: "UMPZ",
+    tone: "track-violet",
+    href: "https://open.spotify.com/search/Us%20memo%20preto%20zica",
+  },
+  {
+    title: "Next To You",
+    artist: "Bryson Tiller",
+    code: "NTY",
+    tone: "track-blue",
+    href: "https://open.spotify.com/search/Next%20To%20You%20Bryson%20Tiller",
+  },
+  {
+    title: "De Lua",
+    artist: "Ryan Fidelis",
+    code: "DL",
+    tone: "track-magenta",
+    href: "https://open.spotify.com/search/De%20Lua%20Ryan%20Fidelis",
+  },
+];
 
 const principles = [
   {
@@ -41,22 +65,37 @@ export default function About() {
               <span>São Paulo · Zona Leste</span>
             </div>
 
-            <h1>
-              EU CRIO A PARTIR<br />
-              DO LUGAR DE ONDE<br />
-              <em>EU VIM.</em>
-            </h1>
+            <div className="about-hero-composition">
+              <div>
+                <h1>
+                  EU CRIO A PARTIR<br />
+                  DO LUGAR DE ONDE<br />
+                  <em>EU VIM.</em>
+                </h1>
 
-            <div className="about-intro">
-              <p>
-                Sou Luiz Felipe, Product Designer, filho da Zona Leste de São Paulo e alguém que
-                sempre encontrou criatividade no encontro entre pessoas, histórias e sistemas.
-              </p>
-              <p>
-                Meu trabalho carrega esse repertório: a atenção ao cotidiano, a vontade de tornar
-                o complexo mais acessível e a certeza de que um bom produto precisa conversar com
-                a vida real.
-              </p>
+                <div className="about-intro">
+                  <p>
+                    Sou Luiz Felipe, Product Designer, filho da Zona Leste de São Paulo e alguém que
+                    sempre encontrou criatividade no encontro entre pessoas, histórias e sistemas.
+                  </p>
+                  <p>
+                    Meu trabalho carrega esse repertório: a atenção ao cotidiano, a vontade de tornar
+                    o complexo mais acessível e a certeza de que um bom produto precisa conversar com
+                    a vida real.
+                  </p>
+                </div>
+              </div>
+
+              <figure className="about-portrait">
+                <img
+                  src="/images/luiz-felipe.png"
+                  alt="Retrato de Luiz Felipe, Product Designer"
+                />
+                <figcaption>
+                  <span>LF / PRODUCT DESIGNER</span>
+                  <small>SÃO PAULO · BRASIL</small>
+                </figcaption>
+              </figure>
             </div>
           </div>
           <div className="about-hero-grid" aria-hidden="true" />
@@ -66,11 +105,15 @@ export default function About() {
         <section className="about-origin section-space">
           <div className="page-shell">
             <div className="about-story">
-              <div className="origin-stamp">
+              <figure className="origin-stamp origin-photo">
+                <img
+                  src="/images/cidade-tiradentes.jpeg"
+                  alt="Vista do bairro Cidade Tiradentes, na Zona Leste de São Paulo"
+                />
                 <MapPin size={24} />
-                <strong>ZONA<br />LESTE</strong>
+                <strong>CIDADE<br />TIRADENTES</strong>
                 <span>23°33′S · 46°32′W</span>
-              </div>
+              </figure>
               <div className="about-copy">
                 <span className="section-label">01 / ZONA LESTE</span>
                 <h2>Minha origem não é só endereço. É uma forma de observar.</h2>
@@ -183,6 +226,42 @@ export default function About() {
                   feedback e compromisso com o time — não apenas com a minha primeira ideia.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="music-section section-space">
+          <div className="page-shell">
+            <div className="music-heading">
+              <div>
+                <span className="section-label">EM REPRODUÇÃO</span>
+                <h2>Músicas do momento</h2>
+              </div>
+              <Headphones aria-hidden="true" size={28} />
+            </div>
+
+            <div className="music-grid">
+              {currentTracks.map((track, index) => (
+                <a
+                  href={track.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="music-card"
+                  key={track.title}
+                  aria-label={`Ouvir ${track.title}, de ${track.artist}, no Spotify`}
+                >
+                  <div className={`music-cover ${track.tone}`}>
+                    <span>{track.code}</span>
+                    <small>0{index + 1}</small>
+                  </div>
+                  <div className="music-copy">
+                    <strong>{track.title}</strong>
+                    <span>{track.artist}</span>
+                    <small>Spotify</small>
+                  </div>
+                  <i className="music-play"><Play size={18} fill="currentColor" /></i>
+                </a>
+              ))}
             </div>
           </div>
         </section>

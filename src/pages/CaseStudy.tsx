@@ -87,6 +87,26 @@ export default function CaseStudy() {
           </div>
         </section>
 
+        {project.gallery && (
+          <section className="case-gallery-section pb-28 sm:pb-36">
+            <div className="page-shell">
+              <div className="section-label">SISTEMA EM AÇÃO</div>
+              <div className="case-screen-grid">
+                {project.gallery.map((screen, index) => (
+                  <figure className="case-screen-card" key={screen.src}>
+                    <div className="case-screen-topline">
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <small>FLUXO / MOBILE</small>
+                    </div>
+                    <img src={screen.src} alt={screen.alt} loading="lazy" />
+                    <figcaption>{screen.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="pb-28 sm:pb-36">
           <div className="page-shell">
             <div className="case-content">

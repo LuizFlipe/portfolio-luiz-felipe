@@ -1,4 +1,4 @@
-type VisualKind = "bravus" | "dimo" | "consignado" | "caf" | "data" | "dirige";
+type VisualKind = "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige";
 
 export default function ProjectVisual({ kind, compact = false }: { kind: VisualKind; compact?: boolean }) {
   return (
@@ -23,6 +23,25 @@ export default function ProjectVisual({ kind, compact = false }: { kind: VisualK
             <div><i>09:00</i><i>10:30</i><i>14:00</i></div>
           </div>
           <div className="visual-word">BOOKING</div>
+        </>
+      )}
+
+      {kind === "fluxo" && (
+        <>
+          <div className="fluxo-phone fluxo-phone-a">
+            <img src="/images/fluxo/home.png" alt="" />
+          </div>
+          <div className="fluxo-phone fluxo-phone-b">
+            <img src="/images/fluxo/relatorios.png" alt="" />
+          </div>
+          <div className="fluxo-phone fluxo-phone-c">
+            <img src="/images/fluxo/dicas-inteligentes.png" alt="" />
+          </div>
+          <div className="fluxo-signature">
+            <strong>Fluxo</strong>
+            <span>Seu assistente financeiro pessoal</span>
+          </div>
+          <div className="visual-word">FINANCE</div>
         </>
       )}
 

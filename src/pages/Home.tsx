@@ -140,7 +140,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-16 space-y-8">
+          <div className="project-grid mt-16">
             {cases.map((project) => (
               <Link key={project.slug} to={`/case/${project.slug}`} className="project-card group">
                 <div className="project-meta">
@@ -150,8 +150,8 @@ export default function Home() {
                   {project.nda && <span>NDA / detalhes adaptados</span>}
                 </div>
 
-                <div className="grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:items-stretch">
-                  <div className="flex flex-col justify-between gap-10 py-3">
+                <div className="project-card-body">
+                  <div className="project-card-copy flex flex-col justify-between gap-10 py-3">
                     <div>
                       <h3>{project.title}</h3>
                       <p>{project.summary}</p>

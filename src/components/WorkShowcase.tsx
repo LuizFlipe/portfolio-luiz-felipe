@@ -7,6 +7,7 @@ const reelProjects = [...cases, ...cases];
 
 const volumeItems = [
   { title: "Bravus", label: "Web · Agendamento", visual: "bravus", size: "wide" },
+  { title: "Fluxo", label: "Mobile · Fintech", visual: "fluxo", size: "tall" },
   { title: "Dimo Wallet", label: "Mobile · Fintech", visual: "dimo", size: "wide" },
   { title: "Contratação CLT", label: "Discovery · Jornada", visual: "consignado", size: "standard" },
   { title: "Active BI", label: "Dashboard · Dados", visual: "data", size: "tall" },

@@ -17,8 +17,13 @@ export type PortfolioCase = {
     result: string;
   };
   tags: string[];
-  visual: "bravus" | "dimo" | "consignado" | "caf" | "data" | "dirige";
+  visual: "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige";
   externalUrl?: string;
+  gallery?: {
+    src: string;
+    alt: string;
+    caption: string;
+  }[];
   nda?: boolean;
   sections: CaseSection[];
 };
@@ -80,8 +85,110 @@ export const cases: PortfolioCase[] = [
     ],
   },
   {
-    slug: "dimo-produto-financeiro",
+    slug: "fluxo-financas-pessoais",
     index: "02",
+    title: "Fluxo — autonomia financeira no dia a dia",
+    eyebrow: "Product Design • Fintech • Mobile",
+    summary:
+      "Um assistente financeiro pessoal que transforma gastos, relatórios e padrões de consumo em informações claras para decisões mais conscientes.",
+    quick: {
+      problem:
+        "Produtos financeiros pessoais costumam exibir muitos números, mas oferecem pouco contexto e podem fazer o usuário se sentir julgado ou perdido.",
+      role:
+        "Product Designer responsável pela direção visual, arquitetura das telas, design system, componentes e protótipo de alta fidelidade.",
+      process:
+        "Tradução dos pilares autonomia, clareza e confiança em princípios visuais, seguida por moodboard, tokens, componentes e aplicação nos principais fluxos.",
+      result:
+        "Uma experiência mobile consistente que conecta registro de despesas, relatórios, ranking de gastos e dicas inteligentes em uma mesma linguagem.",
+    },
+    tags: ["Product Design", "UI Design", "Fintech", "Design System"],
+    visual: "fluxo",
+    externalUrl: "https://luizfelipeport.lovable.app/projetos/fluxo",
+    gallery: [
+      {
+        src: "/images/fluxo/login.png",
+        alt: "Tela de login do aplicativo Fluxo",
+        caption: "Login simples e direto",
+      },
+      {
+        src: "/images/fluxo/criar-conta.png",
+        alt: "Tela de criação de conta do aplicativo Fluxo",
+        caption: "Criação de conta",
+      },
+      {
+        src: "/images/fluxo/home.png",
+        alt: "Tela inicial do aplicativo Fluxo com resumo financeiro",
+        caption: "Resumo financeiro e transações",
+      },
+      {
+        src: "/images/fluxo/nova-despesa.png",
+        alt: "Tela para registrar uma nova despesa no aplicativo Fluxo",
+        caption: "Registro rápido de despesas",
+      },
+      {
+        src: "/images/fluxo/relatorios.png",
+        alt: "Tela de relatórios do aplicativo Fluxo",
+        caption: "Relatórios e categorias",
+      },
+      {
+        src: "/images/fluxo/ranking-gastos.png",
+        alt: "Tela de ranking de gastos do aplicativo Fluxo",
+        caption: "Ranking de gastos",
+      },
+      {
+        src: "/images/fluxo/dicas-inteligentes.png",
+        alt: "Tela de dicas inteligentes do aplicativo Fluxo",
+        caption: "Dicas empáticas e acionáveis",
+      },
+    ],
+    sections: [
+      {
+        title: "Contexto",
+        text:
+          "O Fluxo é um assistente financeiro pessoal pensado para pessoas que querem entender para onde o dinheiro está indo sem precisar interpretar planilhas ou interfaces bancárias complexas. O produto reúne registro cotidiano, leitura de padrões e orientação dentro de uma experiência mobile.",
+      },
+      {
+        title: "O desafio",
+        text:
+          "O principal desafio era comunicar finanças com clareza sem criar uma experiência fria ou punitiva. A interface precisava destacar valores e tendências, mas também acolher quem ainda está construindo o hábito de acompanhar os próprios gastos.",
+      },
+      {
+        title: "Princípios de design",
+        text:
+          "Três princípios orientaram as decisões do produto: autonomia para manter o usuário no controle, clareza para reduzir esforço cognitivo e confiança para lidar com informações sensíveis.",
+        bullets: [
+          "Informação principal reconhecível em poucos segundos",
+          "Linguagem empática, sem julgamento",
+          "Ações recorrentes sempre ao alcance do polegar",
+          "Cores semânticas consistentes entre categorias",
+          "Feedback imediato após registrar uma despesa",
+        ],
+      },
+      {
+        title: "Sistema visual",
+        text:
+          "O verde funciona como âncora de crescimento e segurança, enquanto a Plus Jakarta Sans mantém números e textos legíveis em diferentes escalas. Cards, inputs, chips, gráficos e estados de navegação foram construídos como componentes reutilizáveis para sustentar a evolução do produto.",
+      },
+      {
+        title: "Arquitetura da experiência",
+        text:
+          "A navegação foi organizada em quatro áreas: início, relatórios, ranking e dicas. O botão central de nova despesa transforma a ação mais frequente no ponto de entrada do sistema, reduzindo etapas no uso diário.",
+      },
+      {
+        title: "Dados que orientam ações",
+        text:
+          "Relatórios e rankings não existem apenas para mostrar números. Eles destacam categorias, participação no total e padrões de consumo. As dicas inteligentes transformam esses sinais em sugestões simples, específicas e possíveis de aplicar.",
+      },
+      {
+        title: "Resultado",
+        text:
+          "O resultado é uma experiência coesa que ajuda o usuário a registrar, compreender e agir. O sistema mantém consistência entre telas e cria uma base preparada para evoluir com metas, alertas e personalização das recomendações.",
+      },
+    ],
+  },
+  {
+    slug: "dimo-produto-financeiro",
+    index: "03",
     title: "Dimo — produto financeiro mobile",
     eyebrow: "Produto • Fintech • Mobile",
     summary:
@@ -131,7 +238,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "consignado-clt",
-    index: "03",
+    index: "04",
     title: "Consignado CLT — reduzindo fricção na contratação",
     eyebrow: "Crédito • Pesquisa • Conversão",
     summary:
@@ -174,7 +281,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "onboarding-caf",
-    index: "04",
+    index: "05",
     title: "Onboarding & CAF — segurança sem perder clareza",
     eyebrow: "Segurança • Biometria • Jornada crítica",
     summary:
@@ -217,7 +324,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "data-experience-active-bi",
-    index: "05",
+    index: "06",
     title: "Data Experience — interfaces para decisões complexas",
     eyebrow: "Dashboards • Dados • B2B",
     summary:
@@ -259,7 +366,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "dirige-brasil",
-    index: "06",
+    index: "07",
     title: "Dirige Brasil — desenhando um produto do zero",
     eyebrow: "Produto próprio • Marketplace • Mobile",
     summary:
