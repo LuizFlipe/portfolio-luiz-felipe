@@ -49,6 +49,53 @@ export const cases: PortfolioCase[] = [
     tags: ["Product Design", "UX/UI", "Service Design", "Prototipação"],
     visual: "bravus",
     externalUrl: "https://bravus-ux-case-luiz.luiz-felipesantos11.chatgpt.site/",
+    gallery: [
+      {
+        src: "/images/bravus/home.png",
+        alt: "Página inicial da Bravus com chamada para agendamento",
+        caption: "Proposta de valor e acesso imediato ao agendamento",
+      },
+      {
+        src: "/images/bravus/servicos.png",
+        alt: "Catálogo de serviços da Bravus com duração e preço",
+        caption: "Serviços comparáveis por preço, duração e benefício",
+      },
+      {
+        src: "/images/bravus/como-funciona.png",
+        alt: "Seção da Bravus explicando o agendamento em três passos",
+        caption: "Antecipação do fluxo para reduzir dúvidas",
+      },
+      {
+        src: "/images/bravus/profissionais.png",
+        alt: "Perfis dos profissionais disponíveis na Bravus",
+        caption: "Escolha de profissional por especialidade",
+      },
+      {
+        src: "/images/bravus/agendamento-servico.png",
+        alt: "Primeira etapa do agendamento para escolher um serviço",
+        caption: "Etapa 01 — escolha do serviço",
+      },
+      {
+        src: "/images/bravus/agendamento-data.png",
+        alt: "Etapa do agendamento para selecionar uma data",
+        caption: "Etapa 03 — calendário com disponibilidade",
+      },
+      {
+        src: "/images/bravus/agendamento-horario.png",
+        alt: "Etapa do agendamento com horários disponíveis e ocupados",
+        caption: "Etapa 04 — disponibilidade e estados de horário",
+      },
+      {
+        src: "/images/bravus/agendamento-revisao.png",
+        alt: "Revisão dos dados antes de confirmar o agendamento",
+        caption: "Etapa 06 — revisão antes do compromisso",
+      },
+      {
+        src: "/images/bravus/agendamento-confirmado.png",
+        alt: "Confirmação final do agendamento na Bravus",
+        caption: "Confirmação com calendário, WhatsApp e número de reserva",
+      },
+    ],
     sections: [
       {
         title: "Contexto",
@@ -61,26 +108,42 @@ export const cases: PortfolioCase[] = [
           "A experiência precisava cumprir duas funções sem competir entre si: apresentar serviços, profissionais, avaliações e localização; e conduzir rapidamente quem já estava pronto para reservar um horário.",
       },
       {
-        title: "Arquitetura e fluxo",
+        title: "Arquitetura da experiência",
         text:
-          "A landing page organiza os principais sinais de confiança e mantém o agendamento sempre acessível. O fluxo foi dividido em decisões curtas e previsíveis.",
+          "A landing page organiza a experiência em uma sequência que responde às dúvidas mais comuns antes da reserva: proposta de valor, serviços, funcionamento, profissionais, avaliações, ambiente e localização. O agendamento permanece disponível em pontos estratégicos sem interromper a leitura.",
         bullets: [
-          "Escolha do serviço",
-          "Seleção do profissional",
-          "Definição de data e horário",
-          "Revisão e confirmação do agendamento",
-          "Consulta dos horários já reservados",
+          "Preço e duração visíveis antes de começar",
+          "Acesso ao agendamento junto aos principais argumentos",
+          "Sinais de confiança distribuídos ao longo da página",
+          "Conteúdo responsivo e hierarquia direta",
         ],
       },
       {
-        title: "Direção visual",
+        title: "Fluxo de agendamento",
         text:
-          "A interface usa fundo escuro, tipografia editorial e laranja como ponto de ação. A decisão cria uma presença marcante para a marca sem comprometer contraste, leitura ou clareza dos próximos passos.",
+          "A reserva foi dividida em seis decisões curtas: serviço, profissional, data, horário, contato e revisão. Um resumo lateral acompanha o usuário durante todo o processo, preservando contexto e deixando claro o que já foi escolhido.",
+        bullets: [
+          "Opção de escolher um profissional ou aceitar o primeiro disponível",
+          "Calendário com datas válidas e horários ocupados desabilitados",
+          "Progresso visível em todas as etapas",
+          "Revisão completa antes da confirmação",
+          "Retorno entre etapas sem perder as escolhas anteriores",
+        ],
       },
       {
-        title: "Resultado",
+        title: "Sistema visual",
         text:
-          "O conceito evoluiu para uma experiência responsiva e funcional que conecta descoberta, confiança e conversão dentro do mesmo produto.",
+          "A interface usa fundo escuro, tipografia editorial condensada e laranja como cor de ação. O conjunto traduz a atmosfera urbana da barbearia, enquanto contraste, espaçamento e estados de interação mantêm a leitura clara e os próximos passos reconhecíveis.",
+      },
+      {
+        title: "Estados, confiança e continuidade",
+        text:
+          "A experiência não termina no clique de confirmação. O protótipo gera um número de reserva, salva o horário no navegador, permite consultar ou cancelar agendamentos e oferece atalhos para adicionar ao calendário ou iniciar uma conversa no WhatsApp.",
+      },
+      {
+        title: "Resultado e próximos passos",
+        text:
+          "O conceito evoluiu para uma experiência responsiva e funcional que conecta descoberta, confiança e conversão dentro do mesmo produto. Como próximo passo, eu validaria o fluxo com clientes e profissionais da barbearia, acompanhando conclusão do agendamento, dúvidas por etapa e preferência por profissional.",
       },
     ],
   },

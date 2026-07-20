@@ -2629,6 +2629,13 @@ body {
   flex: 0 0 clamp(260px, 27vw, 370px);
   scroll-snap-align: start;
 }
+.case-gallery-bravus .case-screen-card {
+  flex-basis: clamp(460px, 62vw, 900px);
+}
+.case-gallery-bravus .case-screen-card img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
 
 .music-section {
   border-bottom: 1px solid rgba(255,255,255,.1);
@@ -2906,6 +2913,9 @@ body {
   .case-screen-card {
     min-width: 82vw;
     scroll-snap-align: center;
+  }
+  .case-gallery-bravus .case-screen-card {
+    min-width: 90vw;
   }
   .fluxo-phone { width: 36%; border-radius: 1rem; }
   .fluxo-phone-a { left: 2%; }

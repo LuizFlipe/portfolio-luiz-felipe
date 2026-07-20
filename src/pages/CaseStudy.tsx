@@ -154,7 +154,7 @@ export default function CaseStudy() {
         </section>
 
         {project.gallery && (
-          <section className="case-gallery-section section-space">
+          <section className={`case-gallery-section case-gallery-${project.visual} section-space`}>
             <div className="page-shell">
               <div className="case-gallery-heading">
                 <div>
@@ -174,7 +174,7 @@ export default function CaseStudy() {
                   >
                     <div className="case-screen-topline">
                       <span>{String(index + 1).padStart(2, "0")}</span>
-                      <small>INTERFACE / MOBILE</small>
+                      <small>INTERFACE / PRODUTO</small>
                       <Maximize2 size={14} />
                     </div>
                     <img src={screen.src} alt={screen.alt} loading="lazy" />
