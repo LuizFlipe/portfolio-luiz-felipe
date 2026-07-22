@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowDown,
   ArrowLeft,
@@ -11,6 +11,8 @@ import {
 import { Link, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import ProjectVisual from "../components/ProjectVisual";
+import Seo from "../components/Seo";
+import { emailUrl, siteConfig } from "../config/site";
 import { cases } from "../data/portfolio";
 
 export default function CaseStudy() {
@@ -19,6 +21,23 @@ export default function CaseStudy() {
   const project = cases[projectIndex];
   const [activeSection, setActiveSection] = useState(0);
   const [activeScreen, setActiveScreen] = useState<number | null>(null);
+  const lightboxCloseRef = useRef<HTMLButtonElement>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
+
+  const externalUrl = project?.slug === "fluxo-financas-pessoais"
+    ? siteConfig.externalProjects.fluxo
+    : project?.slug === "bravus-agendamento"
+      ? siteConfig.externalProjects.bravus
+      : "";
+
+  const caseSchema = useMemo(() => project ? ({
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.summary,
+    creator: { "@type": "Person", name: siteConfig.name },
+    keywords: project.tags.join(", "),
+  }) : undefined, [project]);
 
   useEffect(() => {
     if (!project) return;
@@ -43,6 +62,7 @@ export default function CaseStudy() {
 
   useEffect(() => {
     if (activeScreen === null) return;
+    window.setTimeout(() => lightboxCloseRef.current?.focus(), 0);
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setActiveScreen(null);
       if (!project?.gallery) return;
@@ -60,6 +80,7 @@ export default function CaseStudy() {
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKeyDown);
+      returnFocusRef.current?.focus();
     };
   }, [activeScreen, project]);
 
@@ -81,6 +102,13 @@ export default function CaseStudy() {
   return (
     <Layout>
       <article>
+        <Seo
+          title={`${project.title} | Luiz Felipe`}
+          description={project.summary}
+          path={`/case/${project.slug}`}
+          image={project.shareImage ?? "/og/home.png"}
+          jsonLd={caseSchema}
+        />
         <header className="case-hero">
           <div className="page-shell pt-36 sm:pt-44">
             <Link to="/#projetos" className="mb-10 inline-flex items-center gap-2 text-sm text-white/50 transition hover:text-white">
@@ -103,14 +131,25 @@ export default function CaseStudy() {
               ))}
             </div>
 
-            {project.externalUrl && (
+            {project.facts && (
+              <dl className="case-facts" aria-label="Informações do case">
+                {project.facts.map((fact) => (
+                  <div key={fact.label}>
+                    <dt>{fact.label}</dt>
+                    <dd>{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+
+            {externalUrl && (
               <a
-                href={project.externalUrl}
+                href={externalUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="case-live-link"
               >
-                Abrir experiência completa
+                Abrir experiência pública
                 <ArrowUpRight size={17} />
               </a>
             )}
@@ -169,7 +208,10 @@ export default function CaseStudy() {
                     type="button"
                     className="case-screen-card"
                     key={screen.src}
-                    onClick={() => setActiveScreen(index)}
+                    onClick={(event) => {
+                      returnFocusRef.current = event.currentTarget;
+                      setActiveScreen(index);
+                    }}
                     aria-label={`Ampliar ${screen.caption}`}
                   >
                     <div className="case-screen-topline">
@@ -177,7 +219,7 @@ export default function CaseStudy() {
                       <small>INTERFACE / PRODUTO</small>
                       <Maximize2 size={14} />
                     </div>
-                    <img src={screen.src} alt={screen.alt} loading="lazy" />
+                    <img src={screen.src} alt={screen.alt} loading="lazy" decoding="async" />
                     <span className="case-screen-caption">{screen.caption}</span>
                   </button>
                 ))}
@@ -226,14 +268,12 @@ export default function CaseStudy() {
                         ))}
                       </ul>
                     )}
-                    <div className="case-section-note">
-                      <span>{String(index + 1).padStart(2, "0")} / {String(project.sections.length).padStart(2, "0")}</span>
-                      <p>
-                        {index === project.sections.length - 1
-                          ? "O aprendizado fecha este capítulo e alimenta as próximas decisões de produto."
-                          : "Cada escolha foi conectada ao problema e ao contexto de uso, não apenas à estética."}
-                      </p>
-                    </div>
+                    {section.takeaway && (
+                      <div className="case-section-note">
+                        <span>{String(index + 1).padStart(2, "0")} / {String(project.sections.length).padStart(2, "0")}</span>
+                        <p>{section.takeaway}</p>
+                      </div>
+                    )}
                   </div>
                 </section>
               ))}
@@ -259,7 +299,7 @@ export default function CaseStudy() {
               <p className="text-sm uppercase tracking-[0.18em] text-white/35">CONTATO / VAMOS CONVERSAR</p>
               <h2 className="mt-3 text-4xl font-bold tracking-tight sm:text-6xl">Tem um problema interessante?</h2>
             </div>
-            <a href="mailto:luiz.felipesantos11@gmail.com" className="contact-button primary">
+            <a href={emailUrl(`Contato sobre o case ${project.title}`)} className="contact-button primary">
               Falar comigo
               <ArrowUpRight size={18} />
             </a>
@@ -269,7 +309,12 @@ export default function CaseStudy() {
 
       {activeScreen !== null && project.gallery && (
         <div className="case-lightbox" role="dialog" aria-modal="true" aria-label="Visualização ampliada da interface">
-          <button className="case-lightbox-close" type="button" onClick={() => setActiveScreen(null)}>
+          <button
+            ref={lightboxCloseRef}
+            className="case-lightbox-close"
+            type="button"
+            onClick={() => setActiveScreen(null)}
+          >
             Fechar
             <X size={18} />
           </button>

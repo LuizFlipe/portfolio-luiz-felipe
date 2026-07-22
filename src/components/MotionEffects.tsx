@@ -12,7 +12,7 @@ export default function MotionEffects() {
 
     const revealTargets = Array.from(
       document.querySelectorAll<HTMLElement>(
-        ".section-label, .section-heading, .sticky-copy, .expertise-row, .project-card, .showcase-device, .volume-card, .experience-row, .contact-panel, .quick-card, .case-overview-card, .case-section, .about-story, .about-feature, .influence-card, .spotify-card, .disco-thought",
+        ".section-label, .section-heading, .project-card, .other-projects, .service-card, .services-cta, .experience-row, .home-about-grid, .contact-panel, .case-overview-card, .case-section, .about-story, .about-feature, .influence-card, .spotify-card, .disco-thought",
       ),
     );
 
@@ -130,10 +130,6 @@ export default function MotionEffects() {
 
   return (
     <>
-      <div className="intro-curtain" aria-hidden="true">
-        <span>LF</span>
-        <small>Portfolio · 2026</small>
-      </div>
       <div className="scroll-progress" aria-hidden="true" />
       <div ref={cursorRing} className="cursor-ring" aria-hidden="true" />
       <div ref={cursorDot} className="cursor-dot" aria-hidden="true" />

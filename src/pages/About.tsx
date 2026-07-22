@@ -12,22 +12,27 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
+import Seo from "../components/Seo";
+import { emailUrl, spotifyTrackUrl } from "../config/site";
 
 const currentTracks = [
   {
     title: "Us memo preto zica",
     artist: "Emicida, Amaro Freitas, Henrique Albino",
     id: "6zv9QgibOHQQUG9cGlqGaH",
+    cover: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0284f1175df9d3abb138372e5f",
   },
   {
     title: "Next To You",
     artist: "Bryson Tiller",
     id: "4t6kUc6KjUtb3rkgcv212X",
+    cover: "https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e0245f9d84743d6498255d078f5",
   },
   {
     title: "De Lua",
     artist: "Ryan Fidelis",
     id: "2pnhhyzxoMArmMcsDUTIi8",
+    cover: "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02ca05b685bda04c2e6e50447a",
   },
 ];
 
@@ -116,6 +121,12 @@ export default function About() {
 
   return (
     <Layout>
+      <Seo
+        title="Sobre mim — Luiz Felipe, Product Designer"
+        description="Conheça a origem, o repertório e os princípios que influenciam o trabalho de Product Design de Luiz Felipe."
+        path="/sobre"
+        image="/og/sobre.png"
+      />
       <article className="about-page">
         <header className="about-hero">
           <div className="page-shell pt-36 sm:pt-44">
@@ -152,8 +163,12 @@ export default function About() {
 
               <figure className="about-portrait">
                 <img
-                  src="/images/luiz-felipe.png"
+                  src="/images/luiz-felipe.webp"
                   alt="Retrato de Luiz Felipe, Product Designer"
+                  width="800"
+                  height="800"
+                  decoding="async"
+                  fetchPriority="high"
                 />
                 <figcaption>
                   <span>LF / PRODUCT DESIGNER</span>
@@ -171,8 +186,12 @@ export default function About() {
             <div className="about-story">
               <figure className="origin-stamp origin-photo">
                 <img
-                  src="/images/cidade-tiradentes.jpeg"
+                  src="/images/cidade-tiradentes.webp"
                   alt="Vista do bairro Cidade Tiradentes, na Zona Leste de São Paulo"
+                  width="596"
+                  height="335"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <MapPin size={24} />
                 <strong>
@@ -237,13 +256,15 @@ export default function About() {
           </div>
         </section>
 
-        <section className="disco-section section-space" aria-labelledby="disco-title">
+        <section id="disco-elysium" className="disco-section section-space" aria-labelledby="disco-title">
           <div className="page-shell disco-editorial-grid">
             <figure className="disco-artwork about-feature">
               <div className="disco-artwork-media">
                 <img
-                  src="/images/about/disco-elysium-game.png"
+                  src="/images/about/disco-elysium-game.webp"
                   alt="Arte do jogo Disco Elysium enviada por Luiz Felipe"
+                  width="512"
+                  height="512"
                   loading="lazy"
                   decoding="async"
                 />
@@ -348,25 +369,21 @@ export default function About() {
                 <h2>Competir, colaborar, ajustar e tentar de novo.</h2>
                 <p>
                   Amo esportes porque eles deixam uma coisa muito clara: talento importa, mas
-                  leitura de jogo, disciplina e trabalho coletivo mudam resultados. Nenhuma partida
-                  acontece exatamente como o plano.
-                </p>
-                <p>
-                  No trabalho, isso vira flexibilidade para ajustar rotas, maturidade para receber
-                  feedback e compromisso com o time — não apenas com a minha primeira ideia.
+                  leitura de jogo, disciplina e trabalho coletivo mudam resultados. No trabalho,
+                  isso vira flexibilidade para ajustar rotas, receber feedback e construir com o time.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="music-section section-space">
+        <section id="musicas" className="music-section section-space">
           <div className="page-shell">
             <div className="music-heading">
               <div>
                 <span className="section-label">REPERTÓRIO MUSICAL</span>
                 <h2>No meu fone agora</h2>
-                <p>Três faixas que estão acompanhando meus dias e alimentando meu repertório.</p>
+                <p>Três faixas que estão acompanhando meus dias.</p>
               </div>
               <div className="music-service" aria-label="Conteúdo do Spotify">
                 <SpotifyMark />
@@ -381,20 +398,29 @@ export default function About() {
                   className="spotify-card"
                   key={track.title}
                 >
-                  <div className="spotify-card-label">
-                    <span><SpotifyMark /> Ouvir no Spotify</span>
-                    <small>{track.artist}</small>
-                  </div>
-                  <iframe
-                    title={`${track.title}, de ${track.artist}, no Spotify`}
-                    src={`https://open.spotify.com/embed/track/${track.id}?utm_source=generator&theme=0`}
-                    width="100%"
-                    height="152"
-                    frameBorder="0"
-                    allowFullScreen
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  <img
+                    className="spotify-cover"
+                    src={track.cover}
+                    alt={`Capa de ${track.title}`}
                     loading="lazy"
+                    decoding="async"
                   />
+                  <div className="spotify-card-content">
+                    <div>
+                      <h3>{track.title}</h3>
+                      <p>{track.artist}</p>
+                    </div>
+                    <a
+                      href={spotifyTrackUrl(track.id)}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Ouvir ${track.title}, de ${track.artist}, no Spotify`}
+                    >
+                      <SpotifyMark />
+                      Ouvir no Spotify
+                      <ArrowUpRight size={16} aria-hidden="true" />
+                    </a>
+                  </div>
                 </article>
               ))}
             </div>
@@ -429,7 +455,7 @@ export default function About() {
               Ver projetos
               <ArrowRight size={18} />
             </Link>
-            <a href="mailto:luiz.felipesantos11@gmail.com" className="contact-button">
+            <a href={emailUrl("Contato pelo portfólio")} className="contact-button">
               Falar comigo
               <ArrowUpRight size={18} />
             </a>

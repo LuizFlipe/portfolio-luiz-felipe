@@ -29,13 +29,13 @@ export default function ProjectVisual({ kind, compact = false }: { kind: VisualK
       {kind === "fluxo" && (
         <>
           <div className="fluxo-phone fluxo-phone-a">
-            <img src="/images/fluxo/home.png" alt="" />
+            <img src="/images/fluxo/home.webp" alt="" loading="lazy" decoding="async" />
           </div>
           <div className="fluxo-phone fluxo-phone-b">
-            <img src="/images/fluxo/relatorios.png" alt="" />
+            <img src="/images/fluxo/relatorios.webp" alt="" loading="lazy" decoding="async" />
           </div>
           <div className="fluxo-phone fluxo-phone-c">
-            <img src="/images/fluxo/dicas-inteligentes.png" alt="" />
+            <img src="/images/fluxo/dicas-inteligentes.webp" alt="" loading="lazy" decoding="async" />
           </div>
           <div className="fluxo-signature">
             <strong>Fluxo</strong>

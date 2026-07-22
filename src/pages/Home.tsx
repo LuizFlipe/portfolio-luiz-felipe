@@ -1,13 +1,98 @@
-import { ArrowDown, ArrowRight, ArrowUpRight, Circle } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  CalendarCheck,
+  Circle,
+  LayoutDashboard,
+  PanelsTopLeft,
+  Smartphone,
+  Store,
+  Utensils,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 import ProjectVisual from "../components/ProjectVisual";
-import { ScreenReel, VolumeGallery } from "../components/WorkShowcase";
-import { brands, cases, experience, skills } from "../data/portfolio";
+import Seo from "../components/Seo";
+import { emailUrl, siteConfig, whatsappUrl } from "../config/site";
+import { brands, cases, experience } from "../data/portfolio";
+
+const selectedSlugs = [
+  "dimo-produto-financeiro",
+  "consignado-clt",
+  "data-experience-active-bi",
+  "bravus-agendamento",
+];
+
+const selectedCases = selectedSlugs
+  .map((slug) => cases.find((project) => project.slug === slug))
+  .filter((project): project is (typeof cases)[number] => Boolean(project));
+
+const otherCases = cases.filter((project) => !selectedSlugs.includes(project.slug));
+
+const services = [
+  {
+    icon: Store,
+    title: "Sites institucionais",
+    text: "Apresente seu negócio com clareza e transforme visitas em conversas e pedidos.",
+  },
+  {
+    icon: PanelsTopLeft,
+    title: "Landing pages",
+    text: "Divulgue uma oferta específica com uma página direta, rápida e preparada para converter.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Agendamento online",
+    text: "Permita que seus clientes consultem e reservem horários pelo celular.",
+  },
+  {
+    icon: Utensils,
+    title: "Cardápio e delivery",
+    text: "Receba mais pedidos sem depender apenas das redes sociais.",
+  },
+  {
+    icon: LayoutDashboard,
+    title: "Sistemas internos simples",
+    text: "Organize serviços, preços e informações em um único lugar.",
+  },
+  {
+    icon: Smartphone,
+    title: "Protótipos funcionais",
+    text: "Teste uma ideia na prática antes de investir no desenvolvimento completo.",
+  },
+];
+
+const homeDescription =
+  "Portfólio de Luiz Felipe, Product Designer com experiência em produtos financeiros, mobile, pesquisa, estratégia e interfaces orientadas por dados.";
 
 export default function Home() {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteConfig.name,
+    jobTitle: siteConfig.role,
+    email: siteConfig.email,
+    url: siteConfig.canonicalBaseUrl || undefined,
+    sameAs: [siteConfig.social.linkedin, siteConfig.social.instagram],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "São Paulo",
+      addressRegion: "SP",
+      addressCountry: "BR",
+    },
+  };
+
   return (
     <Layout>
+      <Seo
+        title="Luiz Felipe — Product Designer"
+        description={homeDescription}
+        path="/"
+        image="/og/home.png"
+        jsonLd={personSchema}
+      />
+
       <section className="hero-section">
         <div className="page-shell relative z-10 pt-36 sm:pt-44">
           <div className="hero-statusbar mb-8 flex flex-wrap items-center justify-between gap-4 pb-5">
@@ -28,19 +113,23 @@ export default function Home() {
                 <span className="text-violet-400">MEMORÁVEIS.</span>
               </h1>
 
-              <div className="hero-intro">
-                <p>
-                  Transformo problemas complexos em experiências digitais simples, humanas e confiáveis.
-                </p>
+              <div className="hero-intro hero-intro-refined">
+                <div>
+                  <p className="hero-specialty">
+                    Product Designer com experiência em produtos financeiros, mobile, pesquisa,
+                    estratégia e interfaces orientadas por dados.
+                  </p>
+                  <p>Transformo problemas complexos em experiências digitais simples, humanas e confiáveis.</p>
+                </div>
                 <div>
                   <a href="#projetos" className="signal-button signal-button-primary">
-                    Ver projetos
+                    Ver cases
                     <ArrowDown size={16} />
                   </a>
-                  <Link to="/sobre" className="signal-button">
-                    Sobre mim
+                  <a href="#servicos" className="signal-button">
+                    Tenho um projeto
                     <ArrowUpRight size={16} />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -54,75 +143,25 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-orb hero-orb-a" />
-        <div className="hero-orb hero-orb-b" />
+        <div className="hero-orb hero-orb-a" aria-hidden="true" />
+        <div className="hero-orb hero-orb-b" aria-hidden="true" />
       </section>
 
-      <section className="overflow-hidden border-y border-white/10 py-5">
-        <div className="marquee-track">
-          {[...brands, ...brands].map((brand, index) => (
-            <span key={`${brand}-${index}`} className="flex items-center gap-6 whitespace-nowrap text-lg font-semibold text-white/40">
-              {brand}
-              <Circle size={5} className="fill-violet-400 text-violet-400" />
-            </span>
-          ))}
-        </div>
-      </section>
-
-      <section id="sobre" className="section-space">
-        <div className="page-shell">
-          <div className="section-label">01 / SOBRE & MÉTODO</div>
-
-          <div className="mt-10 grid gap-10 lg:grid-cols-[.75fr_1.25fr]">
-            <div>
-              <p className="sticky-copy">PRODUTO + PESQUISA + ESTRATÉGIA + INTERFACE.</p>
-            </div>
-            <div>
-              <h2 className="section-heading">
-                Eu gosto de entrar onde a experiência está <span className="text-violet-400">confusa</span> e sair com um caminho mais claro.
-              </h2>
-
-              <div className="mt-10 grid gap-8 text-base leading-8 text-white/55 md:grid-cols-2">
-                <p>
-                  Sou Luiz Felipe, Product Designer baseado em São Paulo. Trabalho com produtos digitais, aplicativos mobile, jornadas financeiras e interfaces orientadas por dados.
-                </p>
-                <p>
-                  Minha base mistura UX, UI e entendimento de negócio. Hoje, meu foco está em produtos financeiros mobile — onde clareza, confiança e decisão precisam coexistir.
-                </p>
-              </div>
-
-              <div className="mt-12 flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <span key={skill} className="skill-pill">{skill}</span>
-                ))}
-              </div>
-
-              <Link to="/sobre" className="about-more-link">
-                Conhecer minha história
-                <ArrowUpRight size={18} />
-              </Link>
-            </div>
+      <section className="proof-section border-y border-white/10" aria-labelledby="proof-title">
+        <div className="page-shell proof-layout">
+          <div>
+            <span className="section-label">EXPERIÊNCIA / CONTEXTO</span>
+            <h2 id="proof-title">Experiência em projetos para</h2>
+            <p>
+              Produtos financeiros, dados e experiências B2B construídos em contextos e equipes diferentes.
+            </p>
           </div>
-        </div>
-      </section>
-
-      <section className="section-space border-y border-white/10 bg-white/[0.025]">
-        <div className="page-shell">
-          <div className="section-label">02 / ONDE EU ATUO</div>
-          <div className="mt-10 grid">
-            {[
-              ["Fintech & serviços financeiros", "Jornadas onde confiança e clareza fazem parte do produto."],
-              ["Produtos mobile", "Fluxos pensados para uso recorrente, contexto e continuidade."],
-              ["Dashboards & Data Experience", "Informação organizada para apoiar decisões reais."],
-              ["Produtos B2B", "Complexidade operacional transformada em interfaces utilizáveis."],
-              ["UX Research & Discovery", "Perguntas melhores antes de soluções definitivas."],
-            ].map(([title, text], index) => (
-              <div key={title} className="expertise-row">
-                <span className="text-xs text-white/35">0{index + 1}</span>
-                <h3>{title}</h3>
-                <p>{text}</p>
-                <ArrowUpRight className="expertise-arrow" size={22} />
-              </div>
+          <div className="brand-proof-list" aria-label="Marcas relacionadas a projetos">
+            {brands.map((brand) => (
+              <span key={brand}>
+                {brand}
+                <Circle size={5} aria-hidden="true" />
+              </span>
             ))}
           </div>
         </div>
@@ -130,18 +169,18 @@ export default function Home() {
 
       <section id="projetos" className="section-space">
         <div className="page-shell">
-          <div className="section-label">03 / CASES SELECIONADOS</div>
+          <div className="section-label">01 / CASES SELECIONADOS</div>
           <div className="mt-8 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <h2 className="section-heading max-w-4xl">
-              Problemas reais. <span className="text-violet-400">Decisões explicadas.</span>
+              Problemas diversos. <span className="text-violet-400">Decisões explicadas.</span>
             </h2>
-            <p className="max-w-sm text-sm leading-7 text-white/45">
-              Uma seleção de trabalhos em produto, pesquisa, segurança, dados e construção 0→1.
+            <p className="max-w-sm text-sm leading-7 text-white/60">
+              Uma seleção curta de trabalhos profissionais e conceituais, com contexto, processo e limites claramente sinalizados.
             </p>
           </div>
 
           <div className="project-grid mt-16">
-            {cases.map((project) => (
+            {selectedCases.map((project) => (
               <Link key={project.slug} to={`/case/${project.slug}`} className="project-card group">
                 <div className="project-meta">
                   <span>{project.index}</span>
@@ -149,69 +188,123 @@ export default function Home() {
                   <span>{project.eyebrow}</span>
                   {project.nda && <span>NDA / detalhes adaptados</span>}
                 </div>
-
                 <div className="project-card-body">
                   <div className="project-card-copy flex flex-col justify-between gap-10 py-3">
                     <div>
                       <h3>{project.title}</h3>
                       <p>{project.summary}</p>
                     </div>
-
                     <div>
                       <div className="mb-6 flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span key={tag} className="mini-tag">{tag}</span>
-                        ))}
+                        {project.tags.map((tag) => <span key={tag} className="mini-tag">{tag}</span>)}
                       </div>
-                      <span className="project-link">
-                        Abrir case
-                        <ArrowRight size={18} />
-                      </span>
+                      <span className="project-link">Explorar o processo <ArrowRight size={18} /></span>
                     </div>
                   </div>
-
                   <ProjectVisual kind={project.visual} compact />
                 </div>
               </Link>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section className="system-banner section-space border-y border-white/10 text-white">
-        <div className="page-shell">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
+          <div className="other-projects">
             <div>
-              <div className="text-xs uppercase tracking-[0.2em] text-white/70">INTERFACES / UM PORTFÓLIO, VÁRIAS LINGUAGENS</div>
-              <h2 className="mt-5 max-w-5xl font-display text-[clamp(3.6rem,10vw,9rem)] leading-[.82] tracking-[-0.07em]">
-                MOBILE.<br />DADOS.<br />PRODUTO.
-              </h2>
+              <span className="section-label">OUTROS PROJETOS</span>
+              <p>Outros recortes do meu trabalho, sem repetir a galeria principal.</p>
             </div>
-            <p className="max-w-md text-base leading-8 text-white/75">
-              Minha experiência passa por fintech, dashboards, pesquisa, UX writing, serviços e produtos que começam do zero.
-            </p>
+            <div>
+              {otherCases.map((project) => (
+                <Link to={`/case/${project.slug}`} key={project.slug}>
+                  <span>{project.index}</span>
+                  <strong>{project.title}</strong>
+                  <small>{project.eyebrow}</small>
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <ScreenReel />
-
-      <VolumeGallery />
-
-      <section id="experiencia" className="section-space border-t border-white/10">
+      <section id="servicos" className="local-services section-space border-y border-white/10">
         <div className="page-shell">
-          <div className="section-label">04 / EXPERIÊNCIA</div>
+          <div className="section-label">02 / PARA PEQUENOS NEGÓCIOS</div>
+          <div className="services-heading">
+            <h2>Soluções para <span>negócios locais</span></h2>
+            <p>
+              Além de produtos digitais, desenvolvo soluções práticas para pequenos negócios
+              venderem, atenderem e organizarem melhor seus serviços.
+            </p>
+          </div>
+
+          <div className="services-grid">
+            {services.map(({ icon: Icon, title, text }, index) => (
+              <article className="service-card" key={title}>
+                <div><span>{String(index + 1).padStart(2, "0")}</span><Icon size={22} aria-hidden="true" /></div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="services-cta">
+            <div>
+              <strong>Quer organizar uma ideia ou melhorar um serviço?</strong>
+              <span>Podemos começar por uma conversa curta e sem linguagem técnica.</span>
+            </div>
+            <div>
+              <a
+                href={whatsappUrl("Olá, Luiz! Vi seu portfólio e gostaria de conversar sobre meu negócio.")}
+                target="_blank"
+                rel="noreferrer"
+                className="contact-button primary"
+                aria-label="Conversar sobre meu negócio pelo WhatsApp"
+              >
+                Conversar sobre meu negócio
+                <ArrowUpRight size={18} />
+              </a>
+              <a href={emailUrl("Projeto para negócio local")} className="contact-button">
+                Prefiro e-mail
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiencia" className="section-space">
+        <div className="page-shell">
+          <div className="section-label">03 / EXPERIÊNCIA PROFISSIONAL</div>
+          <div className="experience-summary">
+            <h2>Experiência acumulada em Product Design e UX/UI desde 2022</h2>
+            <p>Atuação em produto financeiro mobile e produtos orientados por dados.</p>
+          </div>
           <div className="mt-12 divide-y divide-white/10 border-y border-white/10">
             {experience.map((item) => (
               <div key={item.company} className="experience-row">
                 <span>{item.period}</span>
-                <div>
-                  <h3>{item.role}</h3>
-                  <p>{item.company}</p>
-                </div>
+                <div><h3>{item.role}</h3><p>{item.company}</p></div>
                 <p>{item.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="home-about section-space border-y border-white/10">
+        <div className="page-shell home-about-grid">
+          <div>
+            <span className="section-label">04 / SOBRE</span>
+            <h2>Produto, repertório e realidade de uso.</h2>
+          </div>
+          <div>
+            <p>
+              Sou Luiz Felipe, Product Designer da Zona Leste de São Paulo. Minha origem,
+              os jogos, a cultura pop e o esporte influenciam a forma como observo sistemas,
+              escuto pessoas e desenho experiências mais humanas.
+            </p>
+            <Link to="/sobre" className="about-more-link">
+              Conhecer minha história <ArrowUpRight size={18} />
+            </Link>
           </div>
         </div>
       </section>
@@ -221,38 +314,19 @@ export default function Home() {
           <div className="contact-panel">
             <div className="relative z-10">
               <span className="section-label border-white/20 text-white/60">05 / CONTATO</span>
-              <h2>
-                TEM UM PROBLEMA<br />
-                INTERESSANTE PARA<br />
-                <span>RESOLVER?</span>
-              </h2>
-
+              <h2>TEM UM PROBLEMA<br />INTERESSANTE PARA<br /><span>RESOLVER?</span></h2>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                <a href="mailto:luiz.felipesantos11@gmail.com" className="contact-button primary">
-                  Vamos conversar
-                  <ArrowUpRight size={18} />
+                <a href={emailUrl("Contato pelo portfólio")} className="contact-button primary">
+                  Vamos conversar <ArrowUpRight size={18} />
                 </a>
-                <a
-                  href="https://www.linkedin.com/in/luiz-felipe-me/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="contact-button"
-                >
-                  LinkedIn
-                  <ArrowUpRight size={18} />
+                <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer" className="contact-button">
+                  LinkedIn <ArrowUpRight size={18} />
                 </a>
-                <a
-                  href="https://www.instagram.com/luiz.felipedesign"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="contact-button"
-                >
-                  Instagram
-                  <ArrowUpRight size={18} />
+                <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer" className="contact-button">
+                  Instagram <ArrowUpRight size={18} />
                 </a>
               </div>
             </div>
-
             <div className="contact-orbit" aria-hidden="true">
               <div className="orbit orbit-a" />
               <div className="orbit orbit-b" />

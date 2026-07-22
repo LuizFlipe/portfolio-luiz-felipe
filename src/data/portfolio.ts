@@ -2,6 +2,7 @@ export type CaseSection = {
   title: string;
   text: string;
   bullets?: string[];
+  takeaway?: string;
 };
 
 export type PortfolioCase = {
@@ -18,13 +19,18 @@ export type PortfolioCase = {
   };
   tags: string[];
   visual: "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige";
-  externalUrl?: string;
+  facts?: {
+    label: string;
+    value: string;
+  }[];
+  shareImage?: string;
   gallery?: {
     src: string;
     alt: string;
     caption: string;
   }[];
   nda?: boolean;
+  contentGaps?: string[];
   sections: CaseSection[];
 };
 
@@ -48,50 +54,50 @@ export const cases: PortfolioCase[] = [
     },
     tags: ["Product Design", "UX/UI", "Service Design", "Prototipação"],
     visual: "bravus",
-    externalUrl: "https://bravus-ux-case-luiz.luiz-felipesantos11.chatgpt.site/",
+    shareImage: "/og/bravus.png",
     gallery: [
       {
-        src: "/images/bravus/home.png",
+        src: "/images/bravus/home.webp",
         alt: "Página inicial da Bravus com chamada para agendamento",
         caption: "Proposta de valor e acesso imediato ao agendamento",
       },
       {
-        src: "/images/bravus/servicos.png",
+        src: "/images/bravus/servicos.webp",
         alt: "Catálogo de serviços da Bravus com duração e preço",
         caption: "Serviços comparáveis por preço, duração e benefício",
       },
       {
-        src: "/images/bravus/como-funciona.png",
+        src: "/images/bravus/como-funciona.webp",
         alt: "Seção da Bravus explicando o agendamento em três passos",
         caption: "Antecipação do fluxo para reduzir dúvidas",
       },
       {
-        src: "/images/bravus/profissionais.png",
+        src: "/images/bravus/profissionais.webp",
         alt: "Perfis dos profissionais disponíveis na Bravus",
         caption: "Escolha de profissional por especialidade",
       },
       {
-        src: "/images/bravus/agendamento-servico.png",
+        src: "/images/bravus/agendamento-servico.webp",
         alt: "Primeira etapa do agendamento para escolher um serviço",
         caption: "Etapa 01 — escolha do serviço",
       },
       {
-        src: "/images/bravus/agendamento-data.png",
+        src: "/images/bravus/agendamento-data.webp",
         alt: "Etapa do agendamento para selecionar uma data",
         caption: "Etapa 03 — calendário com disponibilidade",
       },
       {
-        src: "/images/bravus/agendamento-horario.png",
+        src: "/images/bravus/agendamento-horario.webp",
         alt: "Etapa do agendamento com horários disponíveis e ocupados",
         caption: "Etapa 04 — disponibilidade e estados de horário",
       },
       {
-        src: "/images/bravus/agendamento-revisao.png",
+        src: "/images/bravus/agendamento-revisao.webp",
         alt: "Revisão dos dados antes de confirmar o agendamento",
         caption: "Etapa 06 — revisão antes do compromisso",
       },
       {
-        src: "/images/bravus/agendamento-confirmado.png",
+        src: "/images/bravus/agendamento-confirmado.webp",
         alt: "Confirmação final do agendamento na Bravus",
         caption: "Confirmação com calendário, WhatsApp e número de reserva",
       },
@@ -166,40 +172,40 @@ export const cases: PortfolioCase[] = [
     },
     tags: ["Product Design", "UI Design", "Fintech", "Design System"],
     visual: "fluxo",
-    externalUrl: "https://luizfelipeport.lovable.app/projetos/fluxo",
+    shareImage: "/og/fluxo.png",
     gallery: [
       {
-        src: "/images/fluxo/login.png",
+        src: "/images/fluxo/login.webp",
         alt: "Tela de login do aplicativo Fluxo",
         caption: "Login simples e direto",
       },
       {
-        src: "/images/fluxo/criar-conta.png",
+        src: "/images/fluxo/criar-conta.webp",
         alt: "Tela de criação de conta do aplicativo Fluxo",
         caption: "Criação de conta",
       },
       {
-        src: "/images/fluxo/home.png",
+        src: "/images/fluxo/home.webp",
         alt: "Tela inicial do aplicativo Fluxo com resumo financeiro",
         caption: "Resumo financeiro e transações",
       },
       {
-        src: "/images/fluxo/nova-despesa.png",
+        src: "/images/fluxo/nova-despesa.webp",
         alt: "Tela para registrar uma nova despesa no aplicativo Fluxo",
         caption: "Registro rápido de despesas",
       },
       {
-        src: "/images/fluxo/relatorios.png",
+        src: "/images/fluxo/relatorios.webp",
         alt: "Tela de relatórios do aplicativo Fluxo",
         caption: "Relatórios e categorias",
       },
       {
-        src: "/images/fluxo/ranking-gastos.png",
+        src: "/images/fluxo/ranking-gastos.webp",
         alt: "Tela de ranking de gastos do aplicativo Fluxo",
         caption: "Ranking de gastos",
       },
       {
-        src: "/images/fluxo/dicas-inteligentes.png",
+        src: "/images/fluxo/dicas-inteligentes.webp",
         alt: "Tela de dicas inteligentes do aplicativo Fluxo",
         caption: "Dicas empáticas e acionáveis",
       },
@@ -269,21 +275,35 @@ export const cases: PortfolioCase[] = [
     tags: ["Product Design", "Mobile", "Fintech", "UX Strategy"],
     visual: "dimo",
     nda: true,
+    shareImage: "/og/dimo.png",
+    facts: [
+      { label: "Período", value: "2026 — atual" },
+      { label: "Papel", value: "Product Designer Pleno" },
+      { label: "Colaboração", value: "Produto e tecnologia" },
+      { label: "Restrições", value: "Segurança, regras de negócio e conteúdo adaptado por NDA" },
+    ],
+    contentGaps: [
+      "Adicionar composição exata da equipe quando puder ser publicada.",
+      "Adicionar evidências qualitativas ou quantitativas autorizadas.",
+      "Adicionar próximos passos específicos autorizados.",
+    ],
     sections: [
       {
         title: "Contexto",
         text:
           "A Dimo é uma carteira digital da Motorola. Meu trabalho acontece em jornadas que misturam produto financeiro, comportamento do usuário, restrições técnicas e exigências de segurança.",
+        takeaway: "O produto exige conectar entendimento, confiança e viabilidade em uma mesma jornada.",
       },
       {
-        title: "O desafio",
+        title: "Problema e restrições",
         text:
           "Em produtos financeiros, uma tela raramente existe sozinha. Cada decisão precisa considerar entendimento, confiança, regras de negócio, estados de erro e continuidade da jornada.",
+        takeaway: "Simplificar não significa omitir regras importantes para a decisão do usuário.",
       },
       {
-        title: "Como trabalho",
+        title: "Meu papel e processo",
         text:
-          "Minha atuação combina leitura de contexto, investigação do problema e construção visual. O objetivo é reduzir complexidade sem esconder informação importante.",
+          "Atuo em descoberta, fluxos, interface, escrita e alinhamento com produto e tecnologia. O processo parte do contexto da jornada e das evidências disponíveis antes de avançar para hipóteses e protótipos.",
         bullets: [
           "Mapeamento de fluxos e estados críticos",
           "Análise de dados e evidências disponíveis",
@@ -291,11 +311,25 @@ export const cases: PortfolioCase[] = [
           "Prototipação e refinamento de interface",
           "Alinhamento com produto, negócio e tecnologia",
         ],
+        takeaway: "A interface é refinada junto com regras, dependências e estados críticos.",
       },
       {
-        title: "Aprendizado",
+        title: "Hipóteses e decisões de design",
         text:
-          "Design financeiro exige mais do que deixar a interface bonita: é preciso transformar regras difíceis em decisões que o usuário consiga entender e tomar com segurança.",
+          "As hipóteses são avaliadas pelo impacto na compreensão da jornada, pela continuidade entre etapas e pela capacidade de orientar uma decisão segura. Em trabalhos protegidos por NDA, fluxos e estados são apresentados de forma abstrata, sem dados ou telas confidenciais.",
+        takeaway: "O critério principal é tornar a próxima decisão compreensível sem fragilizar a segurança.",
+      },
+      {
+        title: "Solução e evidências",
+        text:
+          "A solução pública é representada por fluxos anonimizados e estados reconstruídos. A evolução considera as evidências disponíveis no produto e o refinamento conjunto com as áreas envolvidas; métricas e telas confidenciais não são publicadas neste case.",
+        takeaway: "Quando o dado não pode ser mostrado, o case deixa claro o limite em vez de sugerir um resultado não comprovado.",
+      },
+      {
+        title: "Aprendizados, resultado e próximos passos",
+        text:
+          "O trabalho consolidou uma base mais consistente para evoluir jornadas de conta, crédito, pagamentos e segurança. Design financeiro exige transformar regras difíceis em decisões que o usuário consiga entender e tomar com segurança. Próximos passos específicos dependem de informações autorizadas para publicação.",
+        takeaway: "Clareza, continuidade e confiança são critérios de produto — não apenas de interface.",
       },
     ],
   },
@@ -319,26 +353,51 @@ export const cases: PortfolioCase[] = [
     tags: ["UX Research", "Crédito", "Funil", "Product Discovery"],
     visual: "consignado",
     nda: true,
+    shareImage: "/og/consignado.png",
+    facts: [
+      { label: "Papel", value: "Product Designer" },
+      { label: "Foco", value: "Pesquisa, funil e hipóteses de produto" },
+      { label: "Restrições", value: "Dados e detalhes adaptados por NDA" },
+    ],
+    contentGaps: [
+      "Adicionar período e composição da equipe quando autorizados.",
+      "Adicionar resultado da pesquisa e próximos passos quando puderem ser publicados.",
+    ],
     sections: [
       {
         title: "Contexto",
         text:
           "O desafio não era apenas redesenhar uma tela. Era entender por que pessoas que chegavam até uma oferta não necessariamente seguiam para a contratação.",
+        takeaway: "O abandono poderia ter causas diferentes; tratar tudo como problema de interface reduziria a qualidade do diagnóstico.",
       },
       {
-        title: "Evidências",
+        title: "Problema e evidências",
         text:
           "A investigação combinou comportamento do funil com perguntas sobre valor disponível, condições, momento de contratação e sensação de segurança.",
+        takeaway: "O funil indicava onde havia perda, mas não explicava sozinho o motivo.",
       },
       {
-        title: "Pesquisa",
+        title: "Meu papel, hipóteses e processo",
         text:
-          "A estratégia passou a considerar duas abordagens complementares: uma pergunta totalmente aberta e outra pesquisa estruturada, além de opt-in para entrevistas posteriores.",
+          "Atuei na leitura do funil, formulação de hipóteses e desenho da pesquisa. A estratégia considerou duas abordagens complementares: uma pergunta aberta e outra pesquisa estruturada, além de opt-in para entrevistas posteriores.",
+        bullets: [
+          "Separar barreiras de oferta, comunicação, confiança e momento de contratação",
+          "Combinar resposta aberta com opções estruturadas",
+          "Criar continuidade para entrevistas posteriores",
+        ],
+        takeaway: "A pesquisa foi desenhada para reduzir viés e distinguir motivos que pediam respostas diferentes.",
       },
       {
-        title: "Decisão de design",
+        title: "Decisão e solução",
         text:
           "Antes de propor mudanças definitivas na interface, a prioridade foi melhorar a qualidade da evidência. Assim, as hipóteses de UX poderiam ser conectadas a motivos reais de abandono.",
+        takeaway: "A decisão de produto foi investigar primeiro e evitar um redesign baseado apenas em suposição.",
+      },
+      {
+        title: "Resultado, aprendizados e próximos passos",
+        text:
+          "O trabalho entregou uma estrutura de investigação mais clara para separar problemas de oferta, comunicação, confiança e intenção. Resultados da coleta, métricas e próximos passos não são publicados sem autorização.",
+        takeaway: "Saber o que ainda não está comprovado é parte da qualidade do processo.",
       },
     ],
   },
@@ -362,26 +421,57 @@ export const cases: PortfolioCase[] = [
     tags: ["Onboarding", "Segurança", "UX Writing", "Service Design"],
     visual: "caf",
     nda: true,
+    facts: [
+      { label: "Papel", value: "Product Designer" },
+      { label: "Foco", value: "Fluxos, estados e UX Writing" },
+      { label: "Colaboração", value: "Produto, segurança e fornecedor externo" },
+      { label: "Restrições", value: "Jornada crítica e conteúdo adaptado por NDA" },
+    ],
+    contentGaps: [
+      "Adicionar período e composição detalhada da equipe quando autorizados.",
+      "Adicionar evidências e resultados qualitativos publicáveis.",
+    ],
     sections: [
       {
-        title: "Problema",
+        title: "Contexto e problema",
         text:
           "Falhas de biometria não podem ser tratadas como um único erro genérico. Algumas situações permitem nova tentativa; outras exigem interrupção imediata por segurança.",
+        takeaway: "O mesmo sintoma visual podia representar níveis de risco e respostas completamente diferentes.",
       },
       {
-        title: "Mapeamento de cenários",
+        title: "Meu papel e restrições",
+        text:
+          "Atuei na definição do fluxo, dos estados, das mensagens e das contingências. Parte da experiência acontece em um fornecedor externo, o que limita o controle sobre a jornada e exige continuidade também fora do aplicativo.",
+        takeaway: "A experiência precisava continuar coerente mesmo quando o produto deixava de controlar toda a interface.",
+      },
+      {
+        title: "Processo e hipóteses",
         text:
           "A jornada foi organizada em sucesso, erro recuperável, reprovação crítica e falha técnica, criando respostas e mensagens coerentes para cada nível de risco.",
+        bullets: [
+          "Distinguir falhas recuperáveis de bloqueios preventivos",
+          "Orientar o próximo passo sem revelar detalhes sensíveis",
+          "Prever comunicação para quem perde o acesso ao aplicativo",
+        ],
+        takeaway: "Classificar cenários antes de escrever mensagens evitou respostas genéricas para riscos diferentes.",
       },
       {
-        title: "Decisão importante",
+        title: "Decisões e solução",
         text:
           "Como parte da experiência acontece dentro de um fornecedor externo, também foi necessário pensar em comunicação fora do app para cenários em que o usuário perde o acesso à conta.",
+        takeaway: "A solução inclui interface, escrita e continuidade de serviço — não apenas uma tela de erro.",
       },
       {
-        title: "Aprendizado",
+        title: "Evidências, aprendizados e resultado",
         text:
-          "Em jornadas de segurança, clareza é parte da proteção. O usuário precisa saber o que aconteceu, o que pode fazer e o que não pode fazer, sem receber detalhes que enfraqueçam o processo.",
+          "O trabalho resultou em respostas diferentes para falhas recuperáveis, situações críticas e bloqueio preventivo. Em jornadas de segurança, clareza é parte da proteção. Evidências e resultados detalhados não são publicados sem autorização.",
+        takeaway: "O usuário precisa saber o que pode fazer sem receber informação que enfraqueça o processo.",
+      },
+      {
+        title: "Próximos passos",
+        text:
+          "A evolução específica do fluxo depende de dados e decisões internas. O case mantém essa lacuna explícita até que exista conteúdo autorizado para publicação.",
+        takeaway: "Não publicar uma promessa é mais confiável do que transformar uma hipótese em resultado.",
       },
     ],
   },
@@ -404,26 +494,59 @@ export const cases: PortfolioCase[] = [
     },
     tags: ["Dashboard", "B2B", "Data Experience", "UI Design"],
     visual: "data",
+    shareImage: "/og/data.png",
+    facts: [
+      { label: "Período", value: "2022 — 2026" },
+      { label: "Papel", value: "UX/UI Designer" },
+      { label: "Ferramentas", value: "Figma, Power BI e Qlik" },
+      { label: "Contexto", value: "Produtos de dados e experiências B2B" },
+    ],
+    contentGaps: [
+      "Adicionar exemplos anonimizados de decisões ou fluxos autorizados.",
+      "Adicionar resultados qualitativos e próximos passos de projetos específicos.",
+    ],
     sections: [
       {
         title: "Contexto",
         text:
           "Na Active BI, trabalhei em projetos para empresas de diferentes setores, lidando com necessidades distintas de análise, operação e acompanhamento de indicadores.",
+        takeaway: "Cada dashboard precisava responder ao contexto de decisão, não apenas organizar componentes.",
       },
       {
-        title: "O que muda em produtos de dados",
+        title: "Problema e restrições",
         text:
           "O desafio não é apenas exibir gráficos. É decidir o que precisa ter prioridade, como diferentes informações se relacionam e qual ação a interface deve apoiar.",
+        takeaway: "Mais informação na tela não significa mais clareza para quem decide.",
       },
       {
-        title: "Minha atuação",
+        title: "Meu papel e processo",
         text:
           "Trabalhei com Figma, Power BI, Qlik e processos de UX/UI para transformar necessidades de negócio em estruturas visuais mais claras e consistentes.",
+        bullets: [
+          "Entendimento do contexto de análise e operação",
+          "Hierarquia da informação e organização dos indicadores",
+          "Prototipação e refinamento visual",
+          "Consistência entre telas e estados",
+        ],
+        takeaway: "A hierarquia foi construída a partir da tarefa e da decisão que a interface precisava apoiar.",
       },
       {
-        title: "Marcas e contextos",
+        title: "Decisões de design",
+        text:
+          "As decisões priorizaram leitura, comparação e continuidade. O desenho buscou equilibrar densidade informacional com caminhos reconhecíveis, usando padrões consistentes para reduzir esforço entre diferentes visões.",
+        takeaway: "Em data experience, o design organiza relações antes de decorar gráficos.",
+      },
+      {
+        title: "Evidências e contextos",
         text:
           "Ao longo da experiência, participei de projetos relacionados a marcas como Lenovo, Motorola, State Grid, OceanPact e Porto do Açu.",
+        takeaway: "As marcas representam contextos de projeto, não necessariamente vínculos empregatícios diretos.",
+      },
+      {
+        title: "Aprendizados, resultado e próximos passos",
+        text:
+          "A experiência consolidou uma prática multidisciplinar em produtos orientados por dados para diferentes negócios. Exemplos detalhados, resultados e próximos passos dependem de material autorizado para publicação.",
+        takeaway: "A credibilidade do case também depende de explicitar o que pode e o que não pode ser mostrado.",
       },
     ],
   },
