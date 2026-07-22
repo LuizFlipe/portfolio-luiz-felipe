@@ -18,10 +18,10 @@ import { emailUrl, siteConfig, whatsappUrl } from "../config/site";
 import { brands, cases, experience } from "../data/portfolio";
 
 const selectedSlugs = [
-  "dimo-produto-financeiro",
   "consignado-clt",
   "data-experience-active-bi",
   "bravus-agendamento",
+  "clinica-viver-bem",
 ];
 
 const selectedCases = selectedSlugs

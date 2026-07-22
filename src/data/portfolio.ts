@@ -259,86 +259,8 @@ export const cases: PortfolioCase[] = [
     ],
   },
   {
-    slug: "dimo-produto-financeiro",
-    index: "03",
-    title: "Dimo — produto financeiro mobile",
-    eyebrow: "Produto • Fintech • Mobile",
-    summary:
-      "Evolução de experiências financeiras dentro da carteira digital da Motorola, conectando necessidades do usuário, regras de negócio e viabilidade de produto.",
-    quick: {
-      problem:
-        "Simplificar jornadas financeiras complexas sem perder clareza, segurança e contexto para o usuário.",
-      role:
-        "Product Designer Pleno, atuando em descoberta, fluxos, UI, escrita e alinhamento com produto e tecnologia.",
-      process:
-        "Mapeamento de jornada, análise de problemas, benchmarks, hipóteses, prototipação e refinamento com stakeholders.",
-      result:
-        "Uma base mais consistente para evoluir jornadas de conta, crédito, pagamentos e segurança.",
-    },
-    tags: ["Product Design", "Mobile", "Fintech", "UX Strategy"],
-    visual: "dimo",
-    nda: true,
-    shareImage: "/og/dimo.png",
-    facts: [
-      { label: "Período", value: "2026 — atual" },
-      { label: "Papel", value: "Product Designer Pleno" },
-      { label: "Colaboração", value: "Produto e tecnologia" },
-      { label: "Restrições", value: "Segurança, regras de negócio e conteúdo adaptado por NDA" },
-    ],
-    contentGaps: [
-      "Adicionar composição exata da equipe quando puder ser publicada.",
-      "Adicionar evidências qualitativas ou quantitativas autorizadas.",
-      "Adicionar próximos passos específicos autorizados.",
-    ],
-    sections: [
-      {
-        title: "Contexto",
-        text:
-          "A Dimo é uma carteira digital da Motorola. Meu trabalho acontece em jornadas que misturam produto financeiro, comportamento do usuário, restrições técnicas e exigências de segurança.",
-        takeaway: "O produto exige conectar entendimento, confiança e viabilidade em uma mesma jornada.",
-      },
-      {
-        title: "Problema e restrições",
-        text:
-          "Em produtos financeiros, uma tela raramente existe sozinha. Cada decisão precisa considerar entendimento, confiança, regras de negócio, estados de erro e continuidade da jornada.",
-        takeaway: "Simplificar não significa omitir regras importantes para a decisão do usuário.",
-      },
-      {
-        title: "Meu papel e processo",
-        text:
-          "Atuo em descoberta, fluxos, interface, escrita e alinhamento com produto e tecnologia. O processo parte do contexto da jornada e das evidências disponíveis antes de avançar para hipóteses e protótipos.",
-        bullets: [
-          "Mapeamento de fluxos e estados críticos",
-          "Análise de dados e evidências disponíveis",
-          "Benchmarks e referências de mercado",
-          "Prototipação e refinamento de interface",
-          "Alinhamento com produto, negócio e tecnologia",
-        ],
-        takeaway: "A interface é refinada junto com regras, dependências e estados críticos.",
-      },
-      {
-        title: "Hipóteses e decisões de design",
-        text:
-          "As hipóteses são avaliadas pelo impacto na compreensão da jornada, pela continuidade entre etapas e pela capacidade de orientar uma decisão segura. Em trabalhos protegidos por NDA, fluxos e estados são apresentados de forma abstrata, sem dados ou telas confidenciais.",
-        takeaway: "O critério principal é tornar a próxima decisão compreensível sem fragilizar a segurança.",
-      },
-      {
-        title: "Solução e evidências",
-        text:
-          "A solução pública é representada por fluxos anonimizados e estados reconstruídos. A evolução considera as evidências disponíveis no produto e o refinamento conjunto com as áreas envolvidas; métricas e telas confidenciais não são publicadas neste case.",
-        takeaway: "Quando o dado não pode ser mostrado, o case deixa claro o limite em vez de sugerir um resultado não comprovado.",
-      },
-      {
-        title: "Aprendizados, resultado e próximos passos",
-        text:
-          "O trabalho consolidou uma base mais consistente para evoluir jornadas de conta, crédito, pagamentos e segurança. Design financeiro exige transformar regras difíceis em decisões que o usuário consiga entender e tomar com segurança. Próximos passos específicos dependem de informações autorizadas para publicação.",
-        takeaway: "Clareza, continuidade e confiança são critérios de produto — não apenas de interface.",
-      },
-    ],
-  },
-  {
     slug: "consignado-clt",
-    index: "04",
+    index: "03",
     title: "Consignado CLT — reduzindo fricção na contratação",
     eyebrow: "Crédito • Pesquisa • Conversão",
     summary:
@@ -406,7 +328,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "onboarding-caf",
-    index: "05",
+    index: "04",
     title: "Onboarding & CAF — segurança sem perder clareza",
     eyebrow: "Segurança • Biometria • Jornada crítica",
     summary:
@@ -480,7 +402,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "data-experience-active-bi",
-    index: "06",
+    index: "05",
     title: "Data Experience — interfaces para decisões complexas",
     eyebrow: "Dashboards • Dados • B2B",
     summary:
@@ -555,7 +477,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "dirige-brasil",
-    index: "07",
+    index: "06",
     title: "Dirige Brasil — desenhando um produto do zero",
     eyebrow: "Produto próprio • Marketplace • Mobile",
     summary:
@@ -597,7 +519,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "clinica-viver-bem",
-    index: "08",
+    index: "07",
     title: "Clínica Viver Bem — cuidado e agendamento",
     eyebrow: "Saúde • Site institucional • Serviço",
     summary:

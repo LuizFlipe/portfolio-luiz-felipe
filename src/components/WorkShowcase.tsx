@@ -8,14 +8,12 @@ const reelProjects = [...cases, ...cases];
 const volumeItems = [
   { title: "Bravus", label: "Web · Agendamento", visual: "bravus", size: "wide" },
   { title: "Fluxo", label: "Mobile · Fintech", visual: "fluxo", size: "tall" },
-  { title: "Dimo Wallet", label: "Mobile · Fintech", visual: "dimo", size: "wide" },
   { title: "Contratação CLT", label: "Discovery · Jornada", visual: "consignado", size: "standard" },
   { title: "Active BI", label: "Dashboard · Dados", visual: "data", size: "tall" },
   { title: "Validação CAF", label: "Onboarding · Trust", visual: "caf", size: "standard" },
   { title: "Dirige Brasil", label: "Produto 0→1 · Mobile", visual: "dirige", size: "wide" },
   { title: "Fluxos financeiros", label: "UX Writing · Produto", visual: "consignado", size: "standard" },
   { title: "Indicadores executivos", label: "B2B · Data Experience", visual: "data", size: "standard" },
-  { title: "Conta digital", label: "Interface · Design System", visual: "dimo", size: "tall" },
   { title: "Segurança sem atrito", label: "Pesquisa · Onboarding", visual: "caf", size: "wide" },
   { title: "Mobilidade e serviço", label: "MVP · Service Design", visual: "dirige", size: "standard" },
 ] as const;

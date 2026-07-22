@@ -10,12 +10,6 @@ Este arquivo registra apenas lacunas reais. Elas não são exibidas como texto g
 
 ## Cases profissionais
 
-### Dimo
-
-- Composição exata da equipe que pode ser publicada.
-- Evidências qualitativas ou quantitativas autorizadas.
-- Próximos passos específicos que não estejam sob NDA.
-
 ### Consignado CLT
 
 - Período e composição da equipe.
