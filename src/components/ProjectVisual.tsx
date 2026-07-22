@@ -1,4 +1,4 @@
-type VisualKind = "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige";
+type VisualKind = "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica";
 
 export default function ProjectVisual({ kind, compact = false }: { kind: VisualKind; compact?: boolean }) {
   return (
@@ -131,6 +131,26 @@ export default function ProjectVisual({ kind, compact = false }: { kind: VisualK
             <small>Hoje • Barra Funda</small>
           </div>
           <div className="visual-word">0→1</div>
+        </>
+      )}
+
+      {kind === "clinica" && (
+        <>
+          <div className="clinica-browser">
+            <img
+              src="/images/clinica/hero.jpg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div className="clinica-contact-card">
+            <span>CONTATO / WHATSAPP</span>
+            <strong>Solicitar agendamento</strong>
+            <small>Informação clara antes do atendimento</small>
+          </div>
+          <div className="clinica-mark" aria-hidden="true"><b>VB</b><span>Viver Bem</span></div>
+          <div className="visual-word">CARE</div>
         </>
       )}
     </div>

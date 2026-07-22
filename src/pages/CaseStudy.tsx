@@ -21,14 +21,15 @@ export default function CaseStudy() {
   const project = cases[projectIndex];
   const [activeSection, setActiveSection] = useState(0);
   const [activeScreen, setActiveScreen] = useState<number | null>(null);
+  const [galleryPosition, setGalleryPosition] = useState(0);
+  const galleryRef = useRef<HTMLDivElement>(null);
   const lightboxCloseRef = useRef<HTMLButtonElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
+  const lightboxTouchStartRef = useRef({ x: 0, y: 0 });
 
-  const externalUrl = project?.slug === "fluxo-financas-pessoais"
-    ? siteConfig.externalProjects.fluxo
-    : project?.slug === "bravus-agendamento"
-      ? siteConfig.externalProjects.bravus
-      : "";
+  const externalUrl = project?.externalProject
+    ? siteConfig.externalProjects[project.externalProject]
+    : "";
 
   const caseSchema = useMemo(() => project ? ({
     "@context": "https://schema.org",
@@ -38,6 +39,54 @@ export default function CaseStudy() {
     creator: { "@type": "Person", name: siteConfig.name },
     keywords: project.tags.join(", "),
   }) : undefined, [project]);
+
+  const galleryCount = project?.gallery?.length ?? 0;
+
+  const goToGalleryScreen = (target: number) => {
+    const gallery = galleryRef.current;
+    if (!gallery || galleryCount === 0) return;
+
+    const nextPosition = Math.max(0, Math.min(target, galleryCount - 1));
+    const card = gallery.children.item(nextPosition) as HTMLElement | null;
+    if (!card) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    gallery.scrollTo({
+      left: card.offsetLeft - gallery.offsetLeft,
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+    setGalleryPosition(nextPosition);
+  };
+
+  const syncGalleryPosition = () => {
+    const gallery = galleryRef.current;
+    if (!gallery || gallery.children.length === 0) return;
+
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    Array.from(gallery.children).forEach((child, index) => {
+      const card = child as HTMLElement;
+      const cardStart = card.offsetLeft - gallery.offsetLeft;
+      const distance = Math.abs(gallery.scrollLeft - cardStart);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    setGalleryPosition(closestIndex);
+  };
+
+  const showPreviousScreen = () => {
+    if (!project?.gallery || activeScreen === null) return;
+    setActiveScreen((activeScreen - 1 + project.gallery.length) % project.gallery.length);
+  };
+
+  const showNextScreen = () => {
+    if (!project?.gallery || activeScreen === null) return;
+    setActiveScreen((activeScreen + 1) % project.gallery.length);
+  };
 
   useEffect(() => {
     if (!project) return;
@@ -83,6 +132,11 @@ export default function CaseStudy() {
       returnFocusRef.current?.focus();
     };
   }, [activeScreen, project]);
+
+  useEffect(() => {
+    setGalleryPosition(0);
+    galleryRef.current?.scrollTo({ left: 0, behavior: "auto" });
+  }, [project?.slug]);
 
   if (!project) {
     return (
@@ -202,7 +256,39 @@ export default function CaseStudy() {
                 </div>
                 <p>Explore as telas. Clique em qualquer interface para ampliar e navegar pelos detalhes.</p>
               </div>
-              <div className="case-screen-grid">
+
+              <div className="case-gallery-toolbar">
+                <p>Arraste para o lado ou use as setas.</p>
+                <div className="case-gallery-controls" aria-label="Controles do carrossel de telas">
+                  <span aria-live="polite">
+                    {String(galleryPosition + 1).padStart(2, "0")} / {String(project.gallery.length).padStart(2, "0")}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => goToGalleryScreen(galleryPosition - 1)}
+                    disabled={galleryPosition === 0}
+                    aria-label="Ver tela anterior"
+                  >
+                    <ArrowLeft size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => goToGalleryScreen(galleryPosition + 1)}
+                    disabled={galleryPosition === project.gallery.length - 1}
+                    aria-label="Ver próxima tela"
+                  >
+                    <ArrowRight size={18} />
+                  </button>
+                </div>
+              </div>
+
+              <div
+                ref={galleryRef}
+                className="case-screen-grid"
+                onScroll={syncGalleryPosition}
+                role="region"
+                aria-label={`Carrossel com ${project.gallery.length} telas do projeto`}
+              >
                 {project.gallery.map((screen, index) => (
                   <button
                     type="button"
@@ -222,6 +308,19 @@ export default function CaseStudy() {
                     <img src={screen.src} alt={screen.alt} loading="lazy" decoding="async" />
                     <span className="case-screen-caption">{screen.caption}</span>
                   </button>
+                ))}
+              </div>
+
+              <div className="case-gallery-pagination" aria-label="Escolher tela do carrossel">
+                {project.gallery.map((screen, index) => (
+                  <button
+                    type="button"
+                    key={screen.src}
+                    className={galleryPosition === index ? "is-active" : ""}
+                    onClick={() => goToGalleryScreen(index)}
+                    aria-label={`Ir para a tela ${index + 1}: ${screen.caption}`}
+                    aria-current={galleryPosition === index ? "true" : undefined}
+                  />
                 ))}
               </div>
             </div>
@@ -308,7 +407,24 @@ export default function CaseStudy() {
       </article>
 
       {activeScreen !== null && project.gallery && (
-        <div className="case-lightbox" role="dialog" aria-modal="true" aria-label="Visualização ampliada da interface">
+        <div
+          className="case-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Visualização ampliada da interface"
+          onTouchStart={(event) => {
+            const touch = event.touches[0];
+            lightboxTouchStartRef.current = { x: touch.clientX, y: touch.clientY };
+          }}
+          onTouchEnd={(event) => {
+            const touch = event.changedTouches[0];
+            const deltaX = touch.clientX - lightboxTouchStartRef.current.x;
+            const deltaY = touch.clientY - lightboxTouchStartRef.current.y;
+            if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+            if (deltaX > 0) showPreviousScreen();
+            else showNextScreen();
+          }}
+        >
           <button
             ref={lightboxCloseRef}
             className="case-lightbox-close"
@@ -321,7 +437,7 @@ export default function CaseStudy() {
           <button
             className="case-lightbox-arrow case-lightbox-prev"
             type="button"
-            onClick={() => setActiveScreen((activeScreen - 1 + project.gallery!.length) % project.gallery!.length)}
+            onClick={showPreviousScreen}
             aria-label="Tela anterior"
           >
             <ArrowLeft />
@@ -339,7 +455,7 @@ export default function CaseStudy() {
           <button
             className="case-lightbox-arrow case-lightbox-next"
             type="button"
-            onClick={() => setActiveScreen((activeScreen + 1) % project.gallery!.length)}
+            onClick={showNextScreen}
             aria-label="Próxima tela"
           >
             <ArrowRight />

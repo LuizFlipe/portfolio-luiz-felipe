@@ -1063,6 +1063,86 @@ a {
   backdrop-filter: blur(16px);
   box-shadow: 0 2rem 5rem rgba(0,0,0,.35);
 }
+
+.visual-clinica {
+  background:
+    radial-gradient(circle at 82% 14%, rgba(70, 183, 207, .24), transparent 24rem),
+    radial-gradient(circle at 10% 90%, rgba(139, 92, 246, .2), transparent 20rem),
+    #0a1620;
+}
+.clinica-browser {
+  position: absolute;
+  inset: 9% 7% 15%;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 1rem;
+  background: #eaf7fb;
+  box-shadow: 0 2.5rem 5rem rgba(0,0,0,.4);
+}
+.clinica-browser img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.clinica-contact-card {
+  position: absolute;
+  z-index: 3;
+  right: 5%;
+  bottom: 6%;
+  width: min(42%, 20rem);
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(124, 213, 228, .28);
+  border-radius: .8rem;
+  background: rgba(7, 27, 38, .94);
+  box-shadow: 0 1.5rem 3rem rgba(0,0,0,.35);
+  backdrop-filter: blur(14px);
+}
+.clinica-contact-card span {
+  display: block;
+  color: #7cd5e4;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .56rem;
+  letter-spacing: .14em;
+}
+.clinica-contact-card strong {
+  display: block;
+  margin-top: .5rem;
+  color: #f4fbfd;
+  font-size: .95rem;
+}
+.clinica-contact-card small {
+  display: block;
+  margin-top: .3rem;
+  color: rgba(255,255,255,.55);
+  font-size: .62rem;
+}
+.clinica-mark {
+  position: absolute;
+  z-index: 4;
+  left: 4%;
+  top: 5%;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .55rem .75rem;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 999px;
+  background: rgba(7, 27, 38, .88);
+  color: white;
+  backdrop-filter: blur(12px);
+}
+.clinica-mark b {
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: .55rem;
+  background: linear-gradient(135deg, #42bdd0, #1d6580);
+  font-size: .55rem;
+}
+.clinica-mark span { font-size: .72rem; font-weight: 750; }
 .avatar { width: 3rem; height: 3rem; margin: 1rem 0; border-radius: 50%; background: linear-gradient(135deg, #c4b5fd, #6d28d9); }
 .lesson-card strong { display: block; }
 .lesson-card small { color: rgba(255,255,255,.4); }
@@ -2917,7 +2997,7 @@ body {
   scrollbar-width: none;
 }
 .case-screen-card {
-  flex: 0 0 clamp(260px, 27vw, 370px);
+  flex: 0 0 clamp(300px, 38vw, 540px);
   scroll-snap-align: start;
 }
 .case-gallery-bravus .case-screen-card {
@@ -3134,6 +3214,10 @@ body {
   .dash-grid { inset: 6%; }
   .map-card { width: 72%; left: 5%; }
   .lesson-card { right: 4%; width: 13rem; }
+  .clinica-browser { inset: 8% 4% 17%; }
+  .clinica-contact-card { right: 3%; bottom: 5%; width: min(70%, 17rem); }
+  .clinica-mark { left: 3%; top: 4%; }
+  .clinica-mark span { display: none; }
   .experience-row { grid-template-columns: 1fr; gap: .6rem; }
   .experience-row > p { grid-column: auto; }
   .contact-panel { min-height: 560px; border-radius: 1.3rem; }
@@ -3386,6 +3470,9 @@ body {
 }
 .case-screen-topline small { text-align: right; }
 .case-screen-card img {
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  object-position: top center;
   transition: transform .55s cubic-bezier(.2,.8,.2,1), filter .35s ease;
 }
 .case-screen-card:hover img {
@@ -3398,6 +3485,80 @@ body {
   border-top: 1px solid rgba(255,255,255,.08);
   color: rgba(255,255,255,.63);
   font-size: .74rem;
+}
+
+.case-gallery-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.case-gallery-toolbar > p {
+  color: rgba(255,255,255,.68);
+  font-size: .82rem;
+}
+.case-gallery-controls {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+}
+.case-gallery-controls > span {
+  min-width: 4.5rem;
+  color: #c4b5fd;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .72rem;
+  letter-spacing: .08em;
+}
+.case-gallery-controls button {
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border: 1px solid rgba(196,181,253,.32);
+  border-radius: 50%;
+  background: rgba(139,92,246,.09);
+  color: white;
+  transition: border-color .2s ease, background .2s ease, opacity .2s ease;
+}
+.case-gallery-controls button:hover:not(:disabled) {
+  border-color: #c4b5fd;
+  background: rgba(139,92,246,.22);
+}
+.case-gallery-controls button:disabled {
+  opacity: .32;
+  cursor: not-allowed;
+}
+.case-screen-grid {
+  overscroll-behavior-inline: contain;
+  scroll-padding-inline: .15rem;
+  -webkit-overflow-scrolling: touch;
+}
+.case-gallery-toolbar + .case-screen-grid { margin-top: 1rem; }
+.case-gallery-pagination {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  margin-top: 1.2rem;
+}
+.case-gallery-pagination button {
+  width: 2rem;
+  height: 2.75rem;
+  position: relative;
+}
+.case-gallery-pagination button::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 2px;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.22);
+  transition: background .2s ease, transform .2s ease;
+}
+.case-gallery-pagination button:hover::before,
+.case-gallery-pagination button.is-active::before {
+  transform: translateY(-50%) scaleY(2);
+  background: #c4b5fd;
 }
 
 .case-narrative {
@@ -3561,6 +3722,8 @@ body {
   object-fit: contain;
   border: 1px solid rgba(187,166,255,.2);
   background: white;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 .case-lightbox figcaption {
   width: 100%;
@@ -3747,6 +3910,9 @@ body {
     border-bottom: 1px solid rgba(17,16,21,.14);
   }
   .case-overview-card:last-child { border-bottom: 0; }
+  .case-gallery-toolbar { align-items: flex-end; }
+  .case-gallery-toolbar > p { max-width: 12rem; }
+  .case-gallery-controls > span { min-width: 3.8rem; }
   .case-narrative .case-section {
     grid-template-columns: 1fr;
     padding-inline: 0;
@@ -4126,7 +4292,6 @@ a {
 
 .project-card p,
 .case-summary,
-.case-overview-card p,
 .case-section-lead,
 .about-copy p,
 .culture-copy p,
@@ -4134,6 +4299,19 @@ a {
 .influence-card p {
   color: rgba(255,255,255,.66);
 }
+
+/* Legibilidade dos cases: preserve o bloco claro e eleve o contraste no fundo escuro. */
+.case-summary { color: rgba(255,255,255,.82); }
+.case-meta-line { color: rgba(255,255,255,.6); }
+.case-overview .case-overview-head > p,
+.case-overview .case-overview-card p { color: rgba(17,16,21,.78); }
+.case-gallery-heading > p { color: rgba(255,255,255,.72); }
+.case-screen-caption { color: rgba(255,255,255,.8); }
+.case-chapter-nav a { color: rgba(255,255,255,.6); }
+.case-section-heading small { color: rgba(255,255,255,.56); }
+.case-section-lead { color: rgba(255,255,255,.8) !important; }
+.case-decision-list li { color: rgba(255,255,255,.74); }
+.case-section-note p { color: rgba(255,255,255,.74); }
 
 @media (max-width: 1000px) {
   .proof-layout,

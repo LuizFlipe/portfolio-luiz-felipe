@@ -18,7 +18,8 @@ export type PortfolioCase = {
     result: string;
   };
   tags: string[];
-  visual: "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige";
+  visual: "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica";
+  externalProject?: "bravus" | "fluxo" | "clinica";
   facts?: {
     label: string;
     value: string;
@@ -54,6 +55,7 @@ export const cases: PortfolioCase[] = [
     },
     tags: ["Product Design", "UX/UI", "Service Design", "Prototipação"],
     visual: "bravus",
+    externalProject: "bravus",
     shareImage: "/og/bravus.png",
     gallery: [
       {
@@ -172,6 +174,7 @@ export const cases: PortfolioCase[] = [
     },
     tags: ["Product Design", "UI Design", "Fintech", "Design System"],
     visual: "fluxo",
+    externalProject: "fluxo",
     shareImage: "/og/fluxo.png",
     gallery: [
       {
@@ -589,6 +592,112 @@ export const cases: PortfolioCase[] = [
         title: "Princípio de produto",
         text:
           "Cada nova funcionalidade precisa responder a uma necessidade real da jornada. Isso evita transformar o MVP em um sistema complexo antes de validar o valor central.",
+      },
+    ],
+  },
+  {
+    slug: "clinica-viver-bem",
+    index: "08",
+    title: "Clínica Viver Bem — cuidado e agendamento",
+    eyebrow: "Saúde • Site institucional • Serviço",
+    summary:
+      "Experiência web para apresentar uma clínica multiprofissional, orientar sobre atendimentos e transformar dúvidas em uma solicitação de contato clara pelo WhatsApp.",
+    quick: {
+      problem:
+        "Reunir informações institucionais, possibilidades de cuidado e contato sem transformar o site em uma promessa médica ou em uma página difícil de navegar.",
+      role:
+        "Product Designer responsável pela estrutura da experiência, hierarquia do conteúdo, interface responsiva e fluxo de solicitação de contato.",
+      process:
+        "Organização da jornada entre apresentação, atendimentos, equipe, estrutura, dúvidas frequentes e agendamento, com avisos claros para informações ainda em validação.",
+      result:
+        "Um site público e responsivo que combina informação responsável, navegação direta e um fluxo de contato preparado para continuar no WhatsApp.",
+    },
+    tags: ["Product Design", "UX/UI", "Saúde", "Web responsiva"],
+    visual: "clinica",
+    externalProject: "clinica",
+    shareImage: "/images/clinica/hero.jpg",
+    facts: [
+      { label: "Formato", value: "Site institucional responsivo" },
+      { label: "Setor", value: "Saúde multiprofissional" },
+      { label: "Foco", value: "Informação, confiança e contato" },
+      { label: "Status", value: "Experiência pública" },
+    ],
+    gallery: [
+      {
+        src: "/images/clinica/hero.jpg",
+        alt: "Página inicial da Clínica Viver Bem com proposta de cuidado e atalhos para agendamento",
+        caption: "Proposta de valor, localização e ações principais logo no início",
+      },
+      {
+        src: "/images/clinica/atendimentos.jpg",
+        alt: "Seção de atendimentos da Clínica Viver Bem",
+        caption: "Atendimentos apresentados com linguagem responsável e indicação de validação",
+      },
+      {
+        src: "/images/clinica/estrutura.jpg",
+        alt: "Galeria preparada para receber fotografias da estrutura da Clínica Viver Bem",
+        caption: "Estrutura modular pronta para receber imagens reais e autorizadas",
+      },
+    ],
+    contentGaps: [
+      "Substituir os espaços reservados por fotografias reais e autorizadas da clínica e da equipe.",
+      "Confirmar a lista de atendimentos e os dados dos profissionais antes da publicação definitiva.",
+      "Adicionar evidências de uso ou resultados quando houver dados reais disponíveis.",
+    ],
+    sections: [
+      {
+        title: "Contexto",
+        text:
+          "A Clínica Viver Bem precisava de uma presença digital capaz de explicar sua proposta multiprofissional, apresentar as formas de cuidado e facilitar o primeiro contato para pessoas de Guaxupé e região.",
+        takeaway: "A página precisava acolher e orientar antes de pedir qualquer ação ao visitante.",
+      },
+      {
+        title: "O desafio",
+        text:
+          "Sites de saúde precisam equilibrar proximidade, precisão e responsabilidade. O conteúdo não poderia sugerir diagnóstico ou prometer resultados; ao mesmo tempo, deveria responder às dúvidas que antecedem uma consulta.",
+        takeaway: "Clareza e limites explícitos também constroem confiança.",
+      },
+      {
+        title: "Arquitetura da experiência",
+        text:
+          "A navegação acompanha as perguntas mais comuns do visitante: quem é a clínica, quais atendimentos existem, quem atende, como é o espaço, como funciona o agendamento e onde encontrar a equipe.",
+        bullets: [
+          "Atalho para WhatsApp disponível nos principais momentos da página",
+          "Atendimentos descritos sem substituir a avaliação profissional",
+          "FAQ para antecipar dúvidas operacionais",
+          "Localização, telefone e Instagram agrupados no contato",
+        ],
+        takeaway: "A ordem do conteúdo reduz a distância entre entender o serviço e iniciar uma conversa.",
+      },
+      {
+        title: "Conteúdo responsável",
+        text:
+          "Informações ainda não confirmadas aparecem como conteúdo em validação. Fotografias, perfis profissionais e detalhes de atendimento possuem espaços preparados, mas não são apresentados como definitivos sem autorização.",
+        takeaway: "Sinalizar uma lacuna é mais confiável do que preenchê-la com uma informação não verificada.",
+      },
+      {
+        title: "Solicitação de contato",
+        text:
+          "O formulário organiza nome, telefone, melhor período e atendimento de interesse para preparar uma mensagem no WhatsApp. O site explica que não salva os dados e orienta a não enviar diagnósticos, documentos ou informações médicas.",
+        bullets: [
+          "Continuidade no canal que a equipe já utiliza",
+          "Consentimento explícito antes de abrir o WhatsApp",
+          "Aviso de que o pedido não confirma automaticamente o agendamento",
+          "Orientação específica para situações de urgência e emergência",
+        ],
+        takeaway: "O formulário estrutura a conversa sem se apresentar como prontuário ou sistema clínico.",
+      },
+      {
+        title: "Sistema visual e responsividade",
+        text:
+          "A interface combina azul profundo, turquesa, verde e superfícies claras para comunicar acolhimento e organização. Tipografia ampla, cards modulares e chamadas de ação contrastantes sustentam a leitura em desktop e celular.",
+        takeaway: "A identidade apoia a confiança, enquanto a hierarquia mantém o serviço compreensível.",
+      },
+      {
+        title: "Resultado e próximos passos",
+        text:
+          "O resultado é uma experiência pública que conecta apresentação institucional, informação responsável e contato em uma única jornada. Os próximos passos são validar os conteúdos pendentes com a clínica, inserir fotografias autorizadas e acompanhar dúvidas recorrentes para evoluir a página.",
+        takeaway: "O site já funciona como porta de entrada, mas deve evoluir junto com informações e evidências reais.",
       },
     ],
   },

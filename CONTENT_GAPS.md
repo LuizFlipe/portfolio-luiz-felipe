@@ -31,6 +31,12 @@ Este arquivo registra apenas lacunas reais. Elas não são exibidas como texto g
 - Exemplos anonimizados de decisões, estados ou fluxos autorizados.
 - Resultados qualitativos e próximos passos de projetos específicos.
 
+### Clínica Viver Bem
+
+- Fotografias reais e autorizadas da clínica e da equipe para substituir os espaços reservados.
+- Lista definitiva de atendimentos e dados confirmados dos profissionais.
+- Evidências de uso ou resultados somente quando houver dados reais disponíveis.
+
 ## Arquitetura futura
 
 - O endereço público do Lavis está centralizado como referência, mas o projeto não foi adicionado como case por falta de conteúdo suficiente.
