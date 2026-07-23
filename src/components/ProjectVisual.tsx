@@ -1,4 +1,4 @@
-type VisualKind = "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica";
+type VisualKind = "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica" | "malia";
 
 export default function ProjectVisual({ kind, compact = false }: { kind: VisualKind; compact?: boolean }) {
   return (
@@ -151,6 +151,26 @@ export default function ProjectVisual({ kind, compact = false }: { kind: VisualK
           </div>
           <div className="clinica-mark" aria-hidden="true"><b>VB</b><span>Viver Bem</span></div>
           <div className="visual-word">CARE</div>
+        </>
+      )}
+
+      {kind === "malia" && (
+        <>
+          <div className="malia-browser">
+            <img
+              src="/images/malia/malia-home.jpg"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div className="malia-product-card">
+            <span>MODA FEMININA / ZONA LESTE</span>
+            <strong>Seu look. Do seu jeito.</strong>
+            <small>Catálogo, produto e pedido pelo WhatsApp</small>
+          </div>
+          <div className="malia-mark" aria-hidden="true"><b>♛</b><span>MALIA</span></div>
+          <div className="visual-word">FASHION</div>
         </>
       )}
     </div>

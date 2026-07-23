@@ -16,6 +16,7 @@ export const siteConfig = {
     bravus: "",
     fluxo: "https://luizfelipeport.lovable.app/projetos/fluxo",
     clinica: "https://clinica-viver-bem-gxp.luiz-felipesantos11.chatgpt.site",
+    malia: "https://brubs-moda-zl.luiz-felipesantos11.chatgpt.site/",
     lavisFuture: "https://lavis-bar-011-cidade-tiradentes.luiz-felipesantos11.chatgpt.site/",
   },
   canonicalBaseUrl: (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, "") ?? "",

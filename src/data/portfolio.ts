@@ -18,8 +18,8 @@ export type PortfolioCase = {
     result: string;
   };
   tags: string[];
-  visual: "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica";
-  externalProject?: "bravus" | "fluxo" | "clinica";
+  visual: "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica" | "malia";
+  externalProject?: "bravus" | "fluxo" | "clinica" | "malia";
   facts?: {
     label: string;
     value: string;
@@ -259,76 +259,8 @@ export const cases: PortfolioCase[] = [
     ],
   },
   {
-    slug: "consignado-clt",
-    index: "03",
-    title: "Consignado CLT — reduzindo fricção na contratação",
-    eyebrow: "Crédito • Pesquisa • Conversão",
-    summary:
-      "Investigação da jornada pós-oferta para entender abandono, percepção de valor, confiança e barreiras de contratação.",
-    quick: {
-      problem:
-        "Poucos usuários avançavam da simulação até a contratação, exigindo entender onde a proposta perdia força.",
-      role:
-        "Product Designer responsável por pesquisa, leitura do funil, hipóteses e evolução da experiência.",
-      process:
-        "Análise de funil, benchmark, conversas com stakeholders e desenho de pesquisas quantitativas e abertas.",
-      result:
-        "Estrutura de investigação mais clara para separar problemas de oferta, comunicação, confiança e intenção de contratação.",
-    },
-    tags: ["UX Research", "Crédito", "Funil", "Product Discovery"],
-    visual: "consignado",
-    nda: true,
-    shareImage: "/og/consignado.png",
-    facts: [
-      { label: "Papel", value: "Product Designer" },
-      { label: "Foco", value: "Pesquisa, funil e hipóteses de produto" },
-      { label: "Restrições", value: "Dados e detalhes adaptados por NDA" },
-    ],
-    contentGaps: [
-      "Adicionar período e composição da equipe quando autorizados.",
-      "Adicionar resultado da pesquisa e próximos passos quando puderem ser publicados.",
-    ],
-    sections: [
-      {
-        title: "Contexto",
-        text:
-          "O desafio não era apenas redesenhar uma tela. Era entender por que pessoas que chegavam até uma oferta não necessariamente seguiam para a contratação.",
-        takeaway: "O abandono poderia ter causas diferentes; tratar tudo como problema de interface reduziria a qualidade do diagnóstico.",
-      },
-      {
-        title: "Problema e evidências",
-        text:
-          "A investigação combinou comportamento do funil com perguntas sobre valor disponível, condições, momento de contratação e sensação de segurança.",
-        takeaway: "O funil indicava onde havia perda, mas não explicava sozinho o motivo.",
-      },
-      {
-        title: "Meu papel, hipóteses e processo",
-        text:
-          "Atuei na leitura do funil, formulação de hipóteses e desenho da pesquisa. A estratégia considerou duas abordagens complementares: uma pergunta aberta e outra pesquisa estruturada, além de opt-in para entrevistas posteriores.",
-        bullets: [
-          "Separar barreiras de oferta, comunicação, confiança e momento de contratação",
-          "Combinar resposta aberta com opções estruturadas",
-          "Criar continuidade para entrevistas posteriores",
-        ],
-        takeaway: "A pesquisa foi desenhada para reduzir viés e distinguir motivos que pediam respostas diferentes.",
-      },
-      {
-        title: "Decisão e solução",
-        text:
-          "Antes de propor mudanças definitivas na interface, a prioridade foi melhorar a qualidade da evidência. Assim, as hipóteses de UX poderiam ser conectadas a motivos reais de abandono.",
-        takeaway: "A decisão de produto foi investigar primeiro e evitar um redesign baseado apenas em suposição.",
-      },
-      {
-        title: "Resultado, aprendizados e próximos passos",
-        text:
-          "O trabalho entregou uma estrutura de investigação mais clara para separar problemas de oferta, comunicação, confiança e intenção. Resultados da coleta, métricas e próximos passos não são publicados sem autorização.",
-        takeaway: "Saber o que ainda não está comprovado é parte da qualidade do processo.",
-      },
-    ],
-  },
-  {
     slug: "onboarding-caf",
-    index: "04",
+    index: "03",
     title: "Onboarding & CAF — segurança sem perder clareza",
     eyebrow: "Segurança • Biometria • Jornada crítica",
     summary:
@@ -401,83 +333,8 @@ export const cases: PortfolioCase[] = [
     ],
   },
   {
-    slug: "data-experience-active-bi",
-    index: "05",
-    title: "Data Experience — interfaces para decisões complexas",
-    eyebrow: "Dashboards • Dados • B2B",
-    summary:
-      "Experiência acumulada em produtos de dados, dashboards e interfaces B2B para diferentes empresas e setores.",
-    quick: {
-      problem:
-        "Transformar grandes volumes de informação em interfaces úteis para pessoas que precisam decidir rápido.",
-      role:
-        "UX/UI Designer atuando em arquitetura, visualização, prototipação e consistência visual.",
-      process:
-        "Entendimento do contexto, hierarquia da informação, desenho de fluxos e evolução de dashboards.",
-      result:
-        "Experiência multidisciplinar em produtos orientados por dados para diferentes contextos de negócio.",
-    },
-    tags: ["Dashboard", "B2B", "Data Experience", "UI Design"],
-    visual: "data",
-    shareImage: "/og/data.png",
-    facts: [
-      { label: "Período", value: "2022 — 2026" },
-      { label: "Papel", value: "UX/UI Designer" },
-      { label: "Ferramentas", value: "Figma, Power BI e Qlik" },
-      { label: "Contexto", value: "Produtos de dados e experiências B2B" },
-    ],
-    contentGaps: [
-      "Adicionar exemplos anonimizados de decisões ou fluxos autorizados.",
-      "Adicionar resultados qualitativos e próximos passos de projetos específicos.",
-    ],
-    sections: [
-      {
-        title: "Contexto",
-        text:
-          "Na Active BI, trabalhei em projetos para empresas de diferentes setores, lidando com necessidades distintas de análise, operação e acompanhamento de indicadores.",
-        takeaway: "Cada dashboard precisava responder ao contexto de decisão, não apenas organizar componentes.",
-      },
-      {
-        title: "Problema e restrições",
-        text:
-          "O desafio não é apenas exibir gráficos. É decidir o que precisa ter prioridade, como diferentes informações se relacionam e qual ação a interface deve apoiar.",
-        takeaway: "Mais informação na tela não significa mais clareza para quem decide.",
-      },
-      {
-        title: "Meu papel e processo",
-        text:
-          "Trabalhei com Figma, Power BI, Qlik e processos de UX/UI para transformar necessidades de negócio em estruturas visuais mais claras e consistentes.",
-        bullets: [
-          "Entendimento do contexto de análise e operação",
-          "Hierarquia da informação e organização dos indicadores",
-          "Prototipação e refinamento visual",
-          "Consistência entre telas e estados",
-        ],
-        takeaway: "A hierarquia foi construída a partir da tarefa e da decisão que a interface precisava apoiar.",
-      },
-      {
-        title: "Decisões de design",
-        text:
-          "As decisões priorizaram leitura, comparação e continuidade. O desenho buscou equilibrar densidade informacional com caminhos reconhecíveis, usando padrões consistentes para reduzir esforço entre diferentes visões.",
-        takeaway: "Em data experience, o design organiza relações antes de decorar gráficos.",
-      },
-      {
-        title: "Evidências e contextos",
-        text:
-          "Ao longo da experiência, participei de projetos relacionados a marcas como Lenovo, Motorola, State Grid, OceanPact e Porto do Açu.",
-        takeaway: "As marcas representam contextos de projeto, não necessariamente vínculos empregatícios diretos.",
-      },
-      {
-        title: "Aprendizados, resultado e próximos passos",
-        text:
-          "A experiência consolidou uma prática multidisciplinar em produtos orientados por dados para diferentes negócios. Exemplos detalhados, resultados e próximos passos dependem de material autorizado para publicação.",
-        takeaway: "A credibilidade do case também depende de explicitar o que pode e o que não pode ser mostrado.",
-      },
-    ],
-  },
-  {
     slug: "dirige-brasil",
-    index: "06",
+    index: "04",
     title: "Dirige Brasil — desenhando um produto do zero",
     eyebrow: "Produto próprio • Marketplace • Mobile",
     summary:
@@ -519,7 +376,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "clinica-viver-bem",
-    index: "07",
+    index: "05",
     title: "Clínica Viver Bem — cuidado e agendamento",
     eyebrow: "Saúde • Site institucional • Serviço",
     summary:
@@ -620,6 +477,100 @@ export const cases: PortfolioCase[] = [
         text:
           "O resultado é uma experiência pública que conecta apresentação institucional, informação responsável e contato em uma única jornada. Os próximos passos são validar os conteúdos pendentes com a clínica, inserir fotografias autorizadas e acompanhar dúvidas recorrentes para evoluir a página.",
         takeaway: "O site já funciona como porta de entrada, mas deve evoluir junto com informações e evidências reais.",
+      },
+    ],
+  },
+  {
+    slug: "malia-moda-zl",
+    index: "06",
+    title: "Malia — moda com identidade da Zona Leste",
+    eyebrow: "Moda • E-commerce • Negócio local",
+    summary:
+      "Experiência editorial para uma loja de moda feminina de Cidade Tiradentes, conectando descoberta de produtos, catálogo e continuidade do pedido pelo WhatsApp.",
+    quick: {
+      problem:
+        "Transformar a presença digital da loja em uma vitrine organizada, sem perder a personalidade da marca nem depender apenas das redes sociais.",
+      role:
+        "Product Designer responsável pela arquitetura da experiência, direção visual, interface responsiva e protótipo navegável.",
+      process:
+        "Organização da jornada entre novidades, categorias, coleção, página de produto, loja física e contato, com estados preparados para favoritos e sacola.",
+      result:
+        "Um site público e navegável que apresenta a marca, permite explorar peças e leva o pedido para o WhatsApp de forma direta.",
+    },
+    tags: ["Product Design", "E-commerce", "UX/UI", "Web responsiva"],
+    visual: "malia",
+    externalProject: "malia",
+    shareImage: "/images/malia/malia-home.jpg",
+    facts: [
+      { label: "Formato", value: "Vitrine e catálogo responsivos" },
+      { label: "Segmento", value: "Moda feminina" },
+      { label: "Base", value: "Cidade Tiradentes — SP" },
+      { label: "Status", value: "Protótipo público navegável" },
+    ],
+    gallery: [
+      {
+        src: "/images/malia/malia-home.jpg",
+        alt: "Página inicial da Malia com campanha de moda feminina e acesso às novidades",
+        caption: "Identidade editorial e proposta de valor logo na abertura",
+      },
+      {
+        src: "/images/malia/malia-catalogo.jpg",
+        alt: "Página de catálogo da Malia com título e controles de busca e filtros",
+        caption: "Entrada do catálogo com busca, filtros e quantidade de peças",
+      },
+      {
+        src: "/images/malia/malia-produto.jpg",
+        alt: "Página de produto da Malia com imagens, preço, cores e tamanhos",
+        caption: "Detalhes do produto organizados para apoiar a escolha",
+      },
+    ],
+    contentGaps: [
+      "Substituir imagens, produtos, preços e depoimentos demonstrativos por conteúdo real autorizado.",
+      "Configurar os perfis oficiais, o endereço e o número de WhatsApp da loja.",
+      "Integrar disponibilidade e estoque quando esses dados estiverem definidos.",
+    ],
+    sections: [
+      {
+        title: "Contexto",
+        text:
+          "A Malia é uma proposta de presença digital para uma loja de moda feminina de Cidade Tiradentes. O projeto leva para o site a atitude visual da marca e cria um espaço próprio para apresentar novidades, coleções e informações da loja.",
+        takeaway: "A experiência precisava vender estilo e, ao mesmo tempo, facilitar decisões práticas.",
+      },
+      {
+        title: "O desafio",
+        text:
+          "A navegação deveria funcionar como vitrine editorial e como caminho de compra. Isso exigiu equilibrar campanhas de impacto, descoberta por categoria e informações objetivas como preço, cor, tamanho, retirada e entrega.",
+        takeaway: "Expressão de marca e clareza comercial foram tratadas como partes da mesma experiência.",
+      },
+      {
+        title: "Arquitetura da experiência",
+        text:
+          "A estrutura conecta novidades, roupas, conjuntos, vestidos, mais vendidos, história da marca e loja física. Na home, blocos editoriais alternam lançamentos, categorias, coleção, favoritos, funcionamento da compra e contato.",
+        bullets: [
+          "Catálogo com busca, filtros e categorias",
+          "Página de produto com preço, cores e tamanhos",
+          "Favoritos e sacola preparados na navegação",
+          "Loja física e WhatsApp integrados à jornada",
+        ],
+        takeaway: "Cada área responde a uma intenção diferente sem tirar o visitante do universo da marca.",
+      },
+      {
+        title: "Do catálogo para a conversa",
+        text:
+          "O fluxo foi pensado para o contexto operacional de um pequeno negócio: o visitante descobre a peça no site, confere as informações essenciais e continua o pedido no WhatsApp, combinando entrega ou retirada com a equipe.",
+        takeaway: "A solução digital se adapta ao atendimento que a loja já consegue sustentar.",
+      },
+      {
+        title: "Direção visual",
+        text:
+          "A interface combina preto, branco e rosa com tipografia condensada, fotografias amplas e títulos editoriais. O contraste entre páginas de campanha e áreas comerciais mantém personalidade sem esconder os controles de compra.",
+        takeaway: "A estética cria reconhecimento; a hierarquia mantém o produto utilizável.",
+      },
+      {
+        title: "Resultado e próximos passos",
+        text:
+          "O resultado é um protótipo público e responsivo que apresenta a marca, o catálogo e a jornada de contato em um único sistema. A publicação definitiva depende da troca do conteúdo demonstrativo por produtos, imagens, contatos e informações reais da loja.",
+        takeaway: "O site já valida a estrutura da experiência sem apresentar conteúdo demonstrativo como dado real.",
       },
     ],
   },

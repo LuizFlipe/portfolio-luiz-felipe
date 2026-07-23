@@ -10,26 +10,22 @@ Este arquivo registra apenas lacunas reais. Elas não são exibidas como texto g
 
 ## Cases profissionais
 
-### Consignado CLT
-
-- Período e composição da equipe.
-- Resultado da pesquisa e próximos passos autorizados.
-
 ### Onboarding & CAF
 
 - Período e composição detalhada da equipe.
 - Evidências e resultados qualitativos publicáveis.
-
-### Data Experience
-
-- Exemplos anonimizados de decisões, estados ou fluxos autorizados.
-- Resultados qualitativos e próximos passos de projetos específicos.
 
 ### Clínica Viver Bem
 
 - Fotografias reais e autorizadas da clínica e da equipe para substituir os espaços reservados.
 - Lista definitiva de atendimentos e dados confirmados dos profissionais.
 - Evidências de uso ou resultados somente quando houver dados reais disponíveis.
+
+### Malia
+
+- Imagens, produtos, preços e depoimentos reais e autorizados.
+- Perfis oficiais, endereço e WhatsApp da loja.
+- Integração de disponibilidade e estoque, se fizer parte da operação futura.
 
 ## Arquitetura futura
 
