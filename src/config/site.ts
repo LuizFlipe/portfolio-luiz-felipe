@@ -1,13 +1,12 @@
 export const CONTACT_EMAIL = "luiz.felipesantos11@gmail.com";
-
-// TODO(Luiz): informe apenas os dígitos com DDI e DDD para abrir uma conversa direta.
-// Enquanto estiver vazio, o CTA abre o WhatsApp com a mensagem pronta para escolher um contato.
-export const WHATSAPP_NUMBER = "";
+export const WHATSAPP_NUMBER = "5511968585096";
+export const BOOKING_URL = "https://calendar.app.google/UwSDAo5NfowhqSDG7";
 
 export const siteConfig = {
   name: "Luiz Felipe",
   role: "Product Designer",
   email: CONTACT_EMAIL,
+  booking: BOOKING_URL,
   social: {
     linkedin: "https://www.linkedin.com/in/luiz-felipe-me/",
     instagram: "https://www.instagram.com/luiz.felipedesign",
@@ -25,10 +24,10 @@ export const siteConfig = {
 export const emailUrl = (subject?: string) =>
   `mailto:${CONTACT_EMAIL}${subject ? `?subject=${encodeURIComponent(subject)}` : ""}`;
 
-export const whatsappUrl = (message: string) => {
-  const destination = WHATSAPP_NUMBER ? `${WHATSAPP_NUMBER}` : "";
-  return `https://wa.me/${destination}?text=${encodeURIComponent(message)}`;
-};
+export const whatsappUrl = (message: string) =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+export const bookingUrl = () => BOOKING_URL;
 
 export const spotifyTrackUrl = (trackId: string) =>
   `https://open.spotify.com/track/${trackId}`;

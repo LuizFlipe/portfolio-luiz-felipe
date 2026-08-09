@@ -2,7 +2,7 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { PropsWithChildren, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import MotionEffects from "./MotionEffects";
-import { emailUrl, siteConfig } from "../config/site";
+import { bookingUrl, siteConfig, whatsappUrl } from "../config/site";
 
 const nav = [
   { code: "01", label: "Projetos", href: "/#projetos" },
@@ -80,10 +80,12 @@ export default function Layout({ children }: PropsWithChildren) {
           </nav>
 
           <a
-            href={emailUrl("Contato pelo portfólio")}
+            href={bookingUrl()}
+            target="_blank"
+            rel="noreferrer"
             className="hud-contact hidden items-center gap-2 px-4 py-2 text-sm font-semibold md:flex"
           >
-            <span>Iniciar conversa</span>
+            <span>Agendar conversa</span>
             <ArrowUpRight size={16} />
           </a>
 
@@ -113,13 +115,26 @@ export default function Layout({ children }: PropsWithChildren) {
                   </Link>
                 )
               ))}
-              <a
-                href={emailUrl("Contato pelo portfólio")}
-                className="mt-2 inline-flex items-center gap-2 text-violet-300"
-              >
-                {siteConfig.email}
-                <ArrowUpRight size={17} />
-              </a>
+              <div className="mt-3 flex flex-col gap-3 border-t border-white/10 pt-5">
+                <a
+                  href={bookingUrl()}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-violet-300"
+                >
+                  Agendar uma conversa
+                  <ArrowUpRight size={17} />
+                </a>
+                <a
+                  href={whatsappUrl("Olá, Luiz! Vi seu portfólio e gostaria de conversar sobre um projeto.")}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-white/80"
+                >
+                  Falar no WhatsApp
+                  <ArrowUpRight size={17} />
+                </a>
+              </div>
             </nav>
           </div>
         )}

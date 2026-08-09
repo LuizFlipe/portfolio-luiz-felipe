@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 import ProjectVisual from "../components/ProjectVisual";
 import Seo from "../components/Seo";
-import { emailUrl, siteConfig, whatsappUrl } from "../config/site";
+import { bookingUrl, siteConfig, whatsappUrl } from "../config/site";
 import { brands, cases, experience } from "../data/portfolio";
 
 const selectedSlugs = [
@@ -263,8 +263,14 @@ export default function Home() {
                 Conversar sobre meu negócio
                 <ArrowUpRight size={18} />
               </a>
-              <a href={emailUrl("Projeto para negócio local")} className="contact-button">
-                Prefiro e-mail
+              <a
+                href={bookingUrl()}
+                target="_blank"
+                rel="noreferrer"
+                className="contact-button"
+              >
+                Agendar uma conversa
+                <CalendarCheck size={18} />
               </a>
             </div>
           </div>
@@ -315,9 +321,22 @@ export default function Home() {
             <div className="relative z-10">
               <span className="section-label border-white/20 text-white/60">05 / CONTATO</span>
               <h2>TEM UM PROBLEMA<br />INTERESSANTE PARA<br /><span>RESOLVER?</span></h2>
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                <a href={emailUrl("Contato pelo portfólio")} className="contact-button primary">
-                  Vamos conversar <ArrowUpRight size={18} />
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                <a
+                  href={bookingUrl()}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-button primary"
+                >
+                  Agendar uma conversa <CalendarCheck size={18} />
+                </a>
+                <a
+                  href={whatsappUrl("Olá, Luiz! Vi seu portfólio e gostaria de conversar sobre um projeto.")}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-button"
+                >
+                  WhatsApp <ArrowUpRight size={18} />
                 </a>
                 <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer" className="contact-button">
                   LinkedIn <ArrowUpRight size={18} />
