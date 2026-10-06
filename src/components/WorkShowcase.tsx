@@ -5,14 +5,10 @@ import ProjectVisual from "./ProjectVisual";
 
 const reelProjects = [...cases, ...cases];
 
-const volumeItems = [
-  { title: "Bravus", label: "Web · Agendamento", visual: "bravus", size: "wide" },
-  { title: "Fluxo", label: "Mobile · Fintech", visual: "fluxo", size: "tall" },
-  { title: "Validação CAF", label: "Onboarding · Trust", visual: "caf", size: "standard" },
-  { title: "Dirige Brasil", label: "Produto 0→1 · Mobile", visual: "dirige", size: "wide" },
-  { title: "Segurança sem atrito", label: "Pesquisa · Onboarding", visual: "caf", size: "wide" },
-  { title: "Mobilidade e serviço", label: "MVP · Service Design", visual: "dirige", size: "standard" },
-] as const;
+const volumeItems = cases.map((project, index) => ({
+  title: project.title, label: project.eyebrow, visual: project.visual,
+  size: index % 3 === 0 ? "wide" : "standard",
+}));
 
 export function ScreenReel() {
   return (

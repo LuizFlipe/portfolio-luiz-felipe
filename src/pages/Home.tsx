@@ -18,6 +18,7 @@ import { bookingUrl, siteConfig, whatsappUrl } from "../config/site";
 import { brands, cases, experience } from "../data/portfolio";
 
 const selectedSlugs = [
+  "lumea-estetica-avancada",
   "bravus-agendamento",
   "fluxo-financas-pessoais",
   "clinica-viver-bem",
@@ -198,7 +199,7 @@ export default function Home() {
                       <div className="mb-6 flex flex-wrap gap-2">
                         {project.tags.map((tag) => <span key={tag} className="mini-tag">{tag}</span>)}
                       </div>
-                      <span className="project-link">Explorar o processo <ArrowRight size={18} /></span>
+                      <span className="project-link">{project.interactive ? "Explorar o case interativo" : "Explorar o processo"} <ArrowRight size={18} /></span>
                     </div>
                   </div>
                   <ProjectVisual kind={project.visual} compact />
@@ -207,7 +208,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="other-projects">
+          {otherCases.length > 0 && <div className="other-projects">
             <div>
               <span className="section-label">OUTROS PROJETOS</span>
               <p>Outros recortes do meu trabalho, sem repetir a galeria principal.</p>
@@ -222,7 +223,7 @@ export default function Home() {
                 </Link>
               ))}
             </div>
-          </div>
+          </div>}
         </div>
       </section>
 

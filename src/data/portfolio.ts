@@ -18,8 +18,9 @@ export type PortfolioCase = {
     result: string;
   };
   tags: string[];
-  visual: "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica" | "malia";
-  externalProject?: "bravus" | "fluxo" | "clinica" | "malia";
+  visual: "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica" | "malia" | "lumea";
+  externalProject?: "bravus" | "fluxo" | "clinica" | "malia" | "lumea";
+  interactive?: { label: string; anchor: string; description: string; image: string }[];
   facts?: {
     label: string;
     value: string;
@@ -37,8 +38,42 @@ export type PortfolioCase = {
 
 export const cases: PortfolioCase[] = [
   {
-    slug: "bravus-agendamento",
+    slug: "lumea-estetica-avancada",
     index: "01",
+    title: "LUMÉA — beleza em cada interação",
+    eyebrow: "Direção visual • Web • Projeto conceitual",
+    summary: "Uma experiência editorial de estética avançada que conecta identidade, descoberta de cuidados e interações que convidam a explorar.",
+    quick: {
+      problem: "Apresentar uma proposta de estética com personalidade e tornar a descoberta dos serviços simples e acolhedora.",
+      role: "Projeto de portfólio que reúne direção visual, interface e experiência web interativa.",
+      process: "Uma jornada entre apresentação da marca, procedimentos, exploração por interesse e esclarecimento de dúvidas.",
+      result: "Um site conceitual navegável, com seleção de interesses, comparação visual e perguntas expansíveis. Sem métricas de uso publicadas.",
+    },
+    tags: ["UI Design", "Direção de arte", "Interação", "Web responsiva"],
+    visual: "lumea",
+    externalProject: "lumea",
+    shareImage: "/images/lumea/inicio.jpg",
+    facts: [
+      { label: "Formato", value: "Experiência web interativa" },
+      { label: "Segmento", value: "Estética avançada" },
+      { label: "Status", value: "Projeto conceitual" },
+    ],
+    interactive: [
+      { label: "Primeira impressão", anchor: "top", image: "/images/lumea/inicio.jpg", description: "Fotografia editorial, tipografia expressiva e uma chamada clara apresentam o universo da marca." },
+      { label: "Descobrir cuidados", anchor: "procedimentos", image: "/images/lumea/procedimentos.jpg", description: "Quatro frentes de cuidado organizam a descoberta. Explore a hierarquia entre imagem, título e descrição." },
+      { label: "Escolher um interesse", anchor: "tratamento", image: "/images/lumea/tratamento.jpg", description: "No site ao vivo, selecione um interesse e veja o conteúdo mudar. A interação aproxima a navegação da intenção de quem visita." },
+      { label: "Tirar dúvidas", anchor: "faq", image: "/images/lumea/duvidas.jpg", description: "Abra as perguntas no site ao vivo para conhecer as respostas. A informação aparece no momento em que faz falta." },
+    ],
+    sections: [
+      { title: "Uma marca para explorar", text: "LUMÉA é um projeto conceitual de estética avançada. A experiência combina tons claros, fotografia editorial e tipografia serifada para construir uma presença calma, com espaço para observar e descobrir.", takeaway: "A identidade visual também organiza o ritmo da navegação." },
+      { title: "Da curiosidade à descoberta", text: "A página começa pela proposta da marca e apresenta os procedimentos antes de convidar o visitante a explorar interesses. Essa sequência conecta posicionamento e informação sem depender de um catálogo extenso.", bullets: ["Apresentação editorial da marca", "Procedimentos agrupados em quatro frentes", "Conteúdo que muda conforme o interesse selecionado", "Perguntas expansíveis antes do contato"] },
+      { title: "Interação com propósito", text: "O seletor de interesses alterna explicações e possibilidades de cuidado. O comparador de imagens permite explorar uma demonstração visual, e as perguntas frequentes revelam respostas sob demanda.", takeaway: "Cada interação oferece uma forma de entender melhor a proposta." },
+      { title: "O que este projeto demonstra", text: "O site demonstra uma direção visual consistente e uma jornada navegável. A clínica, a profissional, os depoimentos e os resultados apresentados são fictícios, conforme sinalizado no próprio projeto. Não há resultados clínicos ou métricas de negócio validados neste case.", takeaway: "Uma peça de portfólio para explorar interface, conteúdo e comportamento." },
+    ],
+  },
+  {
+    slug: "bravus-agendamento",
+    index: "02",
     title: "Bravus — experiência de agendamento",
     eyebrow: "Product Design • Serviço • Web",
     summary:
@@ -157,7 +192,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "fluxo-financas-pessoais",
-    index: "02",
+    index: "03",
     title: "Fluxo — autonomia financeira no dia a dia",
     eyebrow: "Product Design • Fintech • Mobile",
     summary:
@@ -259,124 +294,8 @@ export const cases: PortfolioCase[] = [
     ],
   },
   {
-    slug: "onboarding-caf",
-    index: "03",
-    title: "Onboarding & CAF — segurança sem perder clareza",
-    eyebrow: "Segurança • Biometria • Jornada crítica",
-    summary:
-      "Desenho de estados de sucesso, erro recuperável e reprovação crítica em uma jornada de troca de dispositivo com validação facial.",
-    quick: {
-      problem:
-        "Explicar situações de segurança e bloqueio de forma clara em uma jornada que depende de um provedor externo.",
-      role:
-        "Product Designer na definição de fluxo, estados, mensagens e contingências da experiência.",
-      process:
-        "Mapeamento de cenários, classificação de erros, desenho de telas, UX Writing e comunicação fora do app.",
-      result:
-        "Uma jornada com respostas diferentes para falhas recuperáveis, situações críticas e bloqueio preventivo.",
-    },
-    tags: ["Onboarding", "Segurança", "UX Writing", "Service Design"],
-    visual: "caf",
-    nda: true,
-    facts: [
-      { label: "Papel", value: "Product Designer" },
-      { label: "Foco", value: "Fluxos, estados e UX Writing" },
-      { label: "Colaboração", value: "Produto, segurança e fornecedor externo" },
-      { label: "Restrições", value: "Jornada crítica e conteúdo adaptado por NDA" },
-    ],
-    contentGaps: [
-      "Adicionar período e composição detalhada da equipe quando autorizados.",
-      "Adicionar evidências e resultados qualitativos publicáveis.",
-    ],
-    sections: [
-      {
-        title: "Contexto e problema",
-        text:
-          "Falhas de biometria não podem ser tratadas como um único erro genérico. Algumas situações permitem nova tentativa; outras exigem interrupção imediata por segurança.",
-        takeaway: "O mesmo sintoma visual podia representar níveis de risco e respostas completamente diferentes.",
-      },
-      {
-        title: "Meu papel e restrições",
-        text:
-          "Atuei na definição do fluxo, dos estados, das mensagens e das contingências. Parte da experiência acontece em um fornecedor externo, o que limita o controle sobre a jornada e exige continuidade também fora do aplicativo.",
-        takeaway: "A experiência precisava continuar coerente mesmo quando o produto deixava de controlar toda a interface.",
-      },
-      {
-        title: "Processo e hipóteses",
-        text:
-          "A jornada foi organizada em sucesso, erro recuperável, reprovação crítica e falha técnica, criando respostas e mensagens coerentes para cada nível de risco.",
-        bullets: [
-          "Distinguir falhas recuperáveis de bloqueios preventivos",
-          "Orientar o próximo passo sem revelar detalhes sensíveis",
-          "Prever comunicação para quem perde o acesso ao aplicativo",
-        ],
-        takeaway: "Classificar cenários antes de escrever mensagens evitou respostas genéricas para riscos diferentes.",
-      },
-      {
-        title: "Decisões e solução",
-        text:
-          "Como parte da experiência acontece dentro de um fornecedor externo, também foi necessário pensar em comunicação fora do app para cenários em que o usuário perde o acesso à conta.",
-        takeaway: "A solução inclui interface, escrita e continuidade de serviço — não apenas uma tela de erro.",
-      },
-      {
-        title: "Evidências, aprendizados e resultado",
-        text:
-          "O trabalho resultou em respostas diferentes para falhas recuperáveis, situações críticas e bloqueio preventivo. Em jornadas de segurança, clareza é parte da proteção. Evidências e resultados detalhados não são publicados sem autorização.",
-        takeaway: "O usuário precisa saber o que pode fazer sem receber informação que enfraqueça o processo.",
-      },
-      {
-        title: "Próximos passos",
-        text:
-          "A evolução específica do fluxo depende de dados e decisões internas. O case mantém essa lacuna explícita até que exista conteúdo autorizado para publicação.",
-        takeaway: "Não publicar uma promessa é mais confiável do que transformar uma hipótese em resultado.",
-      },
-    ],
-  },
-  {
-    slug: "dirige-brasil",
-    index: "04",
-    title: "Dirige Brasil — desenhando um produto do zero",
-    eyebrow: "Produto próprio • Marketplace • Mobile",
-    summary:
-      "Construção de uma experiência para conectar alunos a instrutores de direção, organizando descoberta, agenda e comunicação.",
-    quick: {
-      problem:
-        "Criar confiança e previsibilidade em uma experiência que conecta duas pontas com necessidades diferentes.",
-      role:
-        "Product Designer e participante da construção do produto, do conceito aos fluxos e protótipos.",
-      process:
-        "Definição do MVP, fluxos críticos, arquitetura, prototipação e evolução das jornadas de aluno e instrutor.",
-      result:
-        "Uma proposta de produto centrada nos momentos mais importantes da contratação e realização das aulas.",
-    },
-    tags: ["0→1", "Marketplace", "Mobile", "Product Strategy"],
-    visual: "dirige",
-    sections: [
-      {
-        title: "Contexto",
-        text:
-          "O Dirige Brasil nasce da ideia de aproximar alunos e instrutores de direção independentes, criando uma experiência mais clara para encontrar, contratar e acompanhar aulas.",
-      },
-      {
-        title: "Desafio",
-        text:
-          "O produto precisa funcionar para dois públicos diferentes. O aluno quer segurança e praticidade; o instrutor precisa organizar agenda, disponibilidade e comunicação.",
-      },
-      {
-        title: "Foco do MVP",
-        text:
-          "A prioridade foi desenhar o caminho mínimo para gerar valor: encontrar um instrutor, escolher uma aula, confirmar o agendamento e manter um canal simples de contato.",
-      },
-      {
-        title: "Princípio de produto",
-        text:
-          "Cada nova funcionalidade precisa responder a uma necessidade real da jornada. Isso evita transformar o MVP em um sistema complexo antes de validar o valor central.",
-      },
-    ],
-  },
-  {
     slug: "clinica-viver-bem",
-    index: "05",
+    index: "04",
     title: "Clínica Viver Bem — cuidado e agendamento",
     eyebrow: "Saúde • Site institucional • Serviço",
     summary:
@@ -482,7 +401,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "malia-moda-zl",
-    index: "06",
+    index: "05",
     title: "Malia — moda com identidade da Zona Leste",
     eyebrow: "Moda • E-commerce • Negócio local",
     summary:

@@ -1,8 +1,15 @@
-type VisualKind = "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica" | "malia";
+type VisualKind = "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica" | "malia" | "lumea";
 
 export default function ProjectVisual({ kind, compact = false }: { kind: VisualKind; compact?: boolean }) {
   return (
     <div className={`project-visual visual-${kind} ${compact ? "is-compact" : ""}`} aria-hidden="true">
+      {kind === "lumea" && (
+        <div className="lumea-cover">
+          <img src="/images/lumea/hero.jpg" alt="" loading="lazy" decoding="async" />
+          <div className="lumea-cover-copy"><span>L U M É A</span><strong>Estética que<br />começa em você.</strong><small>ESTÉTICA AVANÇADA / EXPERIÊNCIA DIGITAL</small></div>
+          {compact && <span className="lumea-cover-badge">Case interativo ↗</span>}
+        </div>
+      )}
       {kind === "bravus" && (
         <>
           <div className="bravus-browser">

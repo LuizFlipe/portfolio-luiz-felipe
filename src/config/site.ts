@@ -12,6 +12,7 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/luiz.felipedesign",
   },
   externalProjects: {
+    lumea: "https://lumeaa-advanced-beauty.lovable.app/",
     bravus: "",
     fluxo: "https://luizfelipeport.lovable.app/projetos/fluxo",
     clinica: "https://clinica-viver-bem-gxp.luiz-felipesantos11.chatgpt.site",

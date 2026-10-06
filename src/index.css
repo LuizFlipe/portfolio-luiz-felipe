@@ -4459,3 +4459,54 @@ a {
   .other-projects a,
   .skip-link { transition: none; }
 }
+
+/* LUMÉA: editorial cover and guided, live case exploration. */
+.visual-lumea { background: #c1b3a0; padding: 0; }
+.lumea-cover { position: absolute; inset: 0; overflow: hidden; }
+.lumea-cover > img { width: 100%; height: 100%; object-fit: cover; object-position: 65% 40%; }
+.lumea-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(29,25,20,.58), transparent 95%); }
+.lumea-cover-copy { position: absolute; inset: 9% 8%; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; color: #fff9ee; }
+.lumea-cover-copy > span { font-family: Georgia, serif; font-size: clamp(.9rem, 2vw, 1.5rem); }
+.lumea-cover-copy > strong { font-family: Georgia, serif; font-weight: 400; font-size: clamp(2.5rem, 5.5vw, 6.5rem); line-height: 1.02; letter-spacing: -.06em; }
+.lumea-cover-copy > small { font-size: .58rem; letter-spacing: .15em; max-width: 55%; }
+.lumea-cover-badge { position: absolute; right: 6%; bottom: 8%; z-index: 2; padding: .7rem 1rem; border-radius: 2rem; color: #27231d; background: #f4f0e7; font-size: .7rem; }
+.case-explorer { border-block: 1px solid #ffffff16; background: #100e15; }
+.explorer-heading { display: flex; gap: 2rem; align-items: end; justify-content: space-between; margin-bottom: 2.5rem; }
+.explorer-heading h2 { font-size: clamp(2.3rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -.05em; margin-top: 1rem; }
+.explorer-heading > p { max-width: 22rem; color: #aaa3b7; line-height: 1.7; }
+.explorer-stops { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; margin-bottom: 1.5rem; }
+.explorer-stops button { text-align: left; padding: 1rem; border: 1px solid #ffffff20; border-radius: .8rem; color: #b8b1c5; font-size: .85rem; }
+.explorer-stops button span { display: block; margin-bottom: .7rem; font-size: .65rem; color: #b89aed; }
+.explorer-stops button[aria-pressed="true"] { background: #261c36; border-color: #a78bfa; color: white; }
+.explorer-toolbar, .explorer-modes, .explorer-devices { display: flex; align-items: center; gap: .4rem; }
+.explorer-toolbar { padding: .8rem; flex-wrap: wrap; border: 1px solid #ffffff20; border-bottom: 0; border-radius: 1rem 1rem 0 0; background: #19161f; }
+.explorer-toolbar button, .explorer-toolbar a { display: inline-flex; align-items: center; gap: .45rem; padding: .65rem .8rem; border-radius: .5rem; font-size: .75rem; color: #b8b1c5; }
+.explorer-toolbar a { margin-left: auto; }
+.explorer-toolbar button[aria-pressed="true"] { color: white; background: #ffffff15; }
+.explorer-stage { background: #242028; padding: clamp(.5rem, 1.8vw, 1.5rem); border: 1px solid #ffffff20; overflow: hidden; }
+.explorer-stage > img { display: block; width: 100%; aspect-ratio: 1265 / 712; object-fit: contain; background: #f4f1e9; border-radius: .3rem; }
+.explorer-stage > iframe { display: block; width: 100%; height: min(75vh, 800px); min-height: 480px; background: #f4f1e9; border: 0; border-radius: .3rem; margin-inline: auto; }
+.explorer-stage.is-mobile > iframe { max-width: 390px; }
+.explorer-caption { display: flex; gap: 1.5rem; justify-content: space-between; padding: 1.5rem 0; }
+.explorer-caption span { font-size: .65rem; color: #b89aed; letter-spacing: .1em; }
+.explorer-caption h3 { font-size: 1.25rem; margin: .5rem 0; }
+.explorer-caption p { color: #aaa3b7; max-width: 48rem; font-size: .9rem; line-height: 1.7; }
+.explorer-arrows { display: flex; gap: .5rem; align-items: start; }
+.explorer-arrows button { padding: .8rem; border: 1px solid #ffffff25; border-radius: 50%; }
+.explorer-arrows button:disabled { opacity: .25; cursor: default; }
+.explorer-hint, .explorer-disclaimer { font-size: .75rem; color: #aaa3b7; line-height: 1.7; }
+.explorer-disclaimer { margin-top: .6rem; }
+.case-explorer button:focus-visible, .case-explorer a:focus-visible { outline: 2px solid #c4b5fd; outline-offset: 4px; }
+@media (max-width: 640px) {
+  .explorer-heading { display: block; }
+  .explorer-heading > p { margin-top: 1rem; }
+  .explorer-stops { grid-template-columns: repeat(2, 1fr); }
+  .explorer-stops button { padding: .8rem; font-size: .75rem; }
+  .explorer-caption { gap: .5rem; }
+  .explorer-arrows button { padding: .6rem; }
+  .explorer-toolbar { padding: .4rem; }
+  .explorer-toolbar button, .explorer-toolbar a { padding: .6rem; font-size: .7rem; }
+  .lumea-cover-copy > strong { font-size: clamp(2.6rem, 10vw, 4rem); }
+}
+
+.case-explorer { scroll-margin-top: 5rem; }

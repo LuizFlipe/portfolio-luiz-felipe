@@ -10,10 +10,10 @@ Este arquivo registra apenas lacunas reais. Elas não são exibidas como texto g
 
 ## Cases profissionais
 
-### Onboarding & CAF
+### LUMÉA
 
-- Período e composição detalhada da equipe.
-- Evidências e resultados qualitativos publicáveis.
+- Confirmar período, autoria detalhada e participação de colaboradores antes de acrescentar créditos específicos.
+- Adicionar evidências de processo e resultados somente quando fornecidos.
 
 ### Clínica Viver Bem
 

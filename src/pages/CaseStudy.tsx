@@ -11,6 +11,7 @@ import {
 import { Link, useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import ProjectVisual from "../components/ProjectVisual";
+import CaseExplorer from "../components/CaseExplorer";
 import Seo from "../components/Seo";
 import { emailUrl, siteConfig } from "../config/site";
 import { cases } from "../data/portfolio";
@@ -212,12 +213,14 @@ export default function CaseStudy() {
               <ProjectVisual kind={project.visual} />
             </div>
 
-            <a className="case-scroll-cue" href="#visao-geral">
-              Explorar o processo
+            <a className="case-scroll-cue" href={project.interactive ? "#explorar" : "#visao-geral"}>
+              {project.interactive ? "Explorar o site e as interações" : "Explorar o processo"}
               <ArrowDown size={16} />
             </a>
           </div>
         </header>
+
+        {project.interactive && externalUrl && <CaseExplorer key={project.slug} project={project} url={externalUrl} />}
 
         <section className="section-space case-overview" id="visao-geral">
           <div className="page-shell">
