@@ -76,7 +76,7 @@ export const cases: PortfolioCase[] = [
     slug: "emerson-psicologia-sexologia",
     index: "02",
     title: "Emerson Alexandre — presença digital com acolhimento",
-    eyebrow: "UX/UI • Web • Identidade digital",
+    eyebrow: "UX Strategy • Content Design • UI Design",
     summary:
       "Uma presença digital para psicologia clínica e sexologia, organizando atuação, temas de trabalho e contato em uma experiência sóbria, humana e acessível.",
     quick: {
@@ -89,7 +89,7 @@ export const cases: PortfolioCase[] = [
       result:
         "Uma estrutura de site responsiva pensada para comunicar com cuidado temas como sexualidade, desejo, vínculos e relações, sem promessas terapêuticas.",
     },
-    tags: ["UX/UI", "Web Design", "Arquitetura da informação", "Saúde"],
+    tags: ["UX Strategy", "Arquitetura da Informação", "Content Design", "UI Design"],
     visual: "ale",
     externalProject: "ale",
     interactive: [
