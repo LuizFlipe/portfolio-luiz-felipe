@@ -4,46 +4,60 @@ export default function ProjectVisual({ kind, compact = false }: { kind: VisualK
   return (
     <div className={`project-visual visual-${kind} ${compact ? "is-compact" : ""}`} aria-hidden="true">
       {kind === "ale" && (
-        <div className="absolute inset-0 overflow-hidden rounded-[inherit] bg-[#111016]">
-          <div className="absolute inset-0 flex items-stretch justify-stretch">
-            <iframe
-              src="https://psicologoale.lovable.app/"
-              title="Prévia do site de Emerson Alexandre"
-              loading="lazy"
-              tabIndex={-1}
-              className="border-0"
-              style={{
-                width: "125%",
-                height: "125%",
-                transform: "scale(.8)",
-                transformOrigin: "top left",
-                pointerEvents: "none",
-              }}
-            />
-          </div>
+        <div
+          className="absolute inset-0 overflow-hidden rounded-[inherit] bg-[#2f1820]"
+          style={{
+            background:
+              "linear-gradient(135deg, #eadfd6 0%, #f3eee7 58%, #6f3443 100%)",
+          }}
+        >
+          <iframe
+            src="https://psicologoale.lovable.app/"
+            title="Prévia do site de Emerson Alexandre"
+            loading="lazy"
+            tabIndex={-1}
+            scrolling="no"
+            className="absolute left-0 top-0 border-0"
+            style={{
+              width: compact ? "116.28%" : "111.12%",
+              height: compact ? "116.28%" : "111.12%",
+              maxWidth: "none",
+              flex: "0 0 auto",
+              transform: compact ? "scale(.86)" : "scale(.90)",
+              transformOrigin: "top left",
+              pointerEvents: "none",
+            }}
+          />
 
           <div
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(9,9,11,.08) 0%, transparent 20%, transparent 72%, rgba(9,9,11,.42) 100%)",
+                "linear-gradient(180deg, rgba(20,10,14,.03) 0%, transparent 28%, transparent 68%, rgba(20,10,14,.26) 100%)",
             }}
           />
 
-          <div className="pointer-events-none absolute left-5 top-5 rounded-full border border-white/15 bg-black/45 px-3 py-2 backdrop-blur-md sm:left-7 sm:top-7">
-            <span className="block text-[9px] font-semibold uppercase tracking-[0.2em] text-white/80 sm:text-[10px]">
+          <div className="pointer-events-none absolute left-5 top-5 rounded-full border border-white/25 bg-[#4f2632]/85 px-3 py-2 backdrop-blur-md sm:left-7 sm:top-7">
+            <span className="block text-[9px] font-semibold uppercase tracking-[0.2em] text-white sm:text-[10px]">
               Emerson Alexandre
             </span>
-            <small className="mt-1 block text-[8px] uppercase tracking-[0.16em] text-white/45">
-              Psicologia clínica · Sexologia
+            <small className="mt-1 block text-[8px] uppercase tracking-[0.15em] text-white/65">
+              Site institucional · UX/UI
             </small>
           </div>
 
-          <div className="pointer-events-none absolute bottom-5 left-5 rounded-full border border-white/15 bg-black/45 px-3 py-2 text-[9px] uppercase tracking-[0.16em] text-white/65 backdrop-blur-md sm:bottom-7 sm:left-7 sm:text-[10px]">
-            Site institucional · UX/UI
+          <div className="pointer-events-none absolute bottom-5 left-5 flex flex-wrap gap-2 sm:bottom-7 sm:left-7">
+            {["UX/UI", "Content Design", "Responsive Web"].map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-white/25 bg-[#4f2632]/80 px-3 py-2 text-[8px] font-semibold uppercase tracking-[0.14em] text-white/85 backdrop-blur-md sm:text-[9px]"
+              >
+                {item}
+              </span>
+            ))}
           </div>
 
-          <span className="pointer-events-none absolute bottom-5 right-5 rounded-full border border-white/15 bg-white/90 px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-black sm:bottom-7 sm:right-7 sm:text-[10px]">
+          <span className="pointer-events-none absolute bottom-5 right-5 rounded-full border border-[#4f2632]/15 bg-[#f6f1ea]/95 px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#4f2632] shadow-lg sm:bottom-7 sm:right-7 sm:text-[10px]">
             {compact ? "Case interativo ↗" : "Site publicado ↗"}
           </span>
         </div>
