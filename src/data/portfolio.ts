@@ -19,8 +19,8 @@ export type PortfolioCase = {
   };
   tags: string[];
   visual: "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica" | "malia" | "lumea" | "ale";
-  externalProject?: "bravus" | "fluxo" | "clinica" | "malia" | "lumea";
-  interactive?: { label: string; anchor: string; description: string; image: string }[];
+  externalProject?: "bravus" | "fluxo" | "clinica" | "malia" | "lumea" | "ale";
+  interactive?: { label: string; anchor: string; description: string; image?: string }[];
   facts?: {
     label: string;
     value: string;
@@ -91,6 +91,15 @@ export const cases: PortfolioCase[] = [
     },
     tags: ["UX/UI", "Web Design", "Arquitetura da informação", "Saúde"],
     visual: "ale",
+    externalProject: "ale",
+    interactive: [
+      {
+        label: "Site ao vivo",
+        anchor: "top",
+        description:
+          "Navegue pela experiência publicada de Emerson Alexandre diretamente dentro do case. Você também pode abrir o site completo em uma nova aba.",
+      },
+    ],
     facts: [
       { label: "Profissional", value: "Emerson Alexandre" },
       { label: "Atuação", value: "Psicologia clínica e sexologia" },

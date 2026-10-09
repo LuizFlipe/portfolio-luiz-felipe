@@ -13,6 +13,7 @@ export const siteConfig = {
   },
   externalProjects: {
     lumea: "https://lumeaa-advanced-beauty.lovable.app/",
+    ale: "https://psicologoale.lovable.app/",
     bravus: "",
     fluxo: "https://luizfelipeport.lovable.app/projetos/fluxo",
     clinica: "https://clinica-viver-bem-gxp.luiz-felipesantos11.chatgpt.site",
