@@ -4,92 +4,48 @@ export default function ProjectVisual({ kind, compact = false }: { kind: VisualK
   return (
     <div className={`project-visual visual-${kind} ${compact ? "is-compact" : ""}`} aria-hidden="true">
       {kind === "ale" && (
-        <div
-          className="absolute inset-0 overflow-hidden rounded-[inherit] text-white"
-          style={{
-            background:
-              "radial-gradient(circle at 78% 18%, rgba(139,92,246,.28), transparent 28%), radial-gradient(circle at 18% 82%, rgba(96,165,250,.10), transparent 30%), linear-gradient(135deg, #17131e 0%, #0e0d12 58%, #121019 100%)",
-          }}
-        >
-          <div className="absolute inset-0 opacity-30" style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px)",
-            backgroundSize: "72px 72px",
-          }} />
+        <div className="absolute inset-0 overflow-hidden rounded-[inherit] bg-[#111016]">
+          <div className="absolute inset-0 flex items-stretch justify-stretch">
+            <iframe
+              src="https://psicologoale.lovable.app/"
+              title="Prévia do site de Emerson Alexandre"
+              loading="lazy"
+              tabIndex={-1}
+              className="border-0"
+              style={{
+                width: "125%",
+                height: "125%",
+                transform: "scale(.8)",
+                transformOrigin: "top left",
+                pointerEvents: "none",
+              }}
+            />
+          </div>
 
-          <div className="absolute left-[6%] top-[8%] z-10 flex items-center gap-4">
-            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-violet-300/25 bg-white/[0.04] text-xs font-semibold tracking-[0.14em] text-violet-200">
-              EA
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(9,9,11,.08) 0%, transparent 20%, transparent 72%, rgba(9,9,11,.42) 100%)",
+            }}
+          />
+
+          <div className="pointer-events-none absolute left-5 top-5 rounded-full border border-white/15 bg-black/45 px-3 py-2 backdrop-blur-md sm:left-7 sm:top-7">
+            <span className="block text-[9px] font-semibold uppercase tracking-[0.2em] text-white/80 sm:text-[10px]">
+              Emerson Alexandre
             </span>
-            <div>
-              <span className="block text-[10px] font-medium uppercase tracking-[0.28em] text-white/55 sm:text-xs">
-                Emerson Alexandre
-              </span>
-              <span className="mt-1 block text-[9px] uppercase tracking-[0.2em] text-white/30">
-                Psicologia clínica · Sexologia · CRP 06/211058
-              </span>
-            </div>
+            <small className="mt-1 block text-[8px] uppercase tracking-[0.16em] text-white/45">
+              Psicologia clínica · Sexologia
+            </small>
           </div>
 
-          <div className="absolute left-[6%] top-[29%] z-10 max-w-[62%]">
-            <p className="mb-4 text-[10px] uppercase tracking-[0.3em] text-violet-300 sm:text-xs">
-              PRESENÇA DIGITAL / UX PARA SAÚDE
-            </p>
-            <strong className="block max-w-4xl text-[clamp(2.5rem,5vw,5.8rem)] font-medium leading-[0.92] tracking-[-0.055em]">
-              Informação clara para conversas que importam.
-            </strong>
-            <p className="mt-6 max-w-2xl text-sm leading-7 text-white/48 sm:text-base">
-              Uma experiência digital pensada para comunicar temas sensíveis com clareza,
-              acolhimento e confiança antes do primeiro contato.
-            </p>
+          <div className="pointer-events-none absolute bottom-5 left-5 rounded-full border border-white/15 bg-black/45 px-3 py-2 text-[9px] uppercase tracking-[0.16em] text-white/65 backdrop-blur-md sm:bottom-7 sm:left-7 sm:text-[10px]">
+            Site institucional · UX/UI
           </div>
 
-          <div className="absolute bottom-[8%] left-[6%] z-10 flex flex-wrap gap-2">
-            {["UX Strategy", "Content Design", "Information Architecture", "UI Design"].map((item) => (
-              <span
-                key={item}
-                className="rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-[9px] uppercase tracking-[0.16em] text-white/58 sm:text-[10px]"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-
-          <div className="absolute right-[4%] top-[13%] hidden h-[74%] w-[30%] min-w-[250px] lg:block">
-            <div className="absolute inset-0 rounded-[2rem] border border-white/10 bg-white/[0.025]" />
-            <div className="absolute left-7 top-7 text-[9px] uppercase tracking-[0.22em] text-white/28">
-              DIGITAL EXPERIENCE
-            </div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span
-                className="select-none text-[clamp(8rem,16vw,15rem)] font-black leading-none tracking-[-0.09em] text-transparent"
-                style={{ WebkitTextStroke: "1px rgba(196,181,253,.24)" }}
-              >
-                EA
-              </span>
-            </div>
-            <div className="absolute bottom-7 left-7 right-7">
-              <div className="mb-3 h-px bg-white/10" />
-              <div className="flex items-end justify-between gap-4">
-                <div>
-                  <span className="block text-[8px] uppercase tracking-[0.18em] text-white/25">FOCO</span>
-                  <strong className="mt-1 block text-sm font-medium text-white/72">
-                    Clareza · confiança · acolhimento
-                  </strong>
-                </div>
-                <span className="text-[10px] uppercase tracking-[0.16em] text-violet-200/70">2026</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute right-[6%] top-[23%] hidden h-40 w-40 rounded-full border border-violet-300/10 md:block lg:hidden" />
-          <div className="absolute right-[12%] top-[36%] hidden h-20 w-20 rounded-full border border-white/10 md:block lg:hidden" />
-
-          {compact && (
-            <span className="absolute right-[5%] top-[7%] z-20 rounded-full border border-white/10 bg-black/20 px-3 py-2 text-[9px] uppercase tracking-[0.16em] text-white/45">
-              Case web
-            </span>
-          )}
+          <span className="pointer-events-none absolute bottom-5 right-5 rounded-full border border-white/15 bg-white/90 px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-black sm:bottom-7 sm:right-7 sm:text-[10px]">
+            {compact ? "Case interativo ↗" : "Site publicado ↗"}
+          </span>
         </div>
       )}
 
