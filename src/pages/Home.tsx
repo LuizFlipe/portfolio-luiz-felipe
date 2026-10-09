@@ -19,6 +19,7 @@ import { brands, cases, experience } from "../data/portfolio";
 
 const selectedSlugs = [
   "lumea-estetica-avancada",
+  "emerson-psicologia-sexologia",
   "bravus-agendamento",
   "fluxo-financas-pessoais",
   "clinica-viver-bem",
