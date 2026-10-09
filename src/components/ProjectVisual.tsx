@@ -1,8 +1,41 @@
-type VisualKind = "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica" | "malia" | "lumea";
+type VisualKind = "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica" | "malia" | "lumea" | "ale";
 
 export default function ProjectVisual({ kind, compact = false }: { kind: VisualKind; compact?: boolean }) {
   return (
     <div className={`project-visual visual-${kind} ${compact ? "is-compact" : ""}`} aria-hidden="true">
+      {kind === "ale" && (
+        <div className="relative h-full min-h-[320px] w-full overflow-hidden rounded-[inherit] bg-[#17141d] text-white">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(167,139,250,0.24),transparent_34%),radial-gradient(circle_at_20%_80%,rgba(96,165,250,0.13),transparent_30%)]" />
+          <div className="absolute left-[7%] top-[9%] flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.25em] text-white/55 sm:text-xs">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-sm tracking-normal text-violet-200">
+              EA
+            </span>
+            <span>Psicologia clínica · Sexologia</span>
+          </div>
+          <div className="absolute left-[7%] top-[31%] max-w-[72%]">
+            <p className="mb-3 text-[10px] uppercase tracking-[0.24em] text-violet-300 sm:text-xs">
+              Emerson Alexandre · CRP 06/211058
+            </p>
+            <strong className="block max-w-xl text-3xl font-medium leading-[1.02] sm:text-5xl">
+              Um espaço para falar sobre desejo, vínculos e relações.
+            </strong>
+            <p className="mt-5 max-w-lg text-sm leading-relaxed text-white/55 sm:text-base">
+              Informação clara, presença profissional e um caminho simples para o primeiro contato.
+            </p>
+          </div>
+          <div className="absolute bottom-[8%] left-[7%] flex flex-wrap gap-2">
+            <span className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-[10px] uppercase tracking-[0.14em] text-white/65">Sexualidade</span>
+            <span className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-[10px] uppercase tracking-[0.14em] text-white/65">Desejo</span>
+            <span className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-[10px] uppercase tracking-[0.14em] text-white/65">Relações</span>
+          </div>
+          {compact && (
+            <span className="absolute right-[6%] top-[9%] rounded-full border border-white/10 bg-white/[0.06] px-3 py-2 text-[10px] uppercase tracking-[0.14em] text-white/60">
+              Web case
+            </span>
+          )}
+        </div>
+      )}
+
       {kind === "lumea" && (
         <div className="lumea-cover">
           <img src="/images/lumea/hero.jpg" alt="" loading="lazy" decoding="async" />

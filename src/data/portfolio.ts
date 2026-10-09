@@ -18,7 +18,7 @@ export type PortfolioCase = {
     result: string;
   };
   tags: string[];
-  visual: "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica" | "malia" | "lumea";
+  visual: "bravus" | "fluxo" | "dimo" | "consignado" | "caf" | "data" | "dirige" | "clinica" | "malia" | "lumea" | "ale";
   externalProject?: "bravus" | "fluxo" | "clinica" | "malia" | "lumea";
   interactive?: { label: string; anchor: string; description: string; image: string }[];
   facts?: {
@@ -71,9 +71,72 @@ export const cases: PortfolioCase[] = [
       { title: "O que este projeto demonstra", text: "O site demonstra uma direção visual consistente e uma jornada navegável. A clínica, a profissional, os depoimentos e os resultados apresentados são fictícios, conforme sinalizado no próprio projeto. Não há resultados clínicos ou métricas de negócio validados neste case.", takeaway: "Uma peça de portfólio para explorar interface, conteúdo e comportamento." },
     ],
   },
+
+  {
+    slug: "emerson-psicologia-sexologia",
+    index: "02",
+    title: "Emerson Alexandre — presença digital com acolhimento",
+    eyebrow: "UX/UI • Web • Identidade digital",
+    summary:
+      "Uma presença digital para psicologia clínica e sexologia, organizando atuação, temas de trabalho e contato em uma experiência sóbria, humana e acessível.",
+    quick: {
+      problem:
+        "Transformar uma presença concentrada nas redes sociais em um espaço próprio, profissional e claro para apresentar o trabalho e facilitar o primeiro contato.",
+      role:
+        "Product Designer responsável pela estratégia de conteúdo, arquitetura da informação, direção visual e experiência web.",
+      process:
+        "Organização da apresentação profissional, áreas de atuação, forma de atendimento, dúvidas frequentes e caminhos de contato.",
+      result:
+        "Uma estrutura de site responsiva pensada para comunicar com cuidado temas como sexualidade, desejo, vínculos e relações, sem promessas terapêuticas.",
+    },
+    tags: ["UX/UI", "Web Design", "Arquitetura da informação", "Saúde"],
+    visual: "ale",
+    facts: [
+      { label: "Profissional", value: "Emerson Alexandre" },
+      { label: "Atuação", value: "Psicologia clínica e sexologia" },
+      { label: "Registro", value: "CRP 06/211058" },
+    ],
+    sections: [
+      {
+        title: "Uma presença além das redes sociais",
+        text:
+          "A proposta parte da oportunidade de transformar a atuação de Emerson Alexandre em uma presença digital própria. Em vez de depender apenas de publicações e mensagens nas redes sociais, o site organiza informações essenciais em um espaço profissional e fácil de consultar.",
+        takeaway:
+          "O site funciona como ponto central para apresentar o trabalho antes do primeiro contato.",
+      },
+      {
+        title: "Conteúdo sensível pede clareza",
+        text:
+          "Sexualidade, desejo, vínculos e relações são temas que exigem uma comunicação cuidadosa. A arquitetura evita promessas, linguagem apelativa ou excesso de informação e prioriza explicações diretas sobre atuação, atendimento e formas de contato.",
+        bullets: [
+          "Apresentação profissional e registro visíveis",
+          "Áreas de atuação explicadas em linguagem acessível",
+          "Informações sobre como funciona o atendimento",
+          "Perguntas frequentes antes do contato",
+        ],
+      },
+      {
+        title: "Direção visual",
+        text:
+          "A identidade foi pensada para equilibrar profissionalismo e proximidade. Tons profundos, áreas de respiro e tipografia limpa criam uma experiência calma, evitando tanto uma aparência clínica excessivamente fria quanto uma comunicação informal demais.",
+        takeaway:
+          "A interface precisa transmitir segurança sem criar distância.",
+      },
+      {
+        title: "Ética desde a estrutura",
+        text:
+          "O projeto evita depoimentos, garantias de resultado ou qualquer linguagem que possa sugerir promessa terapêutica. O conteúdo é estruturado para informar e facilitar o contato, preservando os limites de uma comunicação profissional responsável.",
+      },
+      {
+        title: "Próximos passos",
+        text:
+          "Com a validação do profissional, a próxima etapa é aprofundar conteúdo, modalidades de atendimento, perguntas frequentes, formas de contato e identidade visual. O objetivo é evoluir o projeto junto ao próprio Emerson, sem inventar informações sobre sua prática.",
+      },
+    ],
+  },
   {
     slug: "bravus-agendamento",
-    index: "02",
+    index: "03",
     title: "Bravus — experiência de agendamento",
     eyebrow: "Product Design • Serviço • Web",
     summary:
@@ -192,7 +255,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "fluxo-financas-pessoais",
-    index: "03",
+    index: "04",
     title: "Fluxo — autonomia financeira no dia a dia",
     eyebrow: "Product Design • Fintech • Mobile",
     summary:
@@ -295,7 +358,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "clinica-viver-bem",
-    index: "04",
+    index: "05",
     title: "Clínica Viver Bem — cuidado e agendamento",
     eyebrow: "Saúde • Site institucional • Serviço",
     summary:
@@ -401,7 +464,7 @@ export const cases: PortfolioCase[] = [
   },
   {
     slug: "malia-moda-zl",
-    index: "05",
+    index: "06",
     title: "Malia — moda com identidade da Zona Leste",
     eyebrow: "Moda • E-commerce • Negócio local",
     summary:
