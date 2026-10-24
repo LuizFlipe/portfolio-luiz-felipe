@@ -3,6 +3,7 @@ import { PropsWithChildren, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import MotionEffects from "./MotionEffects";
 import { bookingUrl, siteConfig, whatsappUrl } from "../config/site";
+import { trackPortfolioEvent } from "../lib/analytics";
 
 const nav = [
   { code: "01", label: "Projetos", href: "/#projetos" },
@@ -84,6 +85,9 @@ export default function Layout({ children }: PropsWithChildren) {
             target="_blank"
             rel="noreferrer"
             className="hud-contact hidden items-center gap-2 px-4 py-2 text-sm font-semibold md:flex"
+            onClick={() =>
+              trackPortfolioEvent({ eventType: "contact_click", target: "booking", location: "header_desktop" })
+            }
           >
             <span>Agendar conversa</span>
             <ArrowUpRight size={16} />
@@ -121,6 +125,9 @@ export default function Layout({ children }: PropsWithChildren) {
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 text-violet-300"
+                  onClick={() =>
+                    trackPortfolioEvent({ eventType: "contact_click", target: "booking", location: "mobile_menu" })
+                  }
                 >
                   Agendar uma conversa
                   <ArrowUpRight size={17} />
@@ -130,6 +137,9 @@ export default function Layout({ children }: PropsWithChildren) {
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 text-white/80"
+                  onClick={() =>
+                    trackPortfolioEvent({ eventType: "contact_click", target: "whatsapp", location: "mobile_menu" })
+                  }
                 >
                   Falar no WhatsApp
                   <ArrowUpRight size={17} />
