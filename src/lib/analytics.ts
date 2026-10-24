@@ -25,7 +25,7 @@ export function trackPortfolioEvent({ eventType, target, location }: PortfolioEv
   if (typeof window === "undefined" || !supabaseUrl || !supabaseAnonKey) return;
 
   const path = `${window.location.pathname}${window.location.hash}`;
-  const eventKey = `${eventType}:${target}:${location}:${path}`;
+  const eventKey = `${eventType}:${target}:${path}`;
   const now = Date.now();
   const lastTrackedAt = recentEvents.get(eventKey) ?? 0;
 
