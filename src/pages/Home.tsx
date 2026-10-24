@@ -16,6 +16,7 @@ import ProjectVisual from "../components/ProjectVisual";
 import Seo from "../components/Seo";
 import { bookingUrl, siteConfig, whatsappUrl } from "../config/site";
 import { brands, cases, experience } from "../data/portfolio";
+import { trackPortfolioEvent } from "../lib/analytics";
 
 const selectedSlugs = [
   "lumea-estetica-avancada",
@@ -124,11 +125,23 @@ export default function Home() {
                   <p>Transformo problemas complexos em experiências digitais simples, humanas e confiáveis.</p>
                 </div>
                 <div>
-                  <a href="#projetos" className="signal-button signal-button-primary">
+                  <a
+                    href="#projetos"
+                    className="signal-button signal-button-primary"
+                    onClick={() =>
+                      trackPortfolioEvent({ eventType: "cta_click", target: "view_cases", location: "hero" })
+                    }
+                  >
                     Ver cases
                     <ArrowDown size={16} />
                   </a>
-                  <a href="#servicos" className="signal-button">
+                  <a
+                    href="#servicos"
+                    className="signal-button"
+                    onClick={() =>
+                      trackPortfolioEvent({ eventType: "cta_click", target: "services", location: "hero" })
+                    }
+                  >
                     Tenho um projeto
                     <ArrowUpRight size={16} />
                   </a>
@@ -183,7 +196,14 @@ export default function Home() {
 
           <div className="project-grid mt-16">
             {selectedCases.map((project) => (
-              <Link key={project.slug} to={`/case/${project.slug}`} className="project-card group">
+              <Link
+                key={project.slug}
+                to={`/case/${project.slug}`}
+                className="project-card group"
+                onClick={() =>
+                  trackPortfolioEvent({ eventType: "project_open", target: project.slug, location: "selected_cases" })
+                }
+              >
                 <div className="project-meta">
                   <span>{project.index}</span>
                   <span>CASE STUDY</span>
@@ -216,7 +236,13 @@ export default function Home() {
             </div>
             <div>
               {otherCases.map((project) => (
-                <Link to={`/case/${project.slug}`} key={project.slug}>
+                <Link
+                  to={`/case/${project.slug}`}
+                  key={project.slug}
+                  onClick={() =>
+                    trackPortfolioEvent({ eventType: "project_open", target: project.slug, location: "other_cases" })
+                  }
+                >
                   <span>{project.index}</span>
                   <strong>{project.title}</strong>
                   <small>{project.eyebrow}</small>
@@ -261,6 +287,9 @@ export default function Home() {
                 rel="noreferrer"
                 className="contact-button primary"
                 aria-label="Conversar sobre meu negócio pelo WhatsApp"
+                onClick={() =>
+                  trackPortfolioEvent({ eventType: "contact_click", target: "whatsapp", location: "services" })
+                }
               >
                 Conversar sobre meu negócio
                 <ArrowUpRight size={18} />
@@ -270,6 +299,9 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
                 className="contact-button"
+                onClick={() =>
+                  trackPortfolioEvent({ eventType: "contact_click", target: "booking", location: "services" })
+                }
               >
                 Agendar uma conversa
                 <CalendarCheck size={18} />
@@ -329,6 +361,9 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                   className="contact-button primary"
+                  onClick={() =>
+                    trackPortfolioEvent({ eventType: "contact_click", target: "booking", location: "contact_section" })
+                  }
                 >
                   Agendar uma conversa <CalendarCheck size={18} />
                 </a>
@@ -337,13 +372,32 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                   className="contact-button"
+                  onClick={() =>
+                    trackPortfolioEvent({ eventType: "contact_click", target: "whatsapp", location: "contact_section" })
+                  }
                 >
                   WhatsApp <ArrowUpRight size={18} />
                 </a>
-                <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer" className="contact-button">
+                <a
+                  href={siteConfig.social.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-button"
+                  onClick={() =>
+                    trackPortfolioEvent({ eventType: "contact_click", target: "linkedin", location: "contact_section" })
+                  }
+                >
                   LinkedIn <ArrowUpRight size={18} />
                 </a>
-                <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer" className="contact-button">
+                <a
+                  href={siteConfig.social.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-button"
+                  onClick={() =>
+                    trackPortfolioEvent({ eventType: "contact_click", target: "instagram", location: "contact_section" })
+                  }
+                >
                   Instagram <ArrowUpRight size={18} />
                 </a>
               </div>
