@@ -8,6 +8,8 @@ type PortfolioEvent = {
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL?.replace(/\/$/, "");
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const recentEvents = new Map<string, number>();
+const DEDUPE_WINDOW_MS = 500;
 
 function getReferrerHost() {
   if (typeof document === "undefined" || !document.referrer) return null;
@@ -22,11 +24,19 @@ function getReferrerHost() {
 export function trackPortfolioEvent({ eventType, target, location }: PortfolioEvent) {
   if (typeof window === "undefined" || !supabaseUrl || !supabaseAnonKey) return;
 
+  const path = `${window.location.pathname}${window.location.hash}`;
+  const eventKey = `${eventType}:${target}:${location}:${path}`;
+  const now = Date.now();
+  const lastTrackedAt = recentEvents.get(eventKey) ?? 0;
+
+  if (now - lastTrackedAt < DEDUPE_WINDOW_MS) return;
+  recentEvents.set(eventKey, now);
+
   const payload = {
     event_type: eventType,
     target,
     location,
-    path: `${window.location.pathname}${window.location.hash}`,
+    path,
     referrer_host: getReferrerHost(),
   };
 
