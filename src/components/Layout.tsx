@@ -2,7 +2,7 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { PropsWithChildren, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import MotionEffects from "./MotionEffects";
-import { bookingUrl, siteConfig, whatsappUrl } from "../config/site";
+import { bookingUrl, whatsappUrl } from "../config/site";
 import { trackPortfolioEvent } from "../lib/analytics";
 
 const nav = [
@@ -11,6 +11,35 @@ const nav = [
   { code: "03", label: "Experiência", href: "/#experiencia" },
   { code: "04", label: "Contato", href: "/#contato" },
 ];
+
+function getContactTarget(href: string) {
+  if (href.startsWith("mailto:")) return "email";
+
+  try {
+    const url = new URL(href, window.location.href);
+    const hostname = url.hostname.replace(/^www\./, "");
+
+    if (hostname === "wa.me" || hostname.endsWith("whatsapp.com")) return "whatsapp";
+    if (url.href.startsWith(bookingUrl())) return "booking";
+    if (hostname === "linkedin.com" || hostname.endsWith(".linkedin.com")) return "linkedin";
+    if (hostname === "instagram.com" || hostname.endsWith(".instagram.com")) return "instagram";
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+function getContactLocation(link: HTMLAnchorElement) {
+  if (link.closest("#menu-mobile")) return "mobile_menu";
+  if (link.closest("header")) return "header";
+  if (link.closest(".about-cta")) return "about_cta";
+
+  const section = link.closest<HTMLElement>("section[id]");
+  if (section?.id) return section.id;
+
+  return window.location.pathname === "/sobre" ? "about_page" : "page";
+}
 
 export default function Layout({ children }: PropsWithChildren) {
   const [open, setOpen] = useState(false);
@@ -29,6 +58,27 @@ export default function Layout({ children }: PropsWithChildren) {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
+
+  useEffect(() => {
+    const onContactClick = (event: MouseEvent) => {
+      if (!(event.target instanceof Element)) return;
+
+      const link = event.target.closest("a");
+      if (!(link instanceof HTMLAnchorElement)) return;
+
+      const target = getContactTarget(link.href);
+      if (!target) return;
+
+      trackPortfolioEvent({
+        eventType: "contact_click",
+        target,
+        location: getContactLocation(link),
+      });
+    };
+
+    document.addEventListener("click", onContactClick, true);
+    return () => document.removeEventListener("click", onContactClick, true);
+  }, []);
 
   return (
     <div className="min-h-screen bg-ink text-paper">
@@ -85,9 +135,6 @@ export default function Layout({ children }: PropsWithChildren) {
             target="_blank"
             rel="noreferrer"
             className="hud-contact hidden items-center gap-2 px-4 py-2 text-sm font-semibold md:flex"
-            onClick={() =>
-              trackPortfolioEvent({ eventType: "contact_click", target: "booking", location: "header_desktop" })
-            }
           >
             <span>Agendar conversa</span>
             <ArrowUpRight size={16} />
@@ -125,9 +172,6 @@ export default function Layout({ children }: PropsWithChildren) {
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 text-violet-300"
-                  onClick={() =>
-                    trackPortfolioEvent({ eventType: "contact_click", target: "booking", location: "mobile_menu" })
-                  }
                 >
                   Agendar uma conversa
                   <ArrowUpRight size={17} />
@@ -137,9 +181,6 @@ export default function Layout({ children }: PropsWithChildren) {
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 text-white/80"
-                  onClick={() =>
-                    trackPortfolioEvent({ eventType: "contact_click", target: "whatsapp", location: "mobile_menu" })
-                  }
                 >
                   Falar no WhatsApp
                   <ArrowUpRight size={17} />
